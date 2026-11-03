@@ -1,0 +1,31 @@
+{
+  "indexes": [],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "orders",
+      "fieldPath": "customer",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "orders",
+      "fieldPath": "project",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "orders",
+      "fieldPath": "history",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "contactMessages",
+      "fieldPath": "message",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "rateLimits",
+      "fieldPath": "expiresAt",
+      "ttl": true,
+      "indexes": []
+    }
+  ]
+}

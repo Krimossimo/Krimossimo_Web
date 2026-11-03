@@ -1,0 +1,829 @@
+{
+  "meta": {
+    "siteName": "Krimossimo",
+    "tagline": "Créateur de contenu, de sites web et d’applications"
+  },
+  "a11y": {
+    "skipToContent": "Aller au contenu",
+    "home": "Krimossimo, accueil",
+    "mainNav": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "toDark": "Activer le mode sombre",
+    "toLight": "Activer le mode clair",
+    "language": "Langue du site",
+    "socials": "Réseaux sociaux",
+    "external": "(nouvel onglet)"
+  },
+  "nav": {
+    "about": "À propos",
+    "projects": "Projets",
+    "shop": "Boutique",
+    "games": "Jeux vidéo",
+    "activities": "Activités",
+    "contact": "Contact"
+  },
+  "common": {
+    "backHome": "Retour à l’accueil",
+    "contactMe": "Me contacter",
+    "priceOnRequest": "Prix sur demande",
+    "priceFrom": "À partir de {{price}}",
+    "free": "Gratuit"
+  },
+  "content": {
+    "loading": "Chargement du contenu…",
+    "errorTitle": "Impossible de charger le contenu",
+    "errorText": "Le service est momentanément injoignable. Vérifiez votre connexion, puis réessayez.",
+    "retry": "Réessayer",
+    "demoBadge": "Démo",
+    "demoNoticeTitle": "Contenu de démonstration.",
+    "demoNotice": "Les éléments marqués « Démo » sont des exemples fictifs, affichés en attendant le vrai contenu."
+  },
+  "hero": {
+    "titleLine1": "Code précis.",
+    "titleLine2": "Esprit joueur.",
+    "intro": "Je suis Krimossimo : créateur de contenu, de sites web et d’applications, designer UX/UI et streameur. Je vous aide à créer ce que vous voulez avec l’aide de l’IA générative.",
+    "primaryCta": "Voir mes projets",
+    "secondaryCta": "Me contacter",
+    "status": "Disponible pour de nouveaux projets"
+  },
+  "modes": {
+    "title": "Choisissez un mode",
+    "hint": "Touches 1 à 3",
+    "dev": {
+      "label": "Code",
+      "title": "Sites web et applications",
+      "text": "Je crée votre site web, votre application ou votre logiciel avec l’aide de l’IA générative.",
+      "items": [
+        "Création de sites web",
+        "Applications et logiciels",
+        "Design UX/UI"
+      ],
+      "cta": "Voir mes projets"
+    },
+    "create": {
+      "label": "Création",
+      "title": "Contenus et mise en avant",
+      "text": "Je crée des contenus vidéo et je peux mettre en avant votre produit, selon mes conditions.",
+      "items": [
+        "Contenus vidéo",
+        "Streams",
+        "Publicité YouTube ou Story"
+      ],
+      "cta": "Voir les offres"
+    },
+    "play": {
+      "label": "Gaming",
+      "title": "Mes jeux vidéo",
+      "text": "Retrouvez mes jeux vidéo, avec leur lien de téléchargement ou de boutique officielle.",
+      "items": [
+        "Galerie de mes jeux",
+        "Jeux gratuits ou payants",
+        "Téléchargement ou boutique officielle"
+      ],
+      "cta": "Explorer les jeux vidéo"
+    }
+  },
+  "projects": {
+    "title": "Projets à la une",
+    "lead": "Une sélection de réalisations, entre développement web et création.",
+    "all": "Tous les projets",
+    "featured": "À la une"
+  },
+  "footer": {
+    "ctaTitle": "Un projet, une collaboration ou une idée ?",
+    "ctaText": "Envoyez-moi un message depuis la page Contact.",
+    "ctaButton": "Écrire un message",
+    "explore": "Explorer",
+    "follow": "Suivre Krimossimo",
+    "rights": "Tous droits réservés."
+  },
+  "about": {
+    "title": "À propos",
+    "intro": "Je suis Krimossimo, de mon prénom Karim. Créateur de contenu, je crée aussi des sites web et des applications, et je suis designer UX/UI et streameur. Je vous aide à créer ce que vous voulez avec l’aide de l’IA générative.",
+    "name": "Karim",
+    "alias": "alias Krimossimo",
+    "rolesTitle": "Ce que je fais",
+    "roles": {
+      "content": {
+        "title": "Création de contenu",
+        "text": "Des vidéos et des contenus autour de mes projets et du jeu vidéo."
+      },
+      "websites": {
+        "title": "Sites web",
+        "text": "La conception et la création de sites web, avec l’aide de l’IA générative."
+      },
+      "apps": {
+        "title": "Applications et logiciels",
+        "text": "Des applications et des logiciels créés pour répondre à un besoin."
+      },
+      "uiux": {
+        "title": "Design UX/UI",
+        "text": "Des interfaces claires, agréables et simples à utiliser."
+      },
+      "streaming": {
+        "title": "Streaming",
+        "text": "Des lives pour partager mes sessions avec la communauté."
+      },
+      "ai": {
+        "title": "IA générative",
+        "text": "L’outil qui m’aide à concrétiser vos idées."
+      }
+    },
+    "nextTitle": "Découvrir mon travail",
+    "nextProjects": "Voir mes projets",
+    "nextShop": "Voir les offres"
+  },
+  "projectsPage": {
+    "title": "Mes projets",
+    "lead": "Mes réalisations en sites web, applications, cybersécurité et design UI/UX.",
+    "filterLabel": "Filtrer par catégorie",
+    "all": "Tous",
+    "count_one": "{{count}} projet",
+    "count_other": "{{count}} projets",
+    "viewDetails": "Voir le projet",
+    "emptyAllTitle": "Aucun projet publié pour le moment",
+    "emptyAllText": "Les projets apparaîtront ici dès leur publication.",
+    "emptyFilteredTitle": "Aucun projet dans cette catégorie",
+    "emptyFilteredText": "Choisissez une autre catégorie ou affichez tous les projets.",
+    "showAll": "Afficher tous les projets"
+  },
+  "categories": {
+    "website": "Site web",
+    "software": "Application logiciel",
+    "cybersecurity": "Cybersécurité",
+    "uiux": "Design UI/UX"
+  },
+  "projectStatus": {
+    "in-progress": "En cours",
+    "completed": "Terminé"
+  },
+  "projectDetail": {
+    "back": "Tous les projets",
+    "category": "Catégorie",
+    "year": "Année",
+    "status": "Statut",
+    "stack": "Technologies",
+    "visit": "Ouvrir le lien du projet",
+    "notFoundTitle": "Projet introuvable",
+    "notFoundText": "Ce projet n’existe pas ou n’est plus publié."
+  },
+  "shop": {
+    "title": "Boutique",
+    "lead": "Mes offres pour créer votre site web ou votre application, ou pour mettre en avant votre produit.",
+    "cta": "Demander un devis",
+    "note": "Le paiement en ligne n’est pas encore disponible : chaque demande passe par le formulaire de contact.",
+    "emptyTitle": "Aucune offre disponible pour le moment",
+    "emptyText": "Les offres apparaîtront ici dès leur publication.",
+    "unavailable": "Indisponible pour le moment",
+    "unavailableCta": "Offre indisponible",
+    "notePurchasable": "Les prestations à prix fixe peuvent être ajoutées au panier ; les autres passent par une demande de devis.",
+    "notePaymentOff": "Le paiement en ligne n’est pas encore activé : vous pouvez préparer votre panier, mais aucune commande n’est encore enregistrée.",
+    "outOfStock": "Rupture de stock",
+    "outOfStockText": "Prestation momentanément complète : elle ne peut pas être commandée pour l’instant."
+  },
+  "cart": {
+    "title": "Panier",
+    "lead": "Vérifiez votre sélection avant de passer commande.",
+    "add": "Ajouter au panier",
+    "inCart": "Dans le panier",
+    "view": "Voir le panier",
+    "ask": "Poser une question",
+    "link_one": "Panier, {{count}} article",
+    "link_other": "Panier, {{count}} articles",
+    "announceAdded": "« {{title}} » a été ajouté au panier.",
+    "quantity": "Quantité",
+    "decrease": "Retirer une unité de « {{title}} »",
+    "increase": "Ajouter une unité de « {{title}} »",
+    "maxReached": "Maximum : {{max}}",
+    "singleService": "Prestation unique",
+    "unitPrice": "Prix unitaire : {{price}}",
+    "remove": "Retirer",
+    "removeLabel": "Retirer « {{title}} » du panier",
+    "total": "Total",
+    "totalNote": "Montant indicatif : le total définitif est recalculé par le serveur au moment de la commande.",
+    "checkout": "Passer la commande",
+    "continue": "Continuer mes achats",
+    "itemCount_one": "{{count}} article",
+    "itemCount_other": "{{count}} articles",
+    "emptyTitle": "Votre panier est vide",
+    "emptyText": "Ajoutez une prestation à prix fixe depuis la boutique pour préparer votre commande.",
+    "backToShop": "Retour à la boutique",
+    "blockedTitle": "Certains articles ne peuvent plus être commandés",
+    "blockedText": "Retirez-les pour pouvoir passer commande.",
+    "reasons": {
+      "unknown": "Cette offre n’existe plus.",
+      "unavailable": "Cette offre est indisponible pour le moment.",
+      "quote-only": "Cette offre est désormais sur devis.",
+      "unpublished": "Cette offre n’est plus publiée.",
+      "out-of-stock": "Cette prestation est en rupture de stock."
+    },
+    "errors": {
+      "currency-mismatch": "Le panier ne peut contenir qu’une seule devise.",
+      "cart-full": "Le panier est plein (20 prestations maximum).",
+      "max-quantity": "Quantité maximale atteinte pour cette prestation.",
+      "unavailable": "Cette offre est indisponible.",
+      "quote-only": "Cette offre est sur devis : utilisez « Demander un devis ».",
+      "unpublished": "Cette offre n’est pas disponible.",
+      "out-of-stock": "Cette prestation est en rupture de stock pour le moment."
+    }
+  },
+  "checkout": {
+    "title": "Commande",
+    "lead": "Indiquez vos coordonnées et votre besoin. Le paiement se fait ensuite avec PayPal.",
+    "summaryTitle": "Récapitulatif",
+    "editCart": "Modifier le panier",
+    "contactSection": "Vos coordonnées",
+    "projectSection": "Votre projet",
+    "requiredNote": "Les champs marqués d’un astérisque (*) sont obligatoires.",
+    "fields": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Adresse e-mail",
+      "phone": "Téléphone",
+      "company": "Entreprise ou organisation",
+      "country": "Pays",
+      "details": "Décrivez votre besoin",
+      "referenceUrl": "Lien utile",
+      "deadline": "Délai souhaité",
+      "consent": "J’accepte que ces informations soient utilisées pour traiter ma commande et me recontacter à ce sujet."
+    },
+    "optional": "facultatif",
+    "hints": {
+      "details": "Objectif, contenu attendu, contraintes, public visé… ({{min}} caractères minimum).",
+      "referenceUrl": "Votre site actuel, le produit à présenter, un exemple qui vous plaît…",
+      "phone": "Pour vous joindre plus facilement si besoin."
+    },
+    "deadlinePlaceholder": "Choisissez un délai",
+    "deadlines": {
+      "flexible": "Pas de contrainte",
+      "asap": "Dès que possible",
+      "one-month": "D’ici un mois",
+      "three-months": "D’ici trois mois"
+    },
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "email": "Saisissez une adresse e-mail valide, par exemple nom@domaine.fr.",
+      "phone": "Saisissez un numéro valide, par exemple +33 6 12 34 56 78.",
+      "url": "Saisissez une adresse complète commençant par https://",
+      "consent": "Cochez cette case pour valider la commande.",
+      "tooShort": "Au moins {{min}} caractères.",
+      "tooLong": "{{max}} caractères maximum.",
+      "summary_one": "Le formulaire contient {{count}} erreur. Corrigez le champ indiqué.",
+      "summary_other": "Le formulaire contient {{count}} erreurs. Corrigez les champs indiqués."
+    },
+    "submit": "Valider la commande",
+    "submitting": "Création de la commande…",
+    "notConfiguredTitle": "Commande non enregistrée",
+    "notConfiguredText": "Le paiement en ligne n’est pas encore activé : aucune commande n’a été créée et rien n’a été débité. Votre panier et votre saisie sont conservés ; vous pouvez aussi me contacter directement.",
+    "contact": "Me contacter",
+    "apiErrorTitle": "La commande n’a pas pu être créée",
+    "apiErrors": {
+      "not-configured": "Le service de commande n’est pas configuré.",
+      "network": "Connexion impossible avec le service de commande. Vérifiez votre connexion, puis réessayez.",
+      "timeout": "Le service de commande ne répond pas. Réessayez dans un instant.",
+      "invalid-request": "Certaines informations ont été refusées par le serveur. Vérifiez le formulaire.",
+      "offer-unavailable": "Une prestation de votre panier n’est plus disponible. Revenez au panier pour la retirer.",
+      "price-changed": "Le prix d’une prestation a changé depuis votre commande. Recommencez la commande pour voir le nouveau montant. Aucun paiement n’a été effectué.",
+      "order-expired": "Cette commande a plus de 24 heures. Recommencez-la pour confirmer les tarifs en vigueur. Aucun paiement n’a été effectué.",
+      "order-not-found": "Commande introuvable.",
+      "invalid-state": "Cette commande ne peut plus être modifiée.",
+      "not-approved": "Le paiement n’a pas été validé dans PayPal. Aucun montant n’a été prélevé.",
+      "paypal-order-mismatch": "Ce paiement ne correspond pas à votre commande et a été refusé. Aucun montant n’a été prélevé.",
+      "env-mismatch": "Cette commande a été créée en mode test et ne peut plus être réglée. Recommencez la commande.",
+      "payments-unavailable": "Le paiement en ligne n’est pas disponible pour le moment. Aucune commande n’a été enregistrée : contactez-moi pour commander.",
+      "payment-unconfirmed": "La confirmation du paiement n’a pas pu être obtenue. Ne payez pas une seconde fois : vérifiez d’abord le statut ci-dessous.",
+      "paypal-unreachable": "PayPal ne répond pas pour le moment. Aucun nouveau paiement n’a été lancé. Réessayez dans quelques minutes.",
+      "paypal-error": "PayPal a refusé la demande. Aucun paiement n’a été confirmé. Réessayez plus tard ou contactez-moi.",
+      "rate-limited": "Trop de commandes ont été envoyées depuis votre connexion. Réessayez dans une heure ou contactez-moi.",
+      "too-many-attempts": "Trop de tentatives de paiement pour cette commande. Recommencez la commande ou contactez-moi.",
+      "server": "Le service de commande a rencontré une erreur. Réessayez plus tard.",
+      "bad-response": "Réponse inattendue du service de commande. Aucun paiement n’a été effectué."
+    },
+    "emptyTitle": "Aucune prestation à commander",
+    "emptyText": "Votre panier est vide ou contient des articles qui ne peuvent plus être commandés."
+  },
+  "order": {
+    "number": "Commande n° {{id}}",
+    "total": "Total à payer",
+    "paidTotal": "Montant réglé",
+    "status": {
+      "created": "Commande créée",
+      "payment_pending": "Paiement en attente",
+      "paid": "Paiement confirmé",
+      "payment_failed": "Paiement échoué",
+      "cancelled": "Paiement abandonné"
+    },
+    "text": {
+      "created": "Votre commande est enregistrée au montant ci-dessous. Réglez-la avec PayPal pour la confirmer.",
+      "payment_pending": "Validez le paiement dans la fenêtre PayPal. Rien n’est encaissé tant que le serveur n’a pas confirmé le paiement.",
+      "paid": "Merci ! Votre paiement a été vérifié et votre commande est confirmée.",
+      "payment_failed": "Le paiement n’a pas abouti et n’a pas été encaissé. Vous pouvez réessayer.",
+      "cancelled": "Le paiement a été abandonné, rien n’a été encaissé. Vous pouvez réessayer ci-dessous ; votre panier est conservé."
+    },
+    "priceChanged": "Le serveur a recalculé le montant à partir des tarifs en vigueur : {{total}}.",
+    "paypalLoading": "Chargement de PayPal…",
+    "paypalUnavailable": "PayPal n’a pas pu être chargé (connexion ou bloqueur de contenu). Réessayez plus tard ou contactez-moi.",
+    "paymentErrorTitle": "Le paiement n’a pas pu être traité",
+    "paymentErrorPaypal": "PayPal a signalé une erreur. Aucun paiement n’a été confirmé.",
+    "restart": "Recommencer la commande",
+    "backToShop": "Retour à la boutique",
+    "backToCart": "Revenir au panier",
+    "reviewText": "PayPal examine ce paiement avant de l’encaisser. Rien d’autre n’est à faire : vous pouvez vérifier le statut ci-dessous, et je vous recontacte dès que PayPal l’a confirmé.",
+    "capturing": "Confirmation du paiement auprès du serveur… Ne fermez pas cette page.",
+    "instrumentDeclined": "Ce moyen de paiement a été refusé. Choisissez-en un autre dans la fenêtre PayPal.",
+    "verify": "Vérifier le statut du paiement",
+    "verifying": "Vérification en cours…",
+    "sandboxTitle": "Mode test (PayPal Sandbox)",
+    "sandboxText": "Aucun paiement réel ne sera effectué. Utilisez un compte acheteur Sandbox de PayPal Developer.",
+    "customerTitle": "Commande au nom de",
+    "receipt": "PayPal vous envoie un reçu par e-mail. Je reviens vers vous à l’adresse indiquée pour la suite de la prestation.",
+    "modify": "Modifier ma commande",
+    "unconfirmedNote": "Votre paiement a peut-être déjà été validé : ne payez pas une seconde fois. Vérifiez d’abord le statut ci-dessous."
+  },
+  "games": {
+    "title": "Jeux vidéo",
+    "lead": "Mes jeux vidéo, avec leur lien de téléchargement ou de boutique officielle.",
+    "download": "Télécharger",
+    "store": "Voir sur la boutique",
+    "storeNamed": "Voir sur {{store}}",
+    "emptyTitle": "Aucun jeu publié pour le moment",
+    "emptyText": "Les jeux apparaîtront ici dès leur publication.",
+    "emptyAction": "Voir mes activités",
+    "paid": "Payant"
+  },
+  "activities": {
+    "title": "Mes activités",
+    "lead": "Mes dernières vidéos YouTube, mes replays, mes vidéos tech et mes streams.",
+    "watch": "Regarder la vidéo",
+    "emptyTitle": "Les vidéos arrivent bientôt",
+    "emptyText": "Les dernières vidéos de la chaîne YouTube s’afficheront ici. En attendant, retrouvez-les directement sur la chaîne.",
+    "youtube": "Voir la chaîne YouTube",
+    "twitch": "Voir les streams sur Twitch",
+    "channels": {
+      "main": "YouTube",
+      "replay": "YouTube Replay",
+      "tech": "YouTube Tech"
+    },
+    "viewChannel": "Voir la chaîne",
+    "channelEmpty": "Aucune vidéo publique sur cette chaîne pour le moment.",
+    "errorTitle": "Vidéos YouTube indisponibles",
+    "errors": {
+      "network": "YouTube est injoignable pour le moment. Vérifiez votre connexion, puis réessayez.",
+      "quota": "Le quota quotidien de l’API YouTube est atteint. Les vidéos reviendront plus tard ; en attendant, retrouvez-les directement sur les chaînes.",
+      "forbidden": "YouTube a refusé la demande : la clé d’API n’est pas autorisée pour ce site. Retrouvez les vidéos directement sur les chaînes.",
+      "not-found": "Cette chaîne est introuvable sur YouTube pour le moment.",
+      "bad-response": "Réponse inattendue de YouTube. Réessayez plus tard."
+    },
+    "stale": "YouTube est momentanément injoignable : affichage des vidéos telles qu’au {{date}}."
+  },
+  "contact": {
+    "title": "Contact",
+    "lead": "Une question, une demande de devis ou une proposition de partenariat ? Écrivez-moi.",
+    "allRequired": "Tous les champs sont obligatoires.",
+    "fields": {
+      "lastName": "Nom",
+      "firstName": "Prénom",
+      "email": "Adresse e-mail",
+      "subject": "Sujet",
+      "message": "Message"
+    },
+    "subjectPlaceholder": "Choisissez un sujet",
+    "subjects": {
+      "website": "Création de site web",
+      "software": "Application ou logiciel",
+      "promotion": "Mise en avant de produit",
+      "other": "Autre demande"
+    },
+    "charCount": "{{count}} / {{max}} caractères",
+    "submit": "Envoyer le message",
+    "sending": "Envoi en cours…",
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "email": "Saisissez une adresse e-mail valide, par exemple nom@domaine.fr.",
+      "subject": "Choisissez un sujet.",
+      "tooShort": "Votre message doit contenir au moins {{min}} caractères.",
+      "tooLong": "Ce champ ne doit pas dépasser {{max}} caractères.",
+      "summary_one": "Le formulaire contient {{count}} erreur. Corrigez le champ indiqué.",
+      "summary_other": "Le formulaire contient {{count}} erreurs. Corrigez les champs indiqués.",
+      "links": "Pas plus de {{max}} liens par message."
+    },
+    "notice": "L’envoi en ligne n’est pas encore activé : vos informations sont vérifiées, mais aucun message n’est envoyé pour le moment.",
+    "status": {
+      "notConfiguredTitle": "Message non envoyé",
+      "notConfiguredText": "Le formulaire n’est pas encore relié au service d’envoi. Votre saisie est conservée ; en attendant, vous pouvez me contacter sur mes réseaux.",
+      "successTitle": "Message envoyé",
+      "successText": "Merci, votre message a bien été transmis par e-mail. Je vous réponds à l’adresse indiquée.",
+      "errorTitle": "Envoi impossible",
+      "errorText": "Le message n’a pas pu être envoyé. Vérifiez votre connexion, puis réessayez.",
+      "errors": {
+        "timeout": "Le service d’envoi ne répond pas : l’envoi n’est pas confirmé. Réessayez dans un instant.",
+        "rate-limited": "Trop de messages ont été envoyés depuis votre connexion. Réessayez dans une heure.",
+        "too-fast": "Le message a été envoyé trop vite après l’ouverture de la page. Relisez-le, puis renvoyez-le.",
+        "too-many-links": "Votre message contient trop de liens (3 au maximum). Retirez-en, puis renvoyez-le.",
+        "invalid": "Certaines informations ont été refusées par le serveur. Vérifiez le formulaire.",
+        "mail-failed": "Le service d’e-mail n’a pas pu transmettre votre message. Réessayez plus tard ou contactez-moi sur mes réseaux.",
+        "server": "Le service d’envoi a rencontré une erreur. Réessayez plus tard ou contactez-moi sur mes réseaux."
+      }
+    },
+    "elsewhere": "Me retrouver ailleurs"
+  },
+  "pages": {
+    "notFound": {
+      "title": "Page introuvable",
+      "lead": "Cette adresse ne mène nulle part. Vérifiez le lien ou revenez à l’accueil."
+    }
+  },
+  "admin": {
+    "title": "Administration",
+    "fallback": "Chargement de l’administration…",
+    "nav": {
+      "label": "Navigation de l’administration",
+      "orders": "Commandes",
+      "messages": "Messages",
+      "account": "Paramètres du compte",
+      "signOut": "Se déconnecter",
+      "viewSite": "Voir le site",
+      "overview": "Vue d’ensemble",
+      "projects": "Projets",
+      "shop": "Boutique",
+      "games": "Jeux vidéo",
+      "groupContent": "Contenus",
+      "groupActivity": "Activité",
+      "groupAccount": "Compte",
+      "menu": "Ouvrir le menu d’administration",
+      "closeMenu": "Fermer le menu d’administration",
+      "signedInAs": "Connecté en tant que"
+    },
+    "loadingSession": "Vérification de la session…",
+    "notConfigured": {
+      "title": "Firebase n’est pas configuré",
+      "text": "L’administration nécessite un projet Firebase. Renseignez les variables VITE_FIREBASE_* (voir le README, section Firebase). Aucune connexion n’est possible tant que ce n’est pas fait."
+    },
+    "login": {
+      "title": "Connexion administrateur",
+      "lead": "Accès réservé aux comptes explicitement autorisés.",
+      "email": "Identifiant (adresse e-mail)",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "submitting": "Connexion…",
+      "forgot": "Mot de passe oublié ?",
+      "back": "Retour à la connexion",
+      "resetTitle": "Réinitialiser le mot de passe",
+      "resetLead": "Indiquez l’adresse de votre compte. Si elle correspond à un compte, un lien de réinitialisation y sera envoyé.",
+      "resetSubmit": "Envoyer le lien",
+      "resetSent": "Si un compte correspond à cette adresse, un e-mail de réinitialisation vient d’être envoyé.",
+      "denied": "Ce compte n’a pas accès à l’administration. Vous avez été déconnecté.",
+      "sessionNote": "Pour votre sécurité, la session se ferme avec l’onglet.",
+      "required": "Saisissez votre identifiant et votre mot de passe.",
+      "emailRequired": "Saisissez une adresse e-mail valide."
+    },
+    "errors": {
+      "invalid-credentials": "Identifiant ou mot de passe incorrect.",
+      "too-many-requests": "Trop de tentatives. Patientez quelques minutes avant de réessayer.",
+      "network": "Connexion au service impossible. Vérifiez votre connexion, puis réessayez.",
+      "weak-password": "Mot de passe refusé : il ne respecte pas la politique de sécurité.",
+      "requires-recent-login": "Session trop ancienne : déconnectez-vous, reconnectez-vous, puis recommencez.",
+      "email-in-use": "Cette adresse est déjà utilisée par un autre compte.",
+      "invalid-email": "Adresse e-mail invalide.",
+      "same-email": "C’est déjà votre identifiant actuel.",
+      "not-configured": "Firebase n’est pas configuré.",
+      "unknown": "Une erreur inattendue est survenue. Réessayez."
+    },
+    "dashboard": {
+      "configTitle": "Configuration du site",
+      "configNote": "Ces indicateurs reflètent uniquement les variables du site. Ils ne prouvent pas que le projet Firebase, les règles ou les fonctions sont déployés.",
+      "items": {
+        "firebase": "Firebase (Auth, Firestore, Storage)",
+        "functions": "Cloud Functions (commandes, contact, administration)",
+        "contact": "Formulaire de contact"
+      },
+      "configured": "Configuré",
+      "missing": "Non configuré",
+      "emulators": "Mode émulateurs locaux : aucune donnée réelle n’est utilisée."
+    },
+    "account": {
+      "title": "Paramètres du compte",
+      "lead": "Sécurité de votre accès administrateur.",
+      "passwordTitle": "Changer le mot de passe",
+      "current": "Mot de passe actuel",
+      "new": "Nouveau mot de passe",
+      "confirm": "Confirmer le nouveau mot de passe",
+      "passwordHint": "12 caractères minimum, avec au moins 3 types parmi : minuscules, majuscules, chiffres, symboles.",
+      "passwordSubmit": "Changer le mot de passe",
+      "passwordDone": "Mot de passe modifié. Les sessions ouvertes sur d’autres appareils ont été fermées.",
+      "mismatch": "Les deux mots de passe ne correspondent pas.",
+      "too-short": "12 caractères minimum.",
+      "too-long": "128 caractères maximum.",
+      "not-varied": "Utilisez au moins 3 types de caractères (minuscules, majuscules, chiffres, symboles).",
+      "same": "Le nouveau mot de passe doit être différent de l’actuel.",
+      "emailTitle": "Changer l’identifiant de connexion",
+      "currentEmail": "Identifiant actuel : {{email}}",
+      "newEmail": "Nouvelle adresse e-mail",
+      "emailSubmit": "Envoyer le lien de confirmation",
+      "emailDone": "Un lien de confirmation a été envoyé à {{email}}. L’identifiant changera dès que vous l’aurez ouvert ; reconnectez-vous ensuite avec la nouvelle adresse.",
+      "emailNote": "Le rôle administrateur est lié au compte, pas à l’adresse : il est conservé. Votre adresse actuelle recevra un message permettant d’annuler le changement.",
+      "working": "Vérification…",
+      "required": "Ce champ est obligatoire."
+    },
+    "orders": {
+      "title": "Commandes",
+      "lead": "Les 50 dernières commandes. Le statut de paiement provient uniquement du serveur et de PayPal : il n’est pas modifiable ici.",
+      "empty": "Aucune commande pour le moment.",
+      "number": "Commande n° {{id}}",
+      "total": "Total",
+      "date": "Date",
+      "payment": "Paiement",
+      "fulfillment": "Réalisation",
+      "fulfillments": {
+        "todo": "À faire",
+        "in_progress": "En cours",
+        "delivered": "Livrée"
+      },
+      "note": "Note interne (facultative)",
+      "save": "Enregistrer le suivi",
+      "saving": "Enregistrement…",
+      "saved": "Suivi enregistré.",
+      "notPaid": "Le suivi de réalisation s’ouvre une fois le paiement confirmé.",
+      "details": "Détails",
+      "customer": "Client",
+      "project": "Besoin",
+      "reference": "Lien",
+      "deadline": "Délai",
+      "phone": "Téléphone",
+      "company": "Entreprise",
+      "country": "Pays",
+      "items": "Prestations",
+      "functionsMissing": "Les fonctions serveur ne sont pas configurées (VITE_FUNCTIONS_BASE_URL) : consultation seule.",
+      "invalid": "{{count}} document(s) illisible(s) ignoré(s).",
+      "sandbox": "Test (Sandbox)",
+      "captureId": "Capture PayPal",
+      "failure": "Motif du refus",
+      "alertDuplicate": "Second encaissement PayPal détecté pour cette commande : remboursez-le depuis votre compte PayPal (capture {{id}}).",
+      "alertMismatch": "Montant encaissé différent du montant de la commande : vérifiez cette transaction dans PayPal.",
+      "lateCapture": "Paiement confirmé après l’abandon de la commande par le client."
+    },
+    "messages": {
+      "title": "Messages",
+      "lead": "Les 50 derniers messages reçus par le formulaire de contact.",
+      "empty": "Aucun message pour le moment.",
+      "statuses": {
+        "new": "Nouveau",
+        "read": "Lu",
+        "archived": "Archivé"
+      },
+      "markRead": "Marquer comme lu",
+      "archive": "Archiver",
+      "reopen": "Remettre en nouveau",
+      "reply": "Répondre par e-mail",
+      "subject": "Sujet : {{subject}}",
+      "delivery": {
+        "pending": "E-mail en cours d’envoi",
+        "failed": "E-mail non envoyé"
+      }
+    },
+    "dataErrors": {
+      "permission-denied": "Accès refusé par les règles de sécurité. Si votre rôle vient d’être retiré ou accordé, reconnectez-vous.",
+      "unavailable": "Firestore est injoignable. Vérifiez votre connexion.",
+      "not-found": "Document introuvable.",
+      "unknown": "Erreur inattendue lors de l’accès aux données."
+    },
+    "apiErrors": {
+      "not-configured": "Les fonctions serveur ne sont pas configurées (VITE_FUNCTIONS_BASE_URL).",
+      "unauthenticated": "Session expirée : reconnectez-vous.",
+      "forbidden": "Action refusée : ce compte n’a pas le rôle administrateur.",
+      "invalid-request": "Demande refusée par le serveur.",
+      "not-found": "Élément introuvable.",
+      "invalid-state": "Action impossible dans l’état actuel de la commande.",
+      "network": "Serveur injoignable. Vérifiez votre connexion.",
+      "timeout": "Le serveur ne répond pas. Réessayez.",
+      "server": "Le serveur a rencontré une erreur."
+    },
+    "retry": "Réessayer",
+    "badge": "Admin",
+    "overview": {
+      "title": "Vue d’ensemble",
+      "lead": "Connecté en tant que {{email}}. Chiffres lus en direct dans Firestore.",
+      "manage": "Gérer",
+      "publication": "{{published}} publié(s) · {{draft}} brouillon(s)",
+      "availability": "{{available}} disponible(s) · {{outOfStock}} en rupture · {{unavailable}} indisponible(s)",
+      "ordersToProcess": "Commandes payées à réaliser",
+      "newMessages": "Nouveaux messages",
+      "latestNote": "Calculé sur les {{count}} derniers éléments.",
+      "sourceLocalTitle": "Le site public affiche encore le contenu local",
+      "sourceLocalText": "VITE_CONTENT_SOURCE=local est actif : les modifications faites ici sont bien enregistrées dans Firestore, mais le site public les affichera seulement après avoir retiré cette ligne de .env.local (et des variables GitHub). Importez d’abord le contenu actuel pour ne rien perdre.",
+      "importTitle": "Importer le contenu actuel du site",
+      "importText": "{{count}} contenu(s) du site (src/data) ne sont pas encore dans Firestore. L’import les copie sans rien remplacer ; les données de démonstration ne sont pas importées.",
+      "importButton": "Importer dans Firestore",
+      "importConfirmTitle": "Importer le contenu du site ?",
+      "importConfirmText": "{{count}} document(s) vont être créés dans Firestore. Un document qui existe déjà n’est jamais remplacé.",
+      "importDone": "Import terminé : {{imported}} créé(s), {{skipped}} déjà présent(s), {{failed}} en échec."
+    },
+    "list": {
+      "edit": "Modifier",
+      "publish": "Publier",
+      "unpublish": "Dépublier",
+      "delete": "Supprimer",
+      "published": "Publié",
+      "draft": "Brouillon",
+      "actions": "Actions pour « {{title}} »",
+      "invalid": "Document incomplet ou invalide : il n’apparaît pas sur le site. Ouvrez-le pour le corriger.",
+      "publishedDone": "« {{title}} » est publié.",
+      "unpublishedDone": "« {{title}} » est repassé en brouillon.",
+      "publicationFailed": "La publication n’a pas pu être modifiée :",
+      "deleted": "« {{id}} » a été supprimé de Firestore.",
+      "deleteFailed": "La suppression a échoué :",
+      "deleteTitle": "Supprimer « {{title}} » ?",
+      "deleteText": "Cette action est définitive. L’image associée sera aussi supprimée de Storage si aucun autre contenu ne l’utilise.",
+      "confirmDelete": "Supprimer définitivement",
+      "cancel": "Annuler"
+    },
+    "cleanup": {
+      "deleted": "L’image devenue inutile a été supprimée de Storage.",
+      "in-use": "L’ancienne image est conservée : un autre contenu l’utilise.",
+      "failed": "L’ancienne image n’a pas pu être supprimée et reste dans Storage (sans conséquence pour le site)."
+    },
+    "form": {
+      "loading": "Chargement…",
+      "save": "Enregistrer",
+      "saving": "Enregistrement…",
+      "saved": "Modifications enregistrées dans Firestore.",
+      "created": "Contenu créé dans Firestore.",
+      "back": "Retour à la liste",
+      "fr": "Français",
+      "en": "Anglais (facultatif)",
+      "slug": "Identifiant (adresse de la page)",
+      "slugHint": "Minuscules, chiffres et tirets. Proposé à partir du titre ; il ne pourra plus être modifié.",
+      "slugLocked": "L’identifiant ne peut pas être modifié après la création.",
+      "publication": "Statut",
+      "publications": {
+        "draft": "Brouillon (invisible sur le site)",
+        "published": "Publié"
+      },
+      "date": "Date",
+      "dateHint": "Sert au tri : les plus récents d’abord.",
+      "summary": "Le formulaire contient des erreurs : corrigez les champs signalés.",
+      "invalid": "Le document a été refusé par la validation :",
+      "notFound": "Ce contenu n’existe pas ou a été supprimé.",
+      "loadFailed": "Le contenu n’a pas pu être chargé.",
+      "failed": {
+        "upload": "L’image n’a pas pu être envoyée vers Storage. Rien n’a été modifié.",
+        "save": "L’enregistrement dans Firestore a échoué. Rien n’a été modifié.",
+        "delete": "La suppression a échoué."
+      },
+      "reasons": {
+        "permission-denied": "Accès refusé par les règles de sécurité (rôle administrateur absent ou retiré, ou session expirée). Reconnectez-vous.",
+        "unavailable": "Service Firebase injoignable. Vérifiez votre connexion, puis réessayez.",
+        "quota": "Quota Firebase dépassé.",
+        "unknown": "Erreur inattendue. Réessayez ; si le problème persiste, vérifiez que Storage est activé (offre Blaze)."
+      },
+      "errors": {
+        "required": "Ce champ est obligatoire.",
+        "tooLong": "{{max}} caractères maximum.",
+        "slug": "Identifiant invalide : minuscules, chiffres et tirets uniquement (et pas « new »).",
+        "slugTaken": "Cet identifiant est déjà utilisé : choisissez-en un autre.",
+        "url": "Adresse invalide : elle doit commencer par https:// (ou http://).",
+        "date": "Date invalide.",
+        "price": "Montant invalide : nombre positif, deux décimales au plus (ex. 149 ou 39,90).",
+        "quantity": "Nombre entier entre 1 et 20.",
+        "imageRequired": "Une image est obligatoire.",
+        "stack": "20 éléments maximum, 40 caractères chacun."
+      }
+    },
+    "image": {
+      "preview": "Aperçu de l’image",
+      "none": "Aucune image",
+      "choose": "Choisir une image",
+      "replace": "Remplacer l’image",
+      "remove": "Retirer l’image",
+      "keep": "Garder l’image",
+      "undo": "Annuler le changement",
+      "hint": "PNG, JPEG, WebP, AVIF ou GIF, 5 Mo maximum. Envoyée vers Storage à l’enregistrement.",
+      "pending": "Nouvelle image choisie : {{name}}. Elle sera envoyée à l’enregistrement.",
+      "willRemove": "L’image sera retirée à l’enregistrement.",
+      "alt": "Texte alternatif",
+      "altHint": "Décrit l’image pour les personnes qui ne la voient pas (lecteurs d’écran, image non chargée).",
+      "errors": {
+        "type": "Format non accepté : PNG, JPEG, WebP, AVIF ou GIF.",
+        "size": "Image trop lourde (5 Mo maximum).",
+        "empty": "Fichier vide."
+      }
+    },
+    "projects": {
+      "title": "Projets",
+      "lead": "Réalisations affichées dans la page Projets et sur l’accueil.",
+      "new": "Nouveau projet",
+      "newTitle": "Nouveau projet",
+      "editTitle": "Modifier le projet",
+      "empty": "Aucun projet dans Firestore pour le moment.",
+      "sections": {
+        "main": "Informations",
+        "description": "Description",
+        "image": "Image",
+        "details": "Lien et détails"
+      },
+      "fields": {
+        "title": "Titre",
+        "description": "Description",
+        "descriptionHint": "Séparez les paragraphes par une ligne vide. Le premier paragraphe sert de résumé sur la carte.",
+        "category": "Catégorie",
+        "progress": "Avancement",
+        "progressNone": "Non précisé",
+        "image": "Image de couverture",
+        "externalUrl": "Lien externe (facultatif)",
+        "externalUrlHint": "Site en ligne, démo, dépôt… Adresse complète en https://.",
+        "stack": "Technologies (facultatif)",
+        "stackHint": "Séparées par des virgules, ex. React, Firebase.",
+        "featured": "Mis en avant",
+        "featuredHint": "Affiché en priorité sur la page d’accueil."
+      }
+    },
+    "shop": {
+      "title": "Boutique",
+      "lead": "Offres de la page Boutique. Le prix enregistré ici est celui que le serveur relit au moment d’une commande.",
+      "new": "Nouvelle offre",
+      "newTitle": "Nouvelle offre",
+      "editTitle": "Modifier l’offre",
+      "empty": "Aucune offre dans Firestore pour le moment.",
+      "quote": "Sur devis",
+      "deleteText": "Cette action est définitive. Les commandes déjà passées gardent leur propre copie du titre et du prix.",
+      "sections": {
+        "main": "Informations",
+        "price": "Prix",
+        "availability": "Disponibilité et conditions"
+      },
+      "fields": {
+        "title": "Titre",
+        "description": "Description",
+        "priceMode": "Type de prix",
+        "price": "Prix",
+        "priceHint": "Ex. 149 ou 39,90. Ignoré pour une offre sur devis.",
+        "currency": "Devise",
+        "maxQuantity": "Quantité maximale par commande (facultatif)",
+        "maxQuantityHint": "Laisser vide pour une prestation unique. De 1 à 20 si plusieurs unités ont un sens (ex. publications).",
+        "availability": "Disponibilité",
+        "conditions": "Conditions (facultatif)",
+        "contactSubject": "Sujet du formulaire de contact",
+        "contactSubjectHint": "Présélectionné quand un visiteur demande un devis ou pose une question."
+      },
+      "priceModes": {
+        "fixed": {
+          "label": "Prix fixe",
+          "hint": "Commandable en ligne."
+        },
+        "from": {
+          "label": "À partir de",
+          "hint": "Prix indicatif, sur devis."
+        },
+        "quote": {
+          "label": "Sur devis",
+          "hint": "Aucun prix affiché."
+        }
+      },
+      "availabilities": {
+        "available": {
+          "label": "Disponible",
+          "hint": "Visible et commandable (ou sur devis)."
+        },
+        "out_of_stock": {
+          "label": "Rupture de stock",
+          "hint": "Momentanément complète : visible, non commandable."
+        },
+        "unavailable": {
+          "label": "Indisponible",
+          "hint": "Ne peut plus être commandée."
+        }
+      }
+    },
+    "games": {
+      "title": "Jeux vidéo",
+      "lead": "Jeux affichés dans la page Jeux vidéo, avec leur lien officiel.",
+      "new": "Nouveau jeu",
+      "newTitle": "Nouveau jeu",
+      "editTitle": "Modifier le jeu",
+      "empty": "Aucun jeu dans Firestore pour le moment.",
+      "sections": {
+        "main": "Informations",
+        "cover": "Couverture",
+        "price": "Prix",
+        "link": "Lien externe"
+      },
+      "fields": {
+        "title": "Titre",
+        "description": "Description",
+        "cover": "Image de couverture",
+        "pricing": "Tarif",
+        "priceAmount": "Prix (facultatif)",
+        "priceAmountHint": "Laisser vide pour afficher « Payant » sans montant.",
+        "linkUrl": "Lien de téléchargement ou de boutique",
+        "linkKind": "Type de lien",
+        "storeName": "Nom de la boutique (facultatif)",
+        "storeNameHint": "Ex. Steam, itch.io. Affiché sur le bouton."
+      },
+      "kinds": {
+        "store": "Page d’une boutique",
+        "download": "Téléchargement direct"
+      }
+    }
+  }
+}

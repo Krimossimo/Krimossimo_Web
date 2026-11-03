@@ -1,0 +1,829 @@
+{
+  "meta": {
+    "siteName": "Krimossimo",
+    "tagline": "Content creator, website and app maker"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "home": "Krimossimo, home",
+    "mainNav": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toDark": "Switch to dark mode",
+    "toLight": "Switch to light mode",
+    "language": "Site language",
+    "socials": "Social media",
+    "external": "(opens in a new tab)"
+  },
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "shop": "Shop",
+    "games": "Video games",
+    "activities": "Activities",
+    "contact": "Contact"
+  },
+  "common": {
+    "backHome": "Back to home",
+    "contactMe": "Get in touch",
+    "priceOnRequest": "Price on request",
+    "priceFrom": "From {{price}}",
+    "free": "Free"
+  },
+  "content": {
+    "loading": "Loading content…",
+    "errorTitle": "Couldn’t load the content",
+    "errorText": "The service can’t be reached right now. Check your connection, then try again.",
+    "retry": "Try again",
+    "demoBadge": "Demo",
+    "demoNoticeTitle": "Demo content.",
+    "demoNotice": "Items marked “Demo” are fictional examples, shown until the real content is added."
+  },
+  "hero": {
+    "titleLine1": "Precise code.",
+    "titleLine2": "Gamer spirit.",
+    "intro": "I’m Krimossimo: content creator, website and app maker, UX/UI designer and streamer. I help you create whatever you want with the help of generative AI.",
+    "primaryCta": "See my projects",
+    "secondaryCta": "Get in touch",
+    "status": "Available for new projects"
+  },
+  "modes": {
+    "title": "Pick a mode",
+    "hint": "Keys 1 to 3",
+    "dev": {
+      "label": "Code",
+      "title": "Websites and apps",
+      "text": "I build your website, app or software with the help of generative AI.",
+      "items": [
+        "Website creation",
+        "Apps and software",
+        "UX/UI design"
+      ],
+      "cta": "See my projects"
+    },
+    "create": {
+      "label": "Creation",
+      "title": "Content and promotion",
+      "text": "I create video content and can promote your product, under my terms.",
+      "items": [
+        "Video content",
+        "Streams",
+        "YouTube or Story ads"
+      ],
+      "cta": "See the services"
+    },
+    "play": {
+      "label": "Gaming",
+      "title": "My video games",
+      "text": "Find my video games, with their download link or official store page.",
+      "items": [
+        "Gallery of my games",
+        "Free or paid games",
+        "Download or official store"
+      ],
+      "cta": "Explore the games"
+    }
+  },
+  "projects": {
+    "title": "Featured projects",
+    "lead": "A selection of work, across web development and creation.",
+    "all": "All projects",
+    "featured": "Featured"
+  },
+  "footer": {
+    "ctaTitle": "A project, a collaboration or an idea?",
+    "ctaText": "Send me a message from the Contact page.",
+    "ctaButton": "Write a message",
+    "explore": "Explore",
+    "follow": "Follow Krimossimo",
+    "rights": "All rights reserved."
+  },
+  "about": {
+    "title": "About",
+    "intro": "I’m Krimossimo, and my first name is Karim. I’m a content creator, I also build websites and applications, and I’m a UX/UI designer and streamer. I help you create whatever you want with the help of generative AI.",
+    "name": "Karim",
+    "alias": "aka Krimossimo",
+    "rolesTitle": "What I do",
+    "roles": {
+      "content": {
+        "title": "Content creation",
+        "text": "Videos and content about my projects and video games."
+      },
+      "websites": {
+        "title": "Websites",
+        "text": "Designing and building websites, with the help of generative AI."
+      },
+      "apps": {
+        "title": "Apps and software",
+        "text": "Apps and software built to meet a need."
+      },
+      "uiux": {
+        "title": "UX/UI design",
+        "text": "Clear, pleasant and easy-to-use interfaces."
+      },
+      "streaming": {
+        "title": "Streaming",
+        "text": "Live streams to share my sessions with the community."
+      },
+      "ai": {
+        "title": "Generative AI",
+        "text": "The tool that helps me bring your ideas to life."
+      }
+    },
+    "nextTitle": "Discover my work",
+    "nextProjects": "See my projects",
+    "nextShop": "See the services"
+  },
+  "projectsPage": {
+    "title": "My projects",
+    "lead": "My work in websites, software, cybersecurity and UI/UX design.",
+    "filterLabel": "Filter by category",
+    "all": "All",
+    "count_one": "{{count}} project",
+    "count_other": "{{count}} projects",
+    "viewDetails": "View project",
+    "emptyAllTitle": "No projects published yet",
+    "emptyAllText": "Projects will appear here as soon as they are published.",
+    "emptyFilteredTitle": "No projects in this category",
+    "emptyFilteredText": "Pick another category or show all projects.",
+    "showAll": "Show all projects"
+  },
+  "categories": {
+    "website": "Website",
+    "software": "Software",
+    "cybersecurity": "Cybersecurity",
+    "uiux": "UI/UX design"
+  },
+  "projectStatus": {
+    "in-progress": "In progress",
+    "completed": "Completed"
+  },
+  "projectDetail": {
+    "back": "All projects",
+    "category": "Category",
+    "year": "Year",
+    "status": "Status",
+    "stack": "Technologies",
+    "visit": "Open the project link",
+    "notFoundTitle": "Project not found",
+    "notFoundText": "This project doesn’t exist or is no longer published."
+  },
+  "shop": {
+    "title": "Shop",
+    "lead": "My services to build your website or app, or to promote your product.",
+    "cta": "Request a quote",
+    "note": "Online payment isn’t available yet: every request goes through the contact form.",
+    "emptyTitle": "No services available yet",
+    "emptyText": "Services will appear here as soon as they are published.",
+    "unavailable": "Currently unavailable",
+    "unavailableCta": "Service unavailable",
+    "notePurchasable": "Fixed-price services can be added to your cart; the others go through a quote request.",
+    "notePaymentOff": "Online payment isn’t enabled yet: you can prepare your cart, but no order is recorded for now.",
+    "outOfStock": "Out of stock",
+    "outOfStockText": "This service is temporarily full: it cannot be ordered for now."
+  },
+  "cart": {
+    "title": "Cart",
+    "lead": "Check your selection before placing your order.",
+    "add": "Add to cart",
+    "inCart": "In your cart",
+    "view": "View cart",
+    "ask": "Ask a question",
+    "link_one": "Cart, {{count}} item",
+    "link_other": "Cart, {{count}} items",
+    "announceAdded": "“{{title}}” was added to your cart.",
+    "quantity": "Quantity",
+    "decrease": "Remove one unit of “{{title}}”",
+    "increase": "Add one unit of “{{title}}”",
+    "maxReached": "Maximum: {{max}}",
+    "singleService": "One-off service",
+    "unitPrice": "Unit price: {{price}}",
+    "remove": "Remove",
+    "removeLabel": "Remove “{{title}}” from your cart",
+    "total": "Total",
+    "totalNote": "Indicative amount: the final total is recalculated by the server when you place the order.",
+    "checkout": "Place order",
+    "continue": "Continue shopping",
+    "itemCount_one": "{{count}} item",
+    "itemCount_other": "{{count}} items",
+    "emptyTitle": "Your cart is empty",
+    "emptyText": "Add a fixed-price service from the shop to prepare your order.",
+    "backToShop": "Back to the shop",
+    "blockedTitle": "Some items can no longer be ordered",
+    "blockedText": "Remove them to place your order.",
+    "reasons": {
+      "unknown": "This service no longer exists.",
+      "unavailable": "This service is currently unavailable.",
+      "quote-only": "This service is now quote-based.",
+      "unpublished": "This service is no longer published.",
+      "out-of-stock": "This service is out of stock."
+    },
+    "errors": {
+      "currency-mismatch": "Your cart can only contain one currency.",
+      "cart-full": "Your cart is full (20 services maximum).",
+      "max-quantity": "Maximum quantity reached for this service.",
+      "unavailable": "This service is unavailable.",
+      "quote-only": "This service is quote-based: use “Request a quote”.",
+      "unpublished": "This service isn’t available.",
+      "out-of-stock": "This service is out of stock for now."
+    }
+  },
+  "checkout": {
+    "title": "Checkout",
+    "lead": "Enter your details and describe your needs. You then pay with PayPal.",
+    "summaryTitle": "Order summary",
+    "editCart": "Edit cart",
+    "contactSection": "Your details",
+    "projectSection": "Your project",
+    "requiredNote": "Fields marked with an asterisk (*) are required.",
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "phone": "Phone",
+      "company": "Company or organisation",
+      "country": "Country",
+      "details": "Describe your needs",
+      "referenceUrl": "Useful link",
+      "deadline": "Preferred timeline",
+      "consent": "I agree that this information may be used to process my order and contact me about it."
+    },
+    "optional": "optional",
+    "hints": {
+      "details": "Goal, expected content, constraints, audience… (at least {{min}} characters).",
+      "referenceUrl": "Your current website, the product to feature, an example you like…",
+      "phone": "To reach you more easily if needed."
+    },
+    "deadlinePlaceholder": "Choose a timeline",
+    "deadlines": {
+      "flexible": "No constraint",
+      "asap": "As soon as possible",
+      "one-month": "Within a month",
+      "three-months": "Within three months"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address, for example name@domain.com.",
+      "phone": "Enter a valid phone number, for example +44 20 7946 0000.",
+      "url": "Enter a full address starting with https://",
+      "consent": "Tick this box to place your order.",
+      "tooShort": "At least {{min}} characters.",
+      "tooLong": "{{max}} characters maximum.",
+      "summary_one": "The form contains {{count}} error. Fix the highlighted field.",
+      "summary_other": "The form contains {{count}} errors. Fix the highlighted fields."
+    },
+    "submit": "Place order",
+    "submitting": "Creating your order…",
+    "notConfiguredTitle": "Order not recorded",
+    "notConfiguredText": "Online payment isn’t enabled yet: no order was created and nothing was charged. Your cart and your details have been kept; you can also contact me directly.",
+    "contact": "Contact me",
+    "apiErrorTitle": "Your order couldn’t be created",
+    "apiErrors": {
+      "not-configured": "The order service is not configured.",
+      "network": "Unable to reach the order service. Check your connection, then try again.",
+      "timeout": "The order service is not responding. Try again in a moment.",
+      "invalid-request": "Some information was rejected by the server. Check the form.",
+      "offer-unavailable": "A service in your cart is no longer available. Go back to the cart to remove it.",
+      "price-changed": "The price of a service has changed since you placed this order. Start the order again to see the new amount. No payment was made.",
+      "order-expired": "This order is more than 24 hours old. Start it again to confirm current prices. No payment was made.",
+      "order-not-found": "Order not found.",
+      "invalid-state": "This order can no longer be changed.",
+      "not-approved": "The payment was not approved in PayPal. Nothing was charged.",
+      "paypal-order-mismatch": "This payment does not match your order and was refused. Nothing was charged.",
+      "env-mismatch": "This order was created in test mode and can no longer be paid. Start the order again.",
+      "payments-unavailable": "Online payment is not available right now. No order was recorded: contact me to order.",
+      "payment-unconfirmed": "The payment confirmation could not be obtained. Do not pay a second time: check the status below first.",
+      "paypal-unreachable": "PayPal is not responding right now. No new payment was started. Try again in a few minutes.",
+      "paypal-error": "PayPal rejected the request. No payment was confirmed. Try again later or contact me.",
+      "rate-limited": "Too many orders were sent from your connection. Try again in an hour or contact me.",
+      "too-many-attempts": "Too many payment attempts for this order. Start the order again or contact me.",
+      "server": "The order service ran into an error. Try again later.",
+      "bad-response": "Unexpected response from the order service. No payment was made."
+    },
+    "emptyTitle": "Nothing to order",
+    "emptyText": "Your cart is empty or contains items that can no longer be ordered."
+  },
+  "order": {
+    "number": "Order no. {{id}}",
+    "total": "Total to pay",
+    "paidTotal": "Amount paid",
+    "status": {
+      "created": "Order created",
+      "payment_pending": "Payment pending",
+      "paid": "Payment confirmed",
+      "payment_failed": "Payment failed",
+      "cancelled": "Payment abandoned"
+    },
+    "text": {
+      "created": "Your order has been recorded for the amount below. Pay with PayPal to confirm it.",
+      "payment_pending": "Approve the payment in the PayPal window. Nothing is charged until the server has confirmed the payment.",
+      "paid": "Thank you! Your payment has been verified and your order is confirmed.",
+      "payment_failed": "The payment didn’t go through and wasn’t collected. You can try again.",
+      "cancelled": "The payment was abandoned and nothing was charged. You can try again below; your cart is kept."
+    },
+    "priceChanged": "The server recalculated the amount using current prices: {{total}}.",
+    "paypalLoading": "Loading PayPal…",
+    "paypalUnavailable": "PayPal couldn’t be loaded (connection or content blocker). Try again later or contact me.",
+    "paymentErrorTitle": "The payment couldn’t be processed",
+    "paymentErrorPaypal": "PayPal reported an error. No payment was confirmed.",
+    "restart": "Start the order again",
+    "backToShop": "Back to the shop",
+    "backToCart": "Back to the cart",
+    "reviewText": "PayPal is reviewing this payment before charging it. Nothing else to do: you can check the status below, and I will contact you as soon as PayPal confirms it.",
+    "capturing": "Confirming the payment with the server… Do not close this page.",
+    "instrumentDeclined": "This payment method was declined. Choose another one in the PayPal window.",
+    "verify": "Check payment status",
+    "verifying": "Checking…",
+    "sandboxTitle": "Test mode (PayPal Sandbox)",
+    "sandboxText": "No real payment will be made. Use a PayPal Developer Sandbox buyer account.",
+    "customerTitle": "Order in the name of",
+    "receipt": "PayPal sends you a receipt by email. I will get back to you at the address provided about the next steps.",
+    "modify": "Change my order",
+    "unconfirmedNote": "Your payment may already have gone through: do not pay a second time. Check the status below first."
+  },
+  "games": {
+    "title": "Video games",
+    "lead": "My video games, with their download link or official store page.",
+    "download": "Download",
+    "store": "View in store",
+    "storeNamed": "View on {{store}}",
+    "emptyTitle": "No games published yet",
+    "emptyText": "Games will appear here as soon as they are published.",
+    "emptyAction": "See my activities",
+    "paid": "Paid"
+  },
+  "activities": {
+    "title": "My activities",
+    "lead": "My latest YouTube videos, replays, tech videos and streams.",
+    "watch": "Watch the video",
+    "emptyTitle": "Videos are coming soon",
+    "emptyText": "The latest videos from the YouTube channel will appear here. In the meantime, find them directly on the channel.",
+    "youtube": "Visit the YouTube channel",
+    "twitch": "Watch the streams on Twitch",
+    "channels": {
+      "main": "YouTube",
+      "replay": "YouTube Replay",
+      "tech": "YouTube Tech"
+    },
+    "viewChannel": "View channel",
+    "channelEmpty": "No public video on this channel yet.",
+    "errorTitle": "YouTube videos unavailable",
+    "errors": {
+      "network": "YouTube cannot be reached right now. Check your connection, then try again.",
+      "quota": "The daily YouTube API quota has been reached. Videos will be back later; meanwhile, find them directly on the channels.",
+      "forbidden": "YouTube rejected the request: the API key is not allowed for this site. Find the videos directly on the channels.",
+      "not-found": "This channel cannot be found on YouTube right now.",
+      "bad-response": "Unexpected response from YouTube. Try again later."
+    },
+    "stale": "YouTube is temporarily unreachable: showing videos as of {{date}}."
+  },
+  "contact": {
+    "title": "Contact",
+    "lead": "A question, a quote request or a partnership proposal? Write to me.",
+    "allRequired": "All fields are required.",
+    "fields": {
+      "lastName": "Last name",
+      "firstName": "First name",
+      "email": "Email address",
+      "subject": "Subject",
+      "message": "Message"
+    },
+    "subjectPlaceholder": "Choose a subject",
+    "subjects": {
+      "website": "Website creation",
+      "software": "App or software",
+      "promotion": "Product promotion",
+      "other": "Other request"
+    },
+    "charCount": "{{count}} / {{max}} characters",
+    "submit": "Send message",
+    "sending": "Sending…",
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address, for example name@domain.com.",
+      "subject": "Choose a subject.",
+      "tooShort": "Your message must be at least {{min}} characters long.",
+      "tooLong": "This field must not exceed {{max}} characters.",
+      "summary_one": "The form contains {{count}} error. Fix the highlighted field.",
+      "summary_other": "The form contains {{count}} errors. Fix the highlighted fields.",
+      "links": "No more than {{max}} links per message."
+    },
+    "notice": "Online sending isn’t enabled yet: your details are checked, but no message is sent for now.",
+    "status": {
+      "notConfiguredTitle": "Message not sent",
+      "notConfiguredText": "The form isn’t connected to the sending service yet. Your input has been kept; in the meantime, you can reach me on my social media.",
+      "successTitle": "Message sent",
+      "successText": "Thank you, your message has been delivered by email. I will reply to the address you provided.",
+      "errorTitle": "Couldn’t send",
+      "errorText": "Your message couldn’t be sent. Check your connection, then try again.",
+      "errors": {
+        "timeout": "The sending service is not responding: delivery is not confirmed. Try again in a moment.",
+        "rate-limited": "Too many messages were sent from your connection. Try again in an hour.",
+        "too-fast": "The message was sent too quickly after opening the page. Review it, then send it again.",
+        "too-many-links": "Your message contains too many links (3 at most). Remove some, then send it again.",
+        "invalid": "Some information was rejected by the server. Check the form.",
+        "mail-failed": "The email service could not deliver your message. Try again later or reach me on social media.",
+        "server": "The sending service ran into an error. Try again later or reach me on social media."
+      }
+    },
+    "elsewhere": "Find me elsewhere"
+  },
+  "pages": {
+    "notFound": {
+      "title": "Page not found",
+      "lead": "This address leads nowhere. Check the link or go back to the home page."
+    }
+  },
+  "admin": {
+    "title": "Administration",
+    "fallback": "Loading administration…",
+    "nav": {
+      "label": "Administration navigation",
+      "orders": "Orders",
+      "messages": "Messages",
+      "account": "Account settings",
+      "signOut": "Sign out",
+      "viewSite": "View site",
+      "overview": "Overview",
+      "projects": "Projects",
+      "shop": "Shop",
+      "games": "Video games",
+      "groupContent": "Content",
+      "groupActivity": "Activity",
+      "groupAccount": "Account",
+      "menu": "Open administration menu",
+      "closeMenu": "Close administration menu",
+      "signedInAs": "Signed in as"
+    },
+    "loadingSession": "Checking session…",
+    "notConfigured": {
+      "title": "Firebase is not configured",
+      "text": "Administration requires a Firebase project. Fill in the VITE_FIREBASE_* variables (see the README, Firebase section). Signing in is impossible until this is done."
+    },
+    "login": {
+      "title": "Administrator sign-in",
+      "lead": "Access restricted to explicitly authorised accounts.",
+      "email": "Login (email address)",
+      "password": "Password",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "forgot": "Forgot your password?",
+      "back": "Back to sign-in",
+      "resetTitle": "Reset your password",
+      "resetLead": "Enter your account address. If it matches an account, a reset link will be sent to it.",
+      "resetSubmit": "Send the link",
+      "resetSent": "If an account matches this address, a password reset email has just been sent.",
+      "denied": "This account has no access to administration. You have been signed out.",
+      "sessionNote": "For your security, the session ends when the tab is closed.",
+      "required": "Enter your login and password.",
+      "emailRequired": "Enter a valid email address."
+    },
+    "errors": {
+      "invalid-credentials": "Incorrect login or password.",
+      "too-many-requests": "Too many attempts. Wait a few minutes before trying again.",
+      "network": "Unable to reach the service. Check your connection, then try again.",
+      "weak-password": "Password rejected: it does not meet the security policy.",
+      "requires-recent-login": "Session too old: sign out, sign in again, then retry.",
+      "email-in-use": "This address is already used by another account.",
+      "invalid-email": "Invalid email address.",
+      "same-email": "This is already your current login.",
+      "not-configured": "Firebase is not configured.",
+      "unknown": "An unexpected error occurred. Please try again."
+    },
+    "dashboard": {
+      "configTitle": "Site configuration",
+      "configNote": "These indicators only reflect the site’s variables. They do not prove that the Firebase project, rules or functions are deployed.",
+      "items": {
+        "firebase": "Firebase (Auth, Firestore, Storage)",
+        "functions": "Cloud Functions (orders, contact, administration)",
+        "contact": "Contact form"
+      },
+      "configured": "Configured",
+      "missing": "Not configured",
+      "emulators": "Local emulator mode: no real data is used."
+    },
+    "account": {
+      "title": "Account settings",
+      "lead": "Security of your administrator access.",
+      "passwordTitle": "Change password",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Confirm new password",
+      "passwordHint": "At least 12 characters, with at least 3 kinds among: lowercase, uppercase, digits, symbols.",
+      "passwordSubmit": "Change password",
+      "passwordDone": "Password changed. Sessions open on other devices have been closed.",
+      "mismatch": "The two passwords do not match.",
+      "too-short": "At least 12 characters.",
+      "too-long": "128 characters maximum.",
+      "not-varied": "Use at least 3 kinds of characters (lowercase, uppercase, digits, symbols).",
+      "same": "The new password must differ from the current one.",
+      "emailTitle": "Change sign-in login",
+      "currentEmail": "Current login: {{email}}",
+      "newEmail": "New email address",
+      "emailSubmit": "Send confirmation link",
+      "emailDone": "A confirmation link has been sent to {{email}}. Your login will change once you open it; then sign in again with the new address.",
+      "emailNote": "The administrator role is tied to the account, not the address: it is kept. Your current address will receive a message allowing you to cancel the change.",
+      "working": "Checking…",
+      "required": "This field is required."
+    },
+    "orders": {
+      "title": "Orders",
+      "lead": "The 50 latest orders. Payment status comes only from the server and PayPal: it cannot be changed here.",
+      "empty": "No orders yet.",
+      "number": "Order no. {{id}}",
+      "total": "Total",
+      "date": "Date",
+      "payment": "Payment",
+      "fulfillment": "Delivery",
+      "fulfillments": {
+        "todo": "To do",
+        "in_progress": "In progress",
+        "delivered": "Delivered"
+      },
+      "note": "Internal note (optional)",
+      "save": "Save progress",
+      "saving": "Saving…",
+      "saved": "Progress saved.",
+      "notPaid": "Delivery tracking opens once payment is confirmed.",
+      "details": "Details",
+      "customer": "Customer",
+      "project": "Needs",
+      "reference": "Link",
+      "deadline": "Timeline",
+      "phone": "Phone",
+      "company": "Company",
+      "country": "Country",
+      "items": "Services",
+      "functionsMissing": "Server functions are not configured (VITE_FUNCTIONS_BASE_URL): read-only.",
+      "invalid": "{{count}} unreadable document(s) ignored.",
+      "sandbox": "Test (Sandbox)",
+      "captureId": "PayPal capture",
+      "failure": "Decline reason",
+      "alertDuplicate": "A second PayPal payment was detected for this order: refund it from your PayPal account (capture {{id}}).",
+      "alertMismatch": "The amount charged differs from the order amount: check this transaction in PayPal.",
+      "lateCapture": "Payment confirmed after the customer abandoned the order."
+    },
+    "messages": {
+      "title": "Messages",
+      "lead": "The 50 latest messages received through the contact form.",
+      "empty": "No messages yet.",
+      "statuses": {
+        "new": "New",
+        "read": "Read",
+        "archived": "Archived"
+      },
+      "markRead": "Mark as read",
+      "archive": "Archive",
+      "reopen": "Mark as new",
+      "reply": "Reply by email",
+      "subject": "Subject: {{subject}}",
+      "delivery": {
+        "pending": "Email being sent",
+        "failed": "Email not sent"
+      }
+    },
+    "dataErrors": {
+      "permission-denied": "Access denied by the security rules. If your role was just removed or granted, sign in again.",
+      "unavailable": "Firestore cannot be reached. Check your connection.",
+      "not-found": "Document not found.",
+      "unknown": "Unexpected error while accessing data."
+    },
+    "apiErrors": {
+      "not-configured": "Server functions are not configured (VITE_FUNCTIONS_BASE_URL).",
+      "unauthenticated": "Session expired: sign in again.",
+      "forbidden": "Action refused: this account does not have the administrator role.",
+      "invalid-request": "Request refused by the server.",
+      "not-found": "Item not found.",
+      "invalid-state": "Action not possible in the order’s current state.",
+      "network": "Server unreachable. Check your connection.",
+      "timeout": "The server is not responding. Please try again.",
+      "server": "The server encountered an error."
+    },
+    "retry": "Try again",
+    "badge": "Admin",
+    "overview": {
+      "title": "Overview",
+      "lead": "Signed in as {{email}}. Figures read live from Firestore.",
+      "manage": "Manage",
+      "publication": "{{published}} published · {{draft}} draft(s)",
+      "availability": "{{available}} available · {{outOfStock}} out of stock · {{unavailable}} unavailable",
+      "ordersToProcess": "Paid orders to deliver",
+      "newMessages": "New messages",
+      "latestNote": "Based on the latest {{count}} items.",
+      "sourceLocalTitle": "The public site still shows local content",
+      "sourceLocalText": "VITE_CONTENT_SOURCE=local is active: changes made here are saved to Firestore, but the public site will only show them once this line is removed from .env.local (and GitHub variables). Import the current content first so nothing is lost.",
+      "importTitle": "Import the site’s current content",
+      "importText": "{{count}} item(s) from the site (src/data) are not in Firestore yet. The import copies them without replacing anything; demo data is not imported.",
+      "importButton": "Import into Firestore",
+      "importConfirmTitle": "Import the site’s content?",
+      "importConfirmText": "{{count}} document(s) will be created in Firestore. An existing document is never replaced.",
+      "importDone": "Import finished: {{imported}} created, {{skipped}} already present, {{failed}} failed."
+    },
+    "list": {
+      "edit": "Edit",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "delete": "Delete",
+      "published": "Published",
+      "draft": "Draft",
+      "actions": "Actions for “{{title}}”",
+      "invalid": "Incomplete or invalid document: it does not appear on the site. Open it to fix it.",
+      "publishedDone": "“{{title}}” is published.",
+      "unpublishedDone": "“{{title}}” is back to draft.",
+      "publicationFailed": "Publication could not be changed:",
+      "deleted": "“{{id}}” was deleted from Firestore.",
+      "deleteFailed": "Deletion failed:",
+      "deleteTitle": "Delete “{{title}}”?",
+      "deleteText": "This cannot be undone. Its image will also be deleted from Storage if no other content uses it.",
+      "confirmDelete": "Delete permanently",
+      "cancel": "Cancel"
+    },
+    "cleanup": {
+      "deleted": "The image no longer in use was deleted from Storage.",
+      "in-use": "The previous image is kept: other content uses it.",
+      "failed": "The previous image could not be deleted and remains in Storage (no impact on the site)."
+    },
+    "form": {
+      "loading": "Loading…",
+      "save": "Save",
+      "saving": "Saving…",
+      "saved": "Changes saved to Firestore.",
+      "created": "Content created in Firestore.",
+      "back": "Back to the list",
+      "fr": "French",
+      "en": "English (optional)",
+      "slug": "Identifier (page address)",
+      "slugHint": "Lowercase letters, digits and hyphens. Suggested from the title; it cannot be changed later.",
+      "slugLocked": "The identifier cannot be changed after creation.",
+      "publication": "Status",
+      "publications": {
+        "draft": "Draft (hidden from the site)",
+        "published": "Published"
+      },
+      "date": "Date",
+      "dateHint": "Used for sorting: most recent first.",
+      "summary": "The form contains errors: fix the highlighted fields.",
+      "invalid": "The document was rejected by validation:",
+      "notFound": "This content does not exist or was deleted.",
+      "loadFailed": "The content could not be loaded.",
+      "failed": {
+        "upload": "The image could not be uploaded to Storage. Nothing was changed.",
+        "save": "Saving to Firestore failed. Nothing was changed.",
+        "delete": "Deletion failed."
+      },
+      "reasons": {
+        "permission-denied": "Access denied by the security rules (administrator role missing or removed, or session expired). Sign in again.",
+        "unavailable": "Firebase cannot be reached. Check your connection, then try again.",
+        "quota": "Firebase quota exceeded.",
+        "unknown": "Unexpected error. Try again; if it persists, check that Storage is enabled (Blaze plan)."
+      },
+      "errors": {
+        "required": "This field is required.",
+        "tooLong": "{{max}} characters maximum.",
+        "slug": "Invalid identifier: lowercase letters, digits and hyphens only (and not “new”).",
+        "slugTaken": "This identifier is already used: choose another one.",
+        "url": "Invalid address: it must start with https:// (or http://).",
+        "date": "Invalid date.",
+        "price": "Invalid amount: positive number, at most two decimals (e.g. 149 or 39.90).",
+        "quantity": "Whole number between 1 and 20.",
+        "imageRequired": "An image is required.",
+        "stack": "20 items maximum, 40 characters each."
+      }
+    },
+    "image": {
+      "preview": "Image preview",
+      "none": "No image",
+      "choose": "Choose an image",
+      "replace": "Replace the image",
+      "remove": "Remove the image",
+      "keep": "Keep the image",
+      "undo": "Undo the change",
+      "hint": "PNG, JPEG, WebP, AVIF or GIF, 5 MB maximum. Uploaded to Storage when you save.",
+      "pending": "New image selected: {{name}}. It will be uploaded when you save.",
+      "willRemove": "The image will be removed when you save.",
+      "alt": "Alternative text",
+      "altHint": "Describes the image for people who cannot see it (screen readers, image not loaded).",
+      "errors": {
+        "type": "Format not accepted: PNG, JPEG, WebP, AVIF or GIF.",
+        "size": "Image too large (5 MB maximum).",
+        "empty": "Empty file."
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "lead": "Work shown on the Projects page and the home page.",
+      "new": "New project",
+      "newTitle": "New project",
+      "editTitle": "Edit project",
+      "empty": "No projects in Firestore yet.",
+      "sections": {
+        "main": "Details",
+        "description": "Description",
+        "image": "Image",
+        "details": "Link and details"
+      },
+      "fields": {
+        "title": "Title",
+        "description": "Description",
+        "descriptionHint": "Separate paragraphs with a blank line. The first paragraph is used as the card summary.",
+        "category": "Category",
+        "progress": "Progress",
+        "progressNone": "Not specified",
+        "image": "Cover image",
+        "externalUrl": "External link (optional)",
+        "externalUrlHint": "Live site, demo, repository… Full address starting with https://.",
+        "stack": "Technologies (optional)",
+        "stackHint": "Comma-separated, e.g. React, Firebase.",
+        "featured": "Featured",
+        "featuredHint": "Shown first on the home page."
+      }
+    },
+    "shop": {
+      "title": "Shop",
+      "lead": "Services on the Shop page. The price saved here is the one the server reads when an order is placed.",
+      "new": "New service",
+      "newTitle": "New service",
+      "editTitle": "Edit service",
+      "empty": "No services in Firestore yet.",
+      "quote": "On quote",
+      "deleteText": "This cannot be undone. Orders already placed keep their own copy of the title and price.",
+      "sections": {
+        "main": "Details",
+        "price": "Price",
+        "availability": "Availability and terms"
+      },
+      "fields": {
+        "title": "Title",
+        "description": "Description",
+        "priceMode": "Price type",
+        "price": "Price",
+        "priceHint": "E.g. 149 or 39.90. Ignored for an on-quote service.",
+        "currency": "Currency",
+        "maxQuantity": "Maximum quantity per order (optional)",
+        "maxQuantityHint": "Leave empty for a one-off service. 1 to 20 when several units make sense (e.g. posts).",
+        "availability": "Availability",
+        "conditions": "Terms (optional)",
+        "contactSubject": "Contact form subject",
+        "contactSubjectHint": "Preselected when a visitor asks for a quote or a question."
+      },
+      "priceModes": {
+        "fixed": {
+          "label": "Fixed price",
+          "hint": "Can be ordered online."
+        },
+        "from": {
+          "label": "From",
+          "hint": "Indicative price, on quote."
+        },
+        "quote": {
+          "label": "On quote",
+          "hint": "No price shown."
+        }
+      },
+      "availabilities": {
+        "available": {
+          "label": "Available",
+          "hint": "Visible and orderable (or on quote)."
+        },
+        "out_of_stock": {
+          "label": "Out of stock",
+          "hint": "Temporarily full: visible, not orderable."
+        },
+        "unavailable": {
+          "label": "Unavailable",
+          "hint": "Can no longer be ordered."
+        }
+      }
+    },
+    "games": {
+      "title": "Video games",
+      "lead": "Games shown on the Video games page, with their official link.",
+      "new": "New game",
+      "newTitle": "New game",
+      "editTitle": "Edit game",
+      "empty": "No games in Firestore yet.",
+      "sections": {
+        "main": "Details",
+        "cover": "Cover",
+        "price": "Price",
+        "link": "External link"
+      },
+      "fields": {
+        "title": "Title",
+        "description": "Description",
+        "cover": "Cover image",
+        "pricing": "Pricing",
+        "priceAmount": "Price (optional)",
+        "priceAmountHint": "Leave empty to show “Paid” without an amount.",
+        "linkUrl": "Download or store link",
+        "linkKind": "Link type",
+        "storeName": "Store name (optional)",
+        "storeNameHint": "E.g. Steam, itch.io. Shown on the button."
+      },
+      "kinds": {
+        "store": "Store page",
+        "download": "Direct download"
+      }
+    }
+  }
+}

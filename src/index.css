@@ -1,0 +1,194 @@
+@import 'tailwindcss';
+
+/* Le mode sombre suit la classe .dark posée sur <html> (voir index.html et ThemeProvider). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------
+   Jetons de couleur — mode clair
+   ------------------------------------------------------------------ */
+:root {
+  --k-bg: #ffffff;
+  --k-surface: #f3f5f9;
+  --k-raised: #ffffff;
+  --k-ink: #000000;
+  --k-ink-soft: #343946;
+  --k-muted: #5f6676;
+  --k-line: #e1e5ed;
+  --k-line-strong: #c9cfdb;
+  /* Bleu Krimossimo : bleu profond (teinte ~224°), accordé au bleu marine du logo. */
+  --k-blue: #1748d0;
+  --k-blue-hover: #0f3aa8;
+  --k-blue-tint: #e9effd;
+  --k-on-blue: #ffffff;
+  /* Erreurs de formulaire. */
+  --k-danger: #b42318;
+  --k-danger-tint: #fef3f2;
+  --k-shadow: 0 1px 2px rgb(8 24 64 / 0.04), 0 8px 24px -12px rgb(8 24 64 / 0.18);
+  color-scheme: light;
+}
+
+/* ------------------------------------------------------------------
+   Jetons de couleur — mode sombre (conçu séparément, fond noir vrai)
+   ------------------------------------------------------------------ */
+.dark {
+  --k-bg: #000000;
+  /* Surfaces légèrement bleu nuit, comme les tons sombres du logo. */
+  --k-surface: #0a0e18;
+  --k-raised: #0e1422;
+  --k-ink: #ffffff;
+  --k-ink-soft: #c8cedb;
+  --k-muted: #939bad;
+  --k-line: #1a2133;
+  --k-line-strong: #29324a;
+  --k-blue: #5b8cff;
+  --k-blue-hover: #86aaff;
+  --k-blue-tint: #0a1838;
+  --k-on-blue: #000000;
+  --k-danger: #ff8a7a;
+  --k-danger-tint: #2a0f0d;
+  --k-shadow: 0 0 0 1px rgb(91 140 255 / 0.1), 0 12px 32px -16px rgb(0 0 0 / 0.9);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--k-bg);
+  --color-surface: var(--k-surface);
+  --color-raised: var(--k-raised);
+  --color-ink: var(--k-ink);
+  --color-ink-soft: var(--k-ink-soft);
+  --color-muted: var(--k-muted);
+  --color-line: var(--k-line);
+  --color-line-strong: var(--k-line-strong);
+  --color-blue: var(--k-blue);
+  --color-blue-hover: var(--k-blue-hover);
+  --color-blue-tint: var(--k-blue-tint);
+  --color-on-blue: var(--k-on-blue);
+  --color-danger: var(--k-danger);
+  --color-danger-tint: var(--k-danger-tint);
+  --shadow-lift: var(--k-shadow);
+}
+
+@theme {
+  --font-display: 'Unbounded Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease-snap: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background: var(--k-bg);
+    color: var(--k-ink-soft);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--k-ink);
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--k-blue);
+    color: var(--k-on-blue);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--k-blue);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* Touche de clavier : s'enfonce quand elle est sélectionnée ou pressée. */
+  .keycap {
+    box-shadow: 0 3px 0 var(--k-line-strong);
+    transition:
+      transform 120ms var(--ease-snap),
+      box-shadow 120ms var(--ease-snap),
+      border-color 120ms,
+      background-color 120ms,
+      color 120ms;
+  }
+  .keycap:active,
+  .keycap[aria-selected='true'] {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--k-blue);
+  }
+
+  /* Carte avec légère élévation au survol. */
+  .card-lift {
+    transition:
+      transform 180ms var(--ease-snap),
+      box-shadow 180ms var(--ease-snap),
+      border-color 180ms;
+  }
+  .card-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--k-shadow);
+    border-color: var(--k-line-strong);
+  }
+}
+
+/* Unique séquence d'entrée : les deux lignes du titre principal. */
+@keyframes k-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes k-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+.rise-line > span {
+  display: block;
+  animation: k-rise 640ms var(--ease-snap) both;
+}
+.rise-line:nth-child(2) > span {
+  animation-delay: 90ms;
+}
+
+/* Changement de contenu suite à une action (onglets du sélecteur de mode). */
+.swap-in {
+  animation: k-fade 200ms var(--ease-snap) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+}

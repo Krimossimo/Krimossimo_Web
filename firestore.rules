@@ -1,0 +1,244 @@
+rules_version = '2';
+
+// Règles Firestore de Krimossimo.
+//
+// Principe : tout est refusé, sauf ce qui est explicitement autorisé ci-dessous.
+//
+// Rôles
+// - Visiteur (connecté ou non) : lit uniquement les contenus PUBLIÉS et les vidéos.
+// - Administrateur : compte Firebase Authentication portant le custom claim
+//   { admin: true }. Ce claim n'est posé que par le script serveur
+//   functions/scripts/admin.ts (Admin SDK, identifiants du propriétaire du projet) :
+//   il est signé par Firebase et ne peut pas être modifié depuis le navigateur.
+//
+// Écritures
+// - Contenus (projects, offers, games, videos) : administrateur uniquement, avec
+//   validation du schéma ; chaque écriture enregistre son auteur (updatedBy) et
+//   l'horodatage serveur (updatedAt).
+// - Commandes, messages de contact, journal d'administration, limites de débit :
+//   AUCUNE écriture depuis le navigateur. Seules les Cloud Functions (Admin SDK,
+//   qui contourne ces règles) les créent et les modifient, après leurs propres contrôles.
+// - Les commandes et messages contiennent des données personnelles : lecture
+//   réservée aux administrateurs.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* ---------------------------------------------------------------- Identité */
+
+    function isAdmin() {
+      return request.auth != null && request.auth.token.get('admin', false) == true;
+    }
+
+    /* ------------------------------------------------------- Types utilitaires */
+
+    function isText(v, max) {
+      return v is string && v.size() > 0 && v.size() <= max;
+    }
+
+    // Texte identique dans les deux langues, ou { fr, en }.
+    function isTranslatable(v, max) {
+      return isText(v, max)
+        || (v is map
+          && v.keys().hasOnly(['fr', 'en'])
+          && v.keys().hasAll(['fr', 'en'])
+          && isText(v.fr, max)
+          && isText(v.en, max));
+    }
+
+    function optionalTranslatable(d, key, max) {
+      return !(key in d) || isTranslatable(d[key], max);
+    }
+
+    function isSlug(id) {
+      return id.size() <= 80 && id.matches('^[a-z0-9]+(-[a-z0-9]+)*$');
+    }
+
+    function isDate(v) {
+      return v is timestamp || (v is string && v.size() <= 40 && v.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}.*'));
+    }
+
+    function isHttpUrl(v) {
+      return v is string && v.size() <= 2048 && v.matches('^https?://[^\\s]+$');
+    }
+
+    // URL https, ou chemin relatif vers une image de public/ (sans "..").
+    function isImageSrc(v) {
+      return v is string && v.size() <= 2048
+        && (v.matches('^https://[^\\s]+$')
+          || (v.matches('^[A-Za-z0-9_][A-Za-z0-9_./-]*[.](webp|avif|png|jpe?g|gif|svg)$') && !v.matches('.*[.][.].*')));
+    }
+
+    function isImage(v) {
+      return v is map
+        && v.keys().hasOnly(['src', 'alt'])
+        && v.keys().hasAll(['src', 'alt'])
+        && isImageSrc(v.src)
+        && isTranslatable(v.alt, 250);
+    }
+
+    function isCurrency(v) {
+      return v in ['EUR', 'USD', 'GBP', 'CAD', 'CHF'];
+    }
+
+    /* ---------------------------------------------- Contenus : schéma commun */
+
+    // Champs présents dans tous les contenus gérés depuis l'administration.
+    // L'identifiant est celui du document (pas de champ "id").
+    function validBase(d) {
+      return isDate(d.createdAt)
+        && d.publication in ['draft', 'published']
+        && (!('order' in d) || (d.order is number && d.order >= -1000 && d.order <= 100000))
+        && d.updatedAt == request.time
+        && d.updatedBy == request.auth.uid;
+    }
+
+    function isPublished() {
+      return resource.data.publication == 'published';
+    }
+
+    /* ------------------------------------------------------------- Projets */
+
+    function validProject(d) {
+      return d.keys().hasAll(['title', 'description', 'category', 'createdAt', 'publication', 'updatedAt', 'updatedBy'])
+        && d.keys().hasOnly(['title', 'description', 'summary', 'category', 'cover', 'externalUrl', 'progress', 'stack',
+                             'featured', 'createdAt', 'publication', 'order', 'updatedAt', 'updatedBy'])
+        && validBase(d)
+        && isTranslatable(d.title, 140)
+        && isTranslatable(d.description, 6000)
+        && optionalTranslatable(d, 'summary', 400)
+        && d.category in ['website', 'software', 'cybersecurity', 'uiux']
+        && (!('cover' in d) || isImage(d.cover))
+        && (!('externalUrl' in d) || isHttpUrl(d.externalUrl))
+        && (!('progress' in d) || d.progress in ['in-progress', 'completed'])
+        && (!('stack' in d) || (d.stack is list && d.stack.size() <= 20))
+        && (!('featured' in d) || d.featured is bool);
+    }
+
+    match /projects/{projectId} {
+      allow read: if isPublished() || isAdmin();
+      allow create, update: if isAdmin() && isSlug(projectId) && validProject(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    /* -------------------------------------------------------------- Offres */
+
+    // Le prix est AFFICHÉ depuis ce document et RELU ici par la fonction createOrder :
+    // seul un administrateur peut donc le fixer.
+    function validOffer(d) {
+      return d.keys().hasAll(['title', 'description', 'price', 'currency', 'availability', 'contactSubject',
+                              'createdAt', 'publication', 'updatedAt', 'updatedBy'])
+        && d.keys().hasOnly(['title', 'description', 'price', 'currency', 'priceFrom', 'maxQuantity', 'availability',
+                             'conditions', 'contactSubject', 'createdAt', 'publication', 'order', 'updatedAt', 'updatedBy'])
+        && validBase(d)
+        && isTranslatable(d.title, 140)
+        && isTranslatable(d.description, 6000)
+        && (d.price == null || (d.price is number && d.price >= 0 && d.price <= 1000000))
+        && isCurrency(d.currency)
+        && (!('priceFrom' in d) || d.priceFrom is bool)
+        && (!('maxQuantity' in d) || (d.maxQuantity is int && d.maxQuantity >= 1 && d.maxQuantity <= 20))
+        && d.availability in ['available', 'out_of_stock', 'unavailable']
+        && optionalTranslatable(d, 'conditions', 600)
+        && d.contactSubject in ['website', 'software', 'promotion', 'other'];
+    }
+
+    match /offers/{offerId} {
+      allow read: if isPublished() || isAdmin();
+      allow create, update: if isAdmin() && isSlug(offerId) && validOffer(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    /* --------------------------------------------------------- Jeux vidéo */
+
+    function validPricing(p) {
+      return p is map
+        && ((p.keys().hasOnly(['type']) && p.type == 'free')
+          || (p.keys().hasOnly(['type', 'price']) && p.type == 'paid'
+            && (!('price' in p)
+              || (p.price is map
+                && p.price.keys().hasOnly(['amount', 'currency'])
+                && p.price.amount is number && p.price.amount >= 0 && p.price.amount <= 1000000
+                && isCurrency(p.price.currency)))));
+    }
+
+    function validGameLink(l) {
+      return l is map
+        && l.keys().hasOnly(['url', 'kind', 'storeName'])
+        && isHttpUrl(l.url)
+        && l.kind in ['download', 'store']
+        && (!('storeName' in l) || isText(l.storeName, 60));
+    }
+
+    function validGame(d) {
+      return d.keys().hasAll(['title', 'description', 'cover', 'pricing', 'link', 'createdAt', 'publication', 'updatedAt', 'updatedBy'])
+        && d.keys().hasOnly(['title', 'description', 'cover', 'pricing', 'link', 'createdAt', 'publication', 'order', 'updatedAt', 'updatedBy'])
+        && validBase(d)
+        && isTranslatable(d.title, 140)
+        && isTranslatable(d.description, 6000)
+        && isImage(d.cover)
+        && validPricing(d.pricing)
+        && validGameLink(d.link);
+    }
+
+    match /games/{gameId} {
+      allow read: if isPublished() || isAdmin();
+      allow create, update: if isAdmin() && isSlug(gameId) && validGame(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    /* -------------------------------------------------------------- Vidéos */
+
+    // L'identifiant du document est l'identifiant YouTube (11 caractères).
+    function validVideo(d) {
+      return d.keys().hasAll(['title', 'publishedAt', 'updatedAt', 'updatedBy'])
+        && d.keys().hasOnly(['title', 'publishedAt', 'thumbnail', 'updatedAt', 'updatedBy'])
+        && isText(d.title, 140)
+        && isDate(d.publishedAt)
+        && (!('thumbnail' in d) || isImageSrc(d.thumbnail))
+        && d.updatedAt == request.time
+        && d.updatedBy == request.auth.uid;
+    }
+
+    match /videos/{videoId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && videoId.matches('^[A-Za-z0-9_-]{11}$') && validVideo(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    /* ------------------------------------------- Données privées (serveur) */
+
+    // Commandes : écrites uniquement par les Cloud Functions (createOrder, PayPal,
+    // adminUpdateOrder). Le client accède à SA commande via getOrder et son jeton.
+    match /orders/{orderId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // Messages du formulaire de contact : écrits par la fonction submitContact.
+    match /contactMessages/{messageId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // Journal des actions d'administration : écrit par les fonctions et le script de rôles.
+    match /adminAudit/{entryId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // Compteurs anti-abus du formulaire de contact : serveur uniquement.
+    match /rateLimits/{key} {
+      allow read, write: if false;
+    }
+
+    // Événements webhook PayPal déjà traités (dédoublonnage) : écrits par paypalWebhook uniquement.
+    match /paypalWebhookEvents/{eventId} {
+      allow read, write: if false;
+    }
+
+    /* ---------------------------------------------------- Refus par défaut */
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

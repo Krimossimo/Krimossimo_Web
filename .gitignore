@@ -1,0 +1,41 @@
+# Dépendances et builds
+node_modules
+dist
+dist-ssr
+functions/lib
+functions/node_modules
+*.local
+
+# Variables d'environnement (ne jamais versionner)
+.env
+.env.*
+!.env.example
+functions/.secret.local
+functions/.env*
+!functions/.env.example
+
+# Clés de compte de service Firebase / Google Cloud (ne jamais versionner)
+*serviceAccount*.json
+*service-account*.json
+*-firebase-adminsdk-*.json
+gcp-key*.json
+
+# Firebase
+.firebase
+.firebaserc
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+database-debug.log*
+pubsub-debug.log*
+emulator-data/
+
+# Logs et éditeurs
+logs
+*.log
+npm-debug.log*
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db

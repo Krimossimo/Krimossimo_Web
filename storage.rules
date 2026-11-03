@@ -1,0 +1,39 @@
+rules_version = '2';
+
+// Règles Firebase Storage de Krimossimo.
+//
+// - public/images/<dossier>/<fichier> : images du site, lisibles par tous ;
+//   seuls les administrateurs (custom claim { admin: true }) peuvent les envoyer,
+//   les remplacer ou les supprimer. Formats raster uniquement (pas de SVG, qui peut
+//   contenir du script), 5 Mo maximum, type MIME vérifié.
+// - Lister le contenu d'un dossier est réservé aux administrateurs.
+// - Tout le reste est refusé (les futurs fichiers achetés seront distribués par
+//   des URL signées générées côté serveur, jamais par une lecture publique).
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAdmin() {
+      return request.auth != null && request.auth.token.get('admin', false) == true;
+    }
+
+    function isImageUpload(fileName) {
+      return request.resource.size > 0
+        && request.resource.size <= 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/(png|jpeg|webp|avif|gif)')
+        && fileName.matches('^[A-Za-z0-9][A-Za-z0-9._-]{0,119}[.](png|jpe?g|webp|avif|gif)$');
+    }
+
+    match /public/images/{folder}/{fileName} {
+      allow get: if true;
+      allow list: if isAdmin();
+      allow create, update: if isAdmin()
+        && folder in ['projects', 'games', 'offers', 'site']
+        && isImageUpload(fileName);
+      allow delete: if isAdmin();
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
