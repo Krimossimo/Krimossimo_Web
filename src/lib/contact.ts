@@ -1,6 +1,13 @@
 /**
  * Formulaire de contact : validation et envoi.
  *
+ * Deux façons d'envoyer, au choix :
+ *  - Web3Forms (gratuit, sans serveur) : si VITE_WEB3FORMS_ACCESS_KEY est renseignée, le message
+ *    est envoyé à api.web3forms.com, qui le transmet par e-mail à l'adresse liée à la clé.
+ *    Cette clé est publique par conception : elle ne permet que d'envoyer vers CETTE adresse.
+ *    Elle est prioritaire sur VITE_CONTACT_ENDPOINT. Voir docs/integrations.md.
+ *  - Cloud Function submitContact (nécessite le forfait Blaze), décrite ci-dessous.
+ *
  * L'envoi passe par la Cloud Function submitContact (functions/src/contactService.ts) qui
  * revalide les données, filtre le spam et envoie l'e-mail par SMTP (identifiants côté
  * serveur uniquement). Son URL publique se règle avec VITE_CONTACT_ENDPOINT. Tant qu'elle
@@ -10,6 +17,7 @@
  */
 import { contactSubjects, type ContactSubject } from '../types/content'
 import { EMAIL_PATTERN } from './patterns'
+import fr from '../i18n/locales/fr.json'
 
 export const contactLimits = {
   name: 80,
@@ -95,8 +103,13 @@ export function validateContact(values: ContactValues): ContactErrors {
 
 const env: Partial<ImportMetaEnv> = import.meta.env ?? {}
 const endpoint = (env.VITE_CONTACT_ENDPOINT ?? '').trim()
+const web3formsAccessKey = (env.VITE_WEB3FORMS_ACCESS_KEY ?? '').trim()
 
-export const isContactConfigured = endpoint.length > 0
+export const WEB3FORMS_URL = 'https://api.web3forms.com/submit'
+/** Délai minimal sur le formulaire avant envoi (anti-robots), comme côté serveur. */
+export const MIN_FILL_MS = 3000
+
+export const isContactConfigured = web3formsAccessKey.length > 0 || endpoint.length > 0
 
 export class ContactNotConfiguredError extends Error {
   constructor() {
@@ -141,8 +154,14 @@ export async function sendContactMessage(
   values: ContactValues,
   locale: 'fr' | 'en',
   elapsedMs: number,
-  { url = endpoint, fetch: doFetch = (...args: Parameters<typeof fetch>) => fetch(...args), timeoutMs = 20000 }: { url?: string; fetch?: typeof fetch; timeoutMs?: number } = {},
+  {
+    url = endpoint,
+    web3formsKey = web3formsAccessKey,
+    fetch: doFetch = (...args: Parameters<typeof fetch>) => fetch(...args),
+    timeoutMs = 20000,
+  }: { url?: string; web3formsKey?: string; fetch?: typeof fetch; timeoutMs?: number } = {},
 ): Promise<void> {
+  if (web3formsKey) return sendWithWeb3Forms(values, locale, elapsedMs, web3formsKey, doFetch, timeoutMs)
   if (!url) throw new ContactNotConfiguredError()
 
   const controller = new AbortController()
@@ -180,4 +199,56 @@ export async function sendContactMessage(
   }
   // Confirmation explicite exigée : une réponse 2xx sans elle n'est pas un envoi réussi.
   if (record.ok !== true || record.delivered !== true) throw new ContactSendError('server', response.status)
+}
+
+/**
+ * Envoi par Web3Forms. Le succès n'est affiché que si Web3Forms répond { success: true },
+ * c'est-à-dire après avoir accepté et transmis l'e-mail.
+ */
+async function sendWithWeb3Forms(
+  values: ContactValues,
+  locale: 'fr' | 'en',
+  elapsedMs: number,
+  accessKey: string,
+  doFetch: typeof fetch,
+  timeoutMs: number,
+): Promise<void> {
+  // Mêmes protections que la fonction serveur, faites ici faute de serveur à nous.
+  if (values.website) throw new ContactSendError('invalid')
+  if (elapsedMs < MIN_FILL_MS) throw new ContactSendError('too-fast')
+
+  const name = `${values.firstName.trim()} ${values.lastName.trim()}`
+  const subjectLabel = values.subject ? fr.contact.subjects[values.subject] : ''
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), timeoutMs)
+  let response: Response
+  try {
+    response = await doFetch(WEB3FORMS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: accessKey,
+        subject: `[Krimossimo] ${subjectLabel} : ${name}`,
+        from_name: 'Site Krimossimo',
+        name,
+        email: values.email.trim(),
+        replyto: values.email.trim(),
+        sujet: subjectLabel,
+        langue: locale === 'en' ? 'Anglais' : 'Français',
+        message: values.message.trim(),
+        botcheck: false,
+      }),
+      credentials: 'omit',
+      signal: controller.signal,
+    })
+  } catch {
+    throw new ContactSendError(controller.signal.aborted ? 'timeout' : 'network')
+  } finally {
+    clearTimeout(timeout)
+  }
+
+  const data: unknown = await response.json().catch(() => null)
+  const record = typeof data === 'object' && data !== null ? (data as Record<string, unknown>) : {}
+  if (response.status === 429) throw new ContactSendError('rate-limited', 429)
+  if (!response.ok || record.success !== true) throw new ContactSendError('server', response.status)
 }

@@ -140,3 +140,21 @@ info-bulle. L'ancien lien LinkedIn, qui n'était qu'une supposition, a été ret
 | Déploiement de `submitContact` | Firebase | à faire, après validation |
 | `VITE_CONTACT_ENDPOINT` | `.env.local`, variables GitHub | à faire |
 | Vérifier les liens X, Instagram et TikTok en les ouvrant | navigateur | à faire (ces sites bloquent les vérifications automatiques) |
+
+## Formulaire de contact gratuit (Web3Forms)
+
+Sans le forfait Blaze, la Cloud Function `submitContact` ne peut pas être déployée. Le formulaire
+peut alors envoyer les messages par [Web3Forms](https://web3forms.com) : formule gratuite,
+250 envois par mois, sans carte bancaire.
+
+1. Sur web3forms.com, saisir l'adresse qui doit recevoir les messages
+   (krimossimo.contact@gmail.com) : la clé d'accès arrive par e-mail.
+2. En local : `VITE_WEB3FORMS_ACCESS_KEY=<clé>` dans `.env.local`, puis relancer `npm run dev`.
+3. En ligne : variable de dépôt GitHub `VITE_WEB3FORMS_ACCESS_KEY` (Settings > Secrets and
+   variables > Actions > Variables), puis relancer le déploiement.
+
+La clé est publique par conception : elle ne permet que d'envoyer vers l'adresse choisie.
+Si elle est renseignée, elle est utilisée à la place de `VITE_CONTACT_ENDPOINT`. Le site n'affiche
+« message envoyé » que si Web3Forms répond `success: true`. Les messages arrivent par e-mail
+uniquement : ils n'apparaissent pas dans la page Messages de l'administration.
+Pour répondre, utiliser « Répondre » dans Gmail : la réponse part vers l'adresse du visiteur.

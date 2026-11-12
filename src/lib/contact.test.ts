@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { ContactNotConfiguredError, emptyContact, sendContactMessage, validateContact, validateField } from './contact'
+import { ContactNotConfiguredError, WEB3FORMS_URL, emptyContact, sendContactMessage, validateContact, validateField } from './contact'
 
 const values = { ...emptyContact, lastName: 'Lovelace', firstName: 'Ada', email: 'ada@example.com', subject: 'website' as const, message: 'Bonjour, je souhaite un site vitrine.' }
 
@@ -55,5 +55,38 @@ describe('envoi', () => {
       await expect(sendContactMessage(values, 'fr', 12000, { url, fetch: fakeFetch({ status, body }).impl })).rejects.toMatchObject({ code })
     }
     await expect(sendContactMessage(values, 'fr', 12000, { url, fetch: fakeFetch(new TypeError('Failed to fetch')).impl })).rejects.toMatchObject({ code: 'network' })
+  })
+})
+
+describe('envoi par Web3Forms', () => {
+  const web3formsKey = 'cle-publique-test'
+
+  it('envoie à Web3Forms (prioritaire) et réussit seulement sur { success: true }', async () => {
+    const ok = fakeFetch({ status: 200, body: { success: true, message: 'Email sent successfully!' } })
+    await expect(
+      sendContactMessage(values, 'fr', 12000, { url: 'https://api.test/submitContact', web3formsKey, fetch: ok.impl }),
+    ).resolves.toBeUndefined()
+    expect(ok.calls[0].url).toBe(WEB3FORMS_URL)
+    expect(ok.calls[0].body).toMatchObject({
+      access_key: web3formsKey,
+      name: 'Ada Lovelace',
+      email: 'ada@example.com',
+      replyto: 'ada@example.com',
+      sujet: 'Création de site web',
+      message: values.message,
+      botcheck: false,
+    })
+    expect(String(ok.calls[0].body.subject)).toContain('Ada Lovelace')
+    await expect(sendContactMessage(values, 'fr', 12000, { web3formsKey, fetch: fakeFetch({ status: 200, body: { success: false } }).impl })).rejects.toMatchObject({ code: 'server' })
+    await expect(sendContactMessage(values, 'fr', 12000, { web3formsKey, fetch: fakeFetch({ status: 200, body: null }).impl })).rejects.toMatchObject({ code: 'server' })
+  })
+
+  it('refuse les robots et traduit les erreurs', async () => {
+    const never = fakeFetch({ body: { success: true } })
+    await expect(sendContactMessage(values, 'fr', 500, { web3formsKey, fetch: never.impl })).rejects.toMatchObject({ code: 'too-fast' })
+    await expect(sendContactMessage({ ...values, website: 'spam' }, 'fr', 12000, { web3formsKey, fetch: never.impl })).rejects.toMatchObject({ code: 'invalid' })
+    expect(never.calls).toHaveLength(0)
+    await expect(sendContactMessage(values, 'fr', 12000, { web3formsKey, fetch: fakeFetch({ status: 429, body: { success: false } }).impl })).rejects.toMatchObject({ code: 'rate-limited' })
+    await expect(sendContactMessage(values, 'fr', 12000, { web3formsKey, fetch: fakeFetch(new TypeError('Failed to fetch')).impl })).rejects.toMatchObject({ code: 'network' })
   })
 })

@@ -10,6 +10,7 @@ interface ImportMetaEnv {
   readonly VITE_FIREBASE_EMULATORS?: 'true' | 'false'
   readonly VITE_FUNCTIONS_BASE_URL?: string
   readonly VITE_CONTACT_ENDPOINT?: string
+  readonly VITE_WEB3FORMS_ACCESS_KEY?: string
   readonly VITE_CONTENT_SOURCE?: 'local' | 'firestore'
   readonly VITE_DEMO_CONTENT?: 'true' | 'false'
   readonly VITE_YOUTUBE_API_KEY?: string
