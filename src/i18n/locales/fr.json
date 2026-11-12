@@ -709,9 +709,9 @@
         "empty": "Fichier vide."
       },
       "linkLabel": "Ou indiquer l’adresse d’une image",
-      "linkPlaceholder": "images/projects/mon-projet.webp",
-      "linkHint": "Chemin d’une image placée dans le dossier public/ du site (ex. images/projects/mon-projet.webp), ou adresse complète en https://. Fonctionne sans Storage.",
-      "linkInvalid": "Adresse non valide : indiquez un chemin comme images/projects/mon-projet.webp ou une adresse en https://.",
+      "linkPlaceholder": "mon-projet.webp",
+      "linkHint": "Nom du fichier placé dans ce dossier de public/ (ex. mon-projet.webp, sans espaces ni accents), ou adresse complète en https://. Fonctionne sans Storage.",
+      "linkInvalid": "Nom de fichier non valide : lettres, chiffres, tirets, sans espaces ni accents, avec l’extension (ex. mon-projet.webp). Ou une adresse en https://.",
       "previewFailed": "Image introuvable à cette adresse. Vérifiez le chemin, ou poussez d’abord l’image sur GitHub."
     },
     "projects": {

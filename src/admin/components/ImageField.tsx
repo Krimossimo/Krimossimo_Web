@@ -2,7 +2,7 @@ import { useEffect, useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { assetUrl } from '../../hooks/useLocale'
 import { safeImageSrc } from '../../content/validation'
-import { checkImageFile, type ImageCheck } from '../upload'
+import { checkImageFile, type ImageCheck, type ImageFolder } from '../upload'
 import { ImageIcon } from './icons'
 import { BilingualField, Button } from './ui'
 
@@ -34,8 +34,11 @@ export function ImageField({
   altErrors,
   error,
   required = false,
+  folder,
 }: {
   label: string
+  /** Dossier des images de ce contenu : le champ d'adresse le propose par défaut (images/<dossier>/). */
+  folder: ImageFolder
   draft: ImageDraft
   onChange: (draft: ImageDraft) => void
   alt: { fr: string; en: string }
@@ -60,7 +63,12 @@ export function ImageField({
     return () => URL.revokeObjectURL(url)
   }, [draft.file])
 
+  const linkPrefix = `images/${folder}/`
   const linkValue = draft.link?.trim() ?? ''
+  const isFullUrl = /^https?:\/\//i.test(linkValue)
+  // Ce qui s'affiche dans le champ : le nom du fichier seul (le dossier est déjà indiqué),
+  // ou l'adresse complète s'il s'agit d'une URL https.
+  const linkInput = draft.link === null ? '' : draft.link.startsWith(linkPrefix) ? draft.link.slice(linkPrefix.length) : draft.link
   const linkSrc = linkValue ? safeImageSrc(linkValue) : null
   const shown =
     preview ??
@@ -137,23 +145,37 @@ export function ImageField({
             <label htmlFor={`${id}-link`} className="mb-2 block text-sm font-medium text-ink-soft">
               {t('admin.image.linkLabel')}
             </label>
-            <input
-              id={`${id}-link`}
-              type="text"
-              inputMode="url"
-              autoComplete="off"
-              spellCheck={false}
-              placeholder={t('admin.image.linkPlaceholder')}
-              aria-describedby={`${id}-link-hint`}
-              value={draft.link ?? ''}
-              onChange={(e) => {
-                const value = e.target.value
-                if (draft.file) setInputKey((k) => k + 1)
-                setFileError(null)
-                onChange({ ...draft, link: value === '' ? null : value, file: null, remove: false })
-              }}
-              className="h-12 w-full rounded-xl border border-line-strong bg-bg px-4 text-[1rem] text-ink transition-colors duration-150 placeholder:text-muted focus:border-blue"
-            />
+            <div className="flex h-12 w-full overflow-hidden rounded-xl border border-line-strong bg-bg transition-colors duration-150 focus-within:border-blue">
+              {!isFullUrl && (
+                <span
+                  aria-hidden="true"
+                  className="flex shrink-0 items-center border-r border-line bg-surface px-3 font-mono text-[0.9rem] text-muted"
+                >
+                  {linkPrefix}
+                </span>
+              )}
+              <input
+                id={`${id}-link`}
+                type="text"
+                inputMode="url"
+                autoComplete="off"
+                spellCheck={false}
+                placeholder={t('admin.image.linkPlaceholder')}
+                aria-describedby={`${id}-link-hint`}
+                value={linkInput}
+                onChange={(e) => {
+                  let value = e.target.value.trim()
+                  // Chemin complet collé : on retire le dossier déjà affiché.
+                  if (value.startsWith(linkPrefix)) value = value.slice(linkPrefix.length)
+                  else if (value.startsWith(`/${linkPrefix}`)) value = value.slice(linkPrefix.length + 1)
+                  const link = value === '' ? null : /^https?:\/\//i.test(value) ? value : linkPrefix + value
+                  if (draft.file) setInputKey((k) => k + 1)
+                  setFileError(null)
+                  onChange({ ...draft, link, file: null, remove: false })
+                }}
+                className="min-w-0 flex-1 bg-transparent px-3 text-[1rem] text-ink outline-none placeholder:text-muted"
+              />
+            </div>
             <p id={`${id}-link-hint`} className="mt-2 text-sm text-muted">
               {t('admin.image.linkHint')}
             </p>

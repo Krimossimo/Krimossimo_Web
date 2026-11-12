@@ -140,6 +140,7 @@ function ProjectEditor({ id }: { id: string | null }) {
 
         <FormSection title={t('admin.projects.sections.image')}>
           <ImageField
+            folder="projects"
             label={t('admin.projects.fields.image')}
             draft={image}
             onChange={setImage}

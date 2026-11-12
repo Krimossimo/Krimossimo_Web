@@ -709,9 +709,9 @@
         "empty": "Empty file."
       },
       "linkLabel": "Or enter an image address",
-      "linkPlaceholder": "images/projects/my-project.webp",
-      "linkHint": "Path to an image in the site’s public/ folder (e.g. images/projects/my-project.webp), or a full https:// address. Works without Storage.",
-      "linkInvalid": "Invalid address: enter a path such as images/projects/my-project.webp or an https:// address.",
+      "linkPlaceholder": "my-project.webp",
+      "linkHint": "Name of a file in this public/ folder (e.g. my-project.webp, no spaces or accents), or a full https:// address. Works without Storage.",
+      "linkInvalid": "Invalid file name: letters, numbers and dashes, no spaces or accents, with the extension (e.g. my-project.webp). Or an https:// address.",
       "previewFailed": "No image found at this address. Check the path, or push the image to GitHub first."
     },
     "projects": {

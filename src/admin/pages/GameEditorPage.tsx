@@ -96,6 +96,7 @@ function GameEditor({ id }: { id: string | null }) {
 
         <FormSection title={t('admin.games.sections.cover')}>
           <ImageField
+            folder="games"
             label={t('admin.games.fields.cover')}
             required
             draft={image}
