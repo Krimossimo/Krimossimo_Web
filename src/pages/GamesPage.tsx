@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { containsDemo, contentService } from '../content'
 import { GameCard } from '../components/games/GameCard'
@@ -45,8 +46,8 @@ export default function GamesPage() {
               </div>
             )}
             <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {state.data.map((game) => (
-                <li key={game.id}>
+              {state.data.map((game, i) => (
+                <li key={game.id} data-reveal style={{ '--i': i } as CSSProperties}>
                   <GameCard game={game} />
                 </li>
               ))}

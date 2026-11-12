@@ -1,4 +1,6 @@
+import type { CSSProperties } from 'react'
 import { Link } from 'react-router'
+import { buttonClass } from '../ui/buttonStyles'
 import { useTranslation } from 'react-i18next'
 import { contentService, selectFeaturedProjects } from '../../content'
 import { useContent } from '../../hooks/useContent'
@@ -21,7 +23,7 @@ export function ProjectsPreview() {
 
   return (
     <section aria-labelledby="projects-title" className="mx-auto mt-24 max-w-[76rem] px-4 sm:mt-32 sm:px-6 lg:px-8">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div data-reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h2
             id="projects-title"
@@ -31,10 +33,7 @@ export function ProjectsPreview() {
           </h2>
           <p className="mt-3 max-w-lg text-muted">{t('projects.lead')}</p>
         </div>
-        <Link
-          to="/projects"
-          className="inline-flex h-11 items-center self-start rounded-xl border border-line-strong px-4 text-[0.95rem] font-medium text-ink transition-colors hover:border-ink sm:self-auto"
-        >
+        <Link to="/projects" className={buttonClass('secondary', 'min-h-11 self-start px-4 text-[0.95rem] sm:self-auto')}>
           {t('projects.all')}
         </Link>
       </div>
@@ -46,17 +45,17 @@ export function ProjectsPreview() {
         </div>
       )}
       {first && others.length === 0 && (
-        <div className="mt-10">
+        <div data-reveal className="mt-10">
           <ProjectCard project={first} variant="wide" />
         </div>
       )}
       {first && others.length > 0 && (
         <ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
-          <li className="md:col-span-2 lg:col-span-2 lg:row-span-2">
+          <li data-reveal className="md:col-span-2 lg:col-span-2 lg:row-span-2">
             <ProjectCard project={first} variant="featured" />
           </li>
-          {others.map((p) => (
-            <li key={p.id}>
+          {others.map((p, i) => (
+            <li key={p.id} data-reveal style={{ '--i': i + 1 } as CSSProperties}>
               <ProjectCard project={p} />
             </li>
           ))}

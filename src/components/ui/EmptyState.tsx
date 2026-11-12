@@ -12,7 +12,7 @@ type Props = {
 export function EmptyState({ seed, title, text, actions }: Props) {
   return (
     <div className="flex flex-col items-start gap-5 rounded-[1.5rem] border border-dashed border-line-strong bg-surface p-7 sm:flex-row sm:items-center sm:p-9">
-      <PixelMark seed={seed} className="size-14 shrink-0 text-blue" />
+      <PixelMark seed={seed} animate className="size-14 shrink-0 text-blue" />
       <div className="flex-1">
         <h2 className="text-[1.25rem] font-semibold tracking-[-0.02em]">{title}</h2>
         {text && <p className="mt-2 max-w-xl text-muted">{text}</p>}

@@ -1,7 +1,9 @@
-import { useId, useRef, useState, type KeyboardEvent } from 'react'
+import { useEffect, useId, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ButtonLink } from '../ui/ButtonLink'
 import { PixelMark } from '../ui/PixelMark'
+import { ScrambleText } from '../ui/ScrambleText'
+import { useGame } from '../../game/game-context'
 
 const modes = [
   { key: 'dev', to: '/projects' },
@@ -18,6 +20,13 @@ export function ModeSelect() {
   const [active, setActive] = useState(0)
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
   const id = useId()
+  const game = useGame()
+  const trackMode = game?.trackMode
+
+  // Chaque mode affiché compte pour le succès « Touche-à-tout ».
+  useEffect(() => {
+    trackMode?.(modes[active].key)
+  }, [active, trackMode])
 
   const select = (index: number, focus = true) => {
     const next = (index + modes.length) % modes.length
@@ -57,7 +66,8 @@ export function ModeSelect() {
     <section
       aria-labelledby={`${id}-title`}
       onKeyDown={onPanelKeyDown}
-      className="relative rounded-[1.75rem] border border-line bg-raised p-5 shadow-lift sm:p-7"
+      data-tilt-max="4"
+      className="tilt glow-frame relative rounded-[1.75rem] border border-line bg-raised p-5 shadow-lift sm:p-7"
     >
       <div className="flex items-center justify-between gap-4">
         <h2 id={`${id}-title`} className="font-sans text-[0.95rem] font-semibold text-ink">
@@ -86,6 +96,7 @@ export function ModeSelect() {
               aria-selected={selected}
               aria-controls={`${id}-panel`}
               tabIndex={selected ? 0 : -1}
+              data-burst=""
               onClick={() => select(i, false)}
               className={`keycap flex min-h-[4.25rem] min-w-0 flex-col items-start justify-between rounded-xl border px-3 py-2.5 text-left ${
                 selected
@@ -116,15 +127,19 @@ export function ModeSelect() {
       >
         <div>
           <h3 className="text-[1.3rem] font-semibold leading-snug tracking-[-0.02em] sm:text-[1.45rem]">
-            {t(`modes.${mode.key}.title`)}
+            <ScrambleText text={t(`modes.${mode.key}.title`)} />
           </h3>
           <p className="mt-2 max-w-md text-[0.98rem] text-muted">{t(`modes.${mode.key}.text`)}</p>
         </div>
-        <PixelMark seed={`krimossimo-${mode.key}`} className="hidden size-16 text-blue sm:block" />
+        <PixelMark seed={`krimossimo-${mode.key}`} animate className="hidden size-16 text-blue sm:block" />
 
         <ul className="grid gap-2 sm:col-span-2">
-          {items.map((item) => (
-            <li key={item} className="flex items-center gap-3 text-[0.98rem] text-ink-soft">
+          {items.map((item, i) => (
+            <li
+              key={item}
+              style={{ animationDelay: `${120 + i * 70}ms` } as CSSProperties}
+              className="swap-in flex items-center gap-3 text-[0.98rem] text-ink-soft"
+            >
               <span aria-hidden="true" className="size-1.5 shrink-0 rounded-[2px] bg-blue" />
               {item}
             </li>

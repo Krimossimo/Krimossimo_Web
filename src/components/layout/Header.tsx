@@ -8,6 +8,7 @@ import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 import { CloseIcon, MenuIcon } from '../ui/Icons'
 import { MobileMenu } from './MobileMenu'
 import { CartLink } from '../cart/CartLink'
+import { AchievementChip } from '../game/AchievementChip'
 
 export function Header() {
   const { t } = useTranslation()
@@ -44,10 +45,18 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 bg-bg transition-[border-color] duration-200 ${
+      className={`sticky top-0 z-40 isolate transition-[border-color] duration-200 ${
         scrolled || open ? 'border-b border-line' : 'border-b border-transparent'
       }`}
     >
+      {/* Fond vitré après défilement. Calque séparé : un flou posé sur le header lui-même
+          deviendrait le repère des éléments fixes (menu mobile). */}
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 -z-10 transition-colors duration-300 ${
+          scrolled && !open ? 'bg-bg/75 backdrop-blur-xl backdrop-saturate-150' : 'bg-bg'
+        }`}
+      />
       <div className="mx-auto flex h-[4.5rem] max-w-[76rem] items-center gap-3 px-4 sm:gap-6 sm:px-6 lg:px-8">
         <Link to="/" aria-label={t('a11y.home')} className="flex shrink-0 rounded-xl">
           <BrandLogo />
@@ -61,7 +70,7 @@ export function Header() {
                   <NavLink
                     to={item.path}
                     className={({ isActive }) =>
-                      `relative inline-flex h-11 items-center rounded-lg px-3 text-[0.95rem] font-medium transition-colors duration-150 ${
+                      `group relative inline-flex h-11 items-center rounded-lg px-3 text-[0.95rem] font-medium transition-colors duration-150 ${
                         isActive ? 'text-ink' : 'text-muted hover:text-ink'
                       }`
                     }
@@ -72,7 +81,7 @@ export function Header() {
                         <span
                           aria-hidden="true"
                           className={`absolute bottom-1.5 left-1/2 size-1.5 -translate-x-1/2 rounded-[2px] bg-blue transition-[opacity,transform] duration-200 ${
-                            isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+                            isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0 group-hover:scale-75 group-hover:opacity-60'
                           }`}
                         />
                       </>
@@ -97,6 +106,7 @@ export function Header() {
           >
             {t('nav.contact')}
           </NavLink>
+          <AchievementChip className="hidden sm:inline-flex" />
           <LanguageSwitcher className="hidden sm:inline-flex" />
           <CartLink />
           <ThemeToggle />

@@ -21,6 +21,7 @@ import {
 } from '../../lib/contact'
 import { useLocale } from '../../hooks/useLocale'
 import { AlertIcon, InfoIcon } from '../ui/Icons'
+import { buttonClass } from '../ui/buttonStyles'
 
 type Status = 'idle' | 'sending' | 'not-configured' | 'success' | 'error'
 
@@ -232,7 +233,7 @@ export function ContactForm() {
           <button
             type="submit"
             aria-disabled={status === 'sending'}
-            className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-blue px-6 text-[0.98rem] font-medium text-on-blue transition-[background-color,transform] duration-150 hover:bg-blue-hover active:translate-y-px aria-disabled:opacity-70 sm:w-auto"
+            className={buttonClass('primary', 'w-full px-6 aria-disabled:opacity-70 sm:w-auto')}
           >
             {status === 'sending' ? t('contact.sending') : t('contact.submit')}
           </button>

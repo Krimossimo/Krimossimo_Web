@@ -13,6 +13,7 @@ import {
   type CheckoutValues,
 } from '../../lib/checkout'
 import { AlertIcon } from '../ui/Icons'
+import { buttonClass } from '../ui/buttonStyles'
 
 type Props = {
   values: CheckoutValues
@@ -256,7 +257,7 @@ export function CheckoutForm({ values, onChange, onValidSubmit, submitting }: Pr
       <button
         type="submit"
         aria-disabled={submitting}
-        className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-blue px-6 text-[0.98rem] font-medium text-on-blue transition-[background-color,transform] duration-150 hover:bg-blue-hover active:translate-y-px aria-disabled:cursor-wait aria-disabled:opacity-70 sm:w-auto"
+        className={buttonClass('primary', 'mt-8 w-full px-6 aria-disabled:cursor-wait aria-disabled:opacity-70 sm:w-auto')}
       >
         {submitting ? t('checkout.submitting') : t('checkout.submit')}
       </button>

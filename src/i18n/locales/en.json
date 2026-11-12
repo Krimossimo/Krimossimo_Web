@@ -825,5 +825,53 @@
         "download": "Direct download"
       }
     }
+  },
+  "game": {
+    "unlockedLabel": "Achievement unlocked",
+    "title": "Achievements",
+    "lead": "Explore the site to unlock them. Your progress stays in this browser.",
+    "progress": "{{count}} of {{total}} unlocked",
+    "chip": "Achievements: {{count}} of {{total}}",
+    "locked": "Locked",
+    "hiddenText": "A code every gamer knows…",
+    "reset": "Start over",
+    "dismiss": "Dismiss notification",
+    "items": {
+      "start": {
+        "title": "Player 1 ready",
+        "text": "Open the site for the first time."
+      },
+      "explorer": {
+        "title": "Explorer",
+        "text": "Visit 4 different pages."
+      },
+      "bottom": {
+        "title": "Level floor",
+        "text": "Scroll all the way down a page."
+      },
+      "modes": {
+        "title": "Jack of all trades",
+        "text": "Try all three modes on the home page."
+      },
+      "theme": {
+        "title": "Day and night",
+        "text": "Switch the site theme."
+      },
+      "language": {
+        "title": "Polyglot",
+        "text": "Switch the site language."
+      },
+      "loot": {
+        "title": "Inventory",
+        "text": "Add an offer to the cart."
+      },
+      "secret": {
+        "title": "Secret code",
+        "text": "↑ ↑ ↓ ↓ ← → ← → B A, typed on the keyboard."
+      }
+    }
+  },
+  "home": {
+    "marqueeLabel": "What I do"
   }
 }

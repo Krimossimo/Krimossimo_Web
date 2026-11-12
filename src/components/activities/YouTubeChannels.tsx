@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { youtubeChannels } from '../../config/site'
 import { formatDate, useLocale } from '../../hooks/useLocale'
@@ -6,6 +6,7 @@ import { YouTubeError, loadYouTubeFeed, type ChannelVideos, type YouTubeErrorCod
 import { ContentLoading } from '../ui/ContentStates'
 import { AlertIcon, ArrowUpRightIcon, InfoIcon, SocialIcon } from '../ui/Icons'
 import { VideoCard } from './VideoCard'
+import { buttonClass } from '../ui/buttonStyles'
 
 type State = { status: 'loading' } | { status: 'ready'; feed: YouTubeFeed } | { status: 'error'; code: YouTubeErrorCode }
 
@@ -42,7 +43,7 @@ export function YouTubeChannels() {
         <button
           type="button"
           onClick={retry}
-          className="mt-5 inline-flex min-h-12 items-center rounded-xl border border-line-strong bg-raised px-5 font-medium text-ink transition-colors hover:border-ink"
+          className={buttonClass('secondary', 'mt-5')}
         >
           {t('content.retry')}
         </button>
@@ -103,8 +104,8 @@ function ChannelSection({ channel, result }: { channel: (typeof youtubeChannels)
         <p className="mt-6 rounded-xl border border-dashed border-line-strong px-4 py-5 text-ink-soft">{t('activities.channelEmpty')}</p>
       ) : (
         <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {result.videos.map((video) => (
-            <li key={video.youtubeId}>
+          {result.videos.map((video, i) => (
+            <li key={video.youtubeId} data-reveal style={{ '--i': i } as CSSProperties}>
               <VideoCard video={video} headingLevel="h3" />
             </li>
           ))}

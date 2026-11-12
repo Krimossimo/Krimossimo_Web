@@ -36,7 +36,7 @@ export function ProjectCard({ project, variant = 'default', showCta = false, hea
   return (
     <Link
       to={`/projects/${project.id}`}
-      className={`card-lift group flex h-full rounded-[1.5rem] border border-line bg-raised p-3 ${
+      className={`card-lift tilt group flex h-full rounded-[1.5rem] border border-line bg-raised p-3 ${
         wide ? 'flex-col lg:grid lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-4 lg:p-4' : 'flex-col'
       } ${featured ? 'lg:p-4' : ''}`}
     >

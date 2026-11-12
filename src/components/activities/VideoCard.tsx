@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import type { Video } from '../../types/content'
 import { formatDate, useLocale } from '../../hooks/useLocale'
+import { buttonClass } from '../ui/buttonStyles'
 import { CoverImage } from '../ui/CoverImage'
 import { PlayIcon } from '../ui/Icons'
 
@@ -14,7 +15,7 @@ export function VideoCard({ video, headingLevel = 'h2' }: { video: Video; headin
   const date = formatDate(video.publishedAt, locale)
 
   return (
-    <article className="card-lift group flex h-full flex-col rounded-[1.5rem] border border-line bg-raised p-3">
+    <article className="card-lift tilt group flex h-full flex-col rounded-[1.5rem] border border-line bg-raised p-3">
       <div className="relative">
         <CoverImage src={thumbnail} alt="" seed={video.youtubeId} className="aspect-video rounded-[1.1rem]" />
         <span
@@ -36,7 +37,7 @@ export function VideoCard({ video, headingLevel = 'h2' }: { video: Video; headin
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-xl border border-line-strong bg-bg px-5 font-medium text-ink transition-colors duration-150 hover:border-blue hover:text-blue"
+            className={buttonClass('secondary', 'w-full hover:border-blue! hover:text-blue')}
           >
             <PlayIcon className="size-4" />
             {t('activities.watch')}

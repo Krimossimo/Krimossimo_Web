@@ -5,6 +5,7 @@ import type { Offer } from '../../types/content'
 import { isPurchasable } from '../../cart/cart'
 import { useCart } from '../../cart/cart-context'
 import { formatPrice, pick, useLocale } from '../../hooks/useLocale'
+import { buttonClass } from '../ui/buttonStyles'
 import { ButtonLink } from '../ui/ButtonLink'
 import { DemoBadge } from '../ui/ContentStates'
 import { AlertIcon, CartIcon, CheckIcon, InfoIcon } from '../ui/Icons'
@@ -49,11 +50,11 @@ export function OfferCard({ offer, catalog }: { offer: Offer; catalog: readonly 
   return (
     <article
       className={`flex h-full flex-col rounded-[1.5rem] border bg-raised p-6 sm:p-7 ${
-        available ? 'card-lift border-line' : 'border-dashed border-line-strong'
+        available ? 'card-lift tilt border-line' : 'border-dashed border-line-strong'
       }`}
     >
       <div className="flex items-start justify-between gap-3">
-        <PixelMark seed={`offer-${offer.id}`} className={`size-12 ${available ? 'text-blue' : 'text-muted'}`} />
+        <PixelMark seed={`offer-${offer.id}`} animate={available} className={`size-12 ${available ? 'text-blue' : 'text-muted'}`} />
         {offer.isDemo && <DemoBadge />}
       </div>
       <h2 className="mt-6 text-[1.35rem] font-semibold leading-snug tracking-[-0.025em]">{title}</h2>
@@ -119,11 +120,7 @@ export function OfferCard({ offer, catalog }: { offer: Offer; catalog: readonly 
                 </ButtonLink>
               </>
             ) : (
-              <button
-                type="button"
-                onClick={addToCart}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-blue px-5 text-[0.98rem] font-medium text-on-blue transition-[background-color,transform] duration-150 hover:bg-blue-hover active:translate-y-px"
-              >
+              <button type="button" onClick={addToCart} data-burst="" className={buttonClass('primary', 'w-full')}>
                 <CartIcon className="size-[18px]" />
                 {t('cart.add')}
               </button>

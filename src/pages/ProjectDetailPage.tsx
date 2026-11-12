@@ -12,6 +12,7 @@ import { ArrowLeftIcon, ArrowUpRightIcon } from '../components/ui/Icons'
 import { useContent, useDelayedFlag } from '../hooks/useContent'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { pick, useLocale, yearOf } from '../hooks/useLocale'
+import { buttonClass } from '../components/ui/buttonStyles'
 
 export default function ProjectDetailPage() {
   const { t } = useTranslation()
@@ -171,7 +172,8 @@ function ProjectDetail({ project }: { project: Project }) {
               href={project.externalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-blue px-5 font-medium text-on-blue transition-colors duration-150 hover:bg-blue-hover"
+              data-burst=""
+              className={buttonClass('primary')}
             >
               {t('projectDetail.visit')}
               <ArrowUpRightIcon className="size-4" />

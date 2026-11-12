@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { navItems, socials } from '../../config/site'
 import { BrandLogo } from '../ui/BrandLogo'
 import { ButtonLink } from '../ui/ButtonLink'
+import { AchievementsPanel } from '../game/AchievementsPanel'
 import { ArrowUpRightIcon, MailIcon, SocialIcon } from '../ui/Icons'
 
 export function Footer() {
@@ -13,10 +14,17 @@ export function Footer() {
     <footer className="mt-24 border-t border-line sm:mt-32">
       <div className="mx-auto max-w-[76rem] px-4 sm:px-6 lg:px-8">
         {/* Appel à l'action de contact */}
-        <div className="flex flex-col gap-6 border-b border-line py-12 sm:py-16 md:flex-row md:items-end md:justify-between">
+        <div
+          data-reveal
+          className="flex flex-col gap-6 border-b border-line py-12 sm:py-16 md:flex-row md:items-end md:justify-between"
+        >
           <div className="max-w-2xl">
             <h2 className="text-[clamp(1.6rem,3.4vw,2.4rem)] font-semibold leading-[1.1] tracking-[-0.03em]">
               {t('footer.ctaTitle')}
+              <span
+                aria-hidden="true"
+                className="blink ml-2 inline-block h-[0.8em] w-[0.42em] translate-y-[0.08em] rounded-[2px] bg-blue"
+              />
             </h2>
             <p className="mt-3 text-muted">{t('footer.ctaText')}</p>
           </div>
@@ -25,6 +33,8 @@ export function Footer() {
             {t('footer.ctaButton')}
           </ButtonLink>
         </div>
+
+        <AchievementsPanel />
 
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
@@ -60,7 +70,10 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-3 text-[0.95rem] text-muted transition-colors hover:text-ink"
                   >
-                    <SocialIcon id={s.icon} className="size-[18px] transition-colors group-hover:text-blue" />
+                    <SocialIcon
+                      id={s.icon}
+                      className="size-[18px] transition-[color,transform] duration-200 ease-snap group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-blue"
+                    />
                     {s.label}
                     <ArrowUpRightIcon className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
                     <span className="sr-only">{t('a11y.external')}</span>

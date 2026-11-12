@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { containsDemo, contentService } from '../content'
 import { isPurchasable } from '../cart/cart'
@@ -38,8 +39,8 @@ export default function ShopPage() {
               </div>
             )}
             <ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {state.data.map((offer) => (
-                <li key={offer.id}>
+              {state.data.map((offer, i) => (
+                <li key={offer.id} data-reveal style={{ '--i': i } as CSSProperties}>
                   <OfferCard offer={offer} catalog={state.data} />
                 </li>
               ))}

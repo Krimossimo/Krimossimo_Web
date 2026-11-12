@@ -39,3 +39,5 @@ npm-debug.log*
 .idea
 .DS_Store
 Thumbs.db
+
+krimossimo-1111-firebase-adminsdk-*.json

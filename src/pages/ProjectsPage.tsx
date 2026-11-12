@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { useSearchParams } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import {
@@ -12,6 +13,7 @@ import { projectCategories, type Project } from '../types/content'
 import { ProjectCard } from '../components/projects/ProjectCard'
 import { ContentError, ContentLoading, DemoNotice } from '../components/ui/ContentStates'
 import { EmptyState } from '../components/ui/EmptyState'
+import { buttonClass } from '../components/ui/buttonStyles'
 import { PageHeader, PageSection } from '../components/ui/PageHeader'
 import { useContent } from '../hooks/useContent'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -108,7 +110,7 @@ function ProjectGallery({ projects }: { projects: Project[] }) {
               <button
                 type="button"
                 onClick={() => setFilter('all')}
-                className="inline-flex min-h-12 items-center rounded-xl border border-line-strong bg-raised px-5 font-medium text-ink transition-colors hover:border-ink"
+                className={buttonClass('secondary')}
               >
                 {t('projectsPage.showAll')}
               </button>
@@ -117,8 +119,8 @@ function ProjectGallery({ projects }: { projects: Project[] }) {
         </div>
       ) : (
         <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((project) => (
-            <li key={project.id}>
+          {visible.map((project, i) => (
+            <li key={project.id} data-reveal style={{ '--i': i } as CSSProperties}>
               <ProjectCard project={project} showCta headingLevel="h2" />
             </li>
           ))}

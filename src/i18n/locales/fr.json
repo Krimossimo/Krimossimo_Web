@@ -825,5 +825,53 @@
         "download": "Téléchargement direct"
       }
     }
+  },
+  "game": {
+    "unlockedLabel": "Succès débloqué",
+    "title": "Succès",
+    "lead": "Explorez le site pour les débloquer. Votre progression reste dans ce navigateur.",
+    "progress": "{{count}} sur {{total}} débloqués",
+    "chip": "Succès : {{count}} sur {{total}}",
+    "locked": "Verrouillé",
+    "hiddenText": "Un code bien connu des joueurs…",
+    "reset": "Recommencer",
+    "dismiss": "Fermer la notification",
+    "items": {
+      "start": {
+        "title": "Joueur 1 prêt",
+        "text": "Lancer le site pour la première fois."
+      },
+      "explorer": {
+        "title": "Explorateur",
+        "text": "Visiter 4 pages différentes."
+      },
+      "bottom": {
+        "title": "Fond du niveau",
+        "text": "Descendre jusqu’en bas d’une page."
+      },
+      "modes": {
+        "title": "Touche-à-tout",
+        "text": "Essayer les trois modes de l’accueil."
+      },
+      "theme": {
+        "title": "Jour et nuit",
+        "text": "Changer le thème du site."
+      },
+      "language": {
+        "title": "Polyglotte",
+        "text": "Changer la langue du site."
+      },
+      "loot": {
+        "title": "Inventaire",
+        "text": "Ajouter une offre au panier."
+      },
+      "secret": {
+        "title": "Code secret",
+        "text": "↑ ↑ ↓ ↓ ← → ← → B A, tapé au clavier."
+      }
+    }
+  },
+  "home": {
+    "marqueeLabel": "Ce que je fais"
   }
 }

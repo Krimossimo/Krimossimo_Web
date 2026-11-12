@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useDelayedFlag } from '../../hooks/useContent'
+import { buttonClass } from './buttonStyles'
 import { AlertIcon, InfoIcon } from './Icons'
 
 /**
@@ -48,11 +49,7 @@ export function ContentError({ onRetry }: { onRetry: () => void }) {
         <h2 className="text-[1.25rem] font-semibold tracking-[-0.02em]">{t('content.errorTitle')}</h2>
         <p className="mt-2 max-w-xl text-muted">{t('content.errorText')}</p>
       </div>
-      <button
-        type="button"
-        onClick={onRetry}
-        className="inline-flex min-h-12 items-center rounded-xl bg-blue px-5 font-medium text-on-blue transition-colors hover:bg-blue-hover active:translate-y-px"
-      >
+      <button type="button" onClick={onRetry} className={buttonClass('primary')}>
         {t('content.retry')}
       </button>
     </div>

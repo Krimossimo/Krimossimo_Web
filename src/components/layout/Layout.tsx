@@ -3,10 +3,14 @@ import { Outlet, useLocation } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { GameProvider } from '../../game/GameProvider'
+import { AchievementToasts } from '../game/AchievementToasts'
+import { useMotionEffects } from '../../motion/useMotionEffects'
 
 export function Layout() {
   const { t } = useTranslation()
   const { pathname } = useLocation()
+  useMotionEffects()
 
   // Remonte en haut de page à chaque navigation.
   useEffect(() => {
@@ -14,18 +18,24 @@ export function Layout() {
   }, [pathname])
 
   return (
-    <div className="flex min-h-dvh flex-col">
-      <a
-        href="#main"
-        className="sr-only z-50 rounded-lg bg-blue px-4 py-2 text-on-blue focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
-      >
-        {t('a11y.skipToContent')}
-      </a>
-      <Header />
-      <main id="main" tabIndex={-1} className="flex-1 outline-none">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <GameProvider>
+      <div className="flex min-h-dvh flex-col">
+        <a
+          href="#main"
+          className="sr-only z-50 rounded-lg bg-blue px-4 py-2 text-on-blue focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          {t('a11y.skipToContent')}
+        </a>
+        <Header />
+        <main id="main" tabIndex={-1} className="flex-1 outline-none">
+          {/* La clé rejoue l'entrée de page à chaque navigation. */}
+          <div key={pathname} className="page-enter">
+            <Outlet />
+          </div>
+        </main>
+        <Footer />
+      </div>
+      <AchievementToasts />
+    </GameProvider>
   )
 }

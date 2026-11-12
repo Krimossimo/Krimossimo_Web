@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import type { Game } from '../../types/content'
 import { formatMoney, pick, useLocale } from '../../hooks/useLocale'
+import { buttonClass } from '../ui/buttonStyles'
 import { DemoBadge } from '../ui/ContentStates'
 import { CoverImage } from '../ui/CoverImage'
 import { ArrowUpRightIcon, DownloadIcon } from '../ui/Icons'
@@ -28,7 +29,7 @@ export function GameCard({ game }: { game: Game }) {
         : t('games.store')
 
   return (
-    <article className="card-lift group flex h-full flex-col rounded-[1.5rem] border border-line bg-raised p-3">
+    <article className="card-lift tilt group flex h-full flex-col rounded-[1.5rem] border border-line bg-raised p-3">
       <div className="relative">
         <CoverImage
           src={game.cover.src}
@@ -53,7 +54,7 @@ export function GameCard({ game }: { game: Game }) {
             href={game.link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-line-strong bg-bg px-5 font-medium text-ink transition-colors duration-150 hover:border-blue hover:text-blue"
+            className={buttonClass('secondary', 'w-full hover:border-blue! hover:text-blue')}
           >
             {game.link.kind === 'download' ? (
               <DownloadIcon className="size-[18px]" />

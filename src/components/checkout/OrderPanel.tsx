@@ -5,6 +5,7 @@ import { formatCents, useLocale } from '../../hooks/useLocale'
 import { ButtonLink } from '../ui/ButtonLink'
 import { AlertIcon, CheckIcon, InfoIcon } from '../ui/Icons'
 import type { PaymentErrorCode } from './PayPalPayment'
+import { buttonClass } from '../ui/buttonStyles'
 
 // Le SDK PayPal n'est téléchargé que lorsqu'une commande serveur existe.
 const PayPalPayment = lazy(() => import('./PayPalPayment'))
@@ -32,9 +33,9 @@ type Props = {
 }
 
 const buttonPrimary =
-  'inline-flex min-h-12 items-center justify-center rounded-xl bg-blue px-5 font-medium text-on-blue transition-colors hover:bg-blue-hover disabled:opacity-60'
+  buttonClass('primary', 'disabled:opacity-60')
 const buttonSecondary =
-  'inline-flex min-h-12 items-center justify-center rounded-xl border border-line-strong px-5 font-medium text-ink transition-colors hover:border-ink disabled:opacity-60'
+  buttonClass('secondary', 'disabled:opacity-60')
 
 /** Commande créée par le serveur : statut réel, montant figé, coordonnées, paiement. */
 export function OrderPanel({ order, payment, priceChanged, paymentError, onState, onPaymentError, onRestart }: Props) {

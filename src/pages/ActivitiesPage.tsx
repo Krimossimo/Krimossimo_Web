@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { contentService } from '../content'
 import { socials } from '../config/site'
@@ -11,6 +12,7 @@ import { useContent } from '../hooks/useContent'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { isYouTubeConfigured } from '../lib/youtube'
 import type { Video } from '../types/content'
+import { buttonClass } from '../components/ui/buttonStyles'
 
 // Avec l'API YouTube, la liste manuelle n'est pas chargée.
 const noVideos = (): Promise<Video[]> => Promise.resolve([])
@@ -30,7 +32,8 @@ export default function ActivitiesPage() {
           href={youtube.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-blue px-5 font-medium text-on-blue transition-colors hover:bg-blue-hover"
+          data-burst=""
+          className={buttonClass('primary')}
         >
           <SocialIcon id="youtube" className="size-[18px]" />
           {t('activities.youtube')}
@@ -42,7 +45,7 @@ export default function ActivitiesPage() {
           href={twitch.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-line-strong bg-raised px-5 font-medium text-ink transition-colors hover:border-ink"
+          className={buttonClass('secondary')}
         >
           <SocialIcon id="twitch" className="size-[18px]" />
           {t('activities.twitch')}
@@ -84,8 +87,8 @@ export default function ActivitiesPage() {
         ) : (
           <>
             <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {state.data.map((video) => (
-                <li key={video.youtubeId}>
+              {state.data.map((video, i) => (
+                <li key={video.youtubeId} data-reveal style={{ '--i': i } as CSSProperties}>
                   <VideoCard video={video} />
                 </li>
               ))}

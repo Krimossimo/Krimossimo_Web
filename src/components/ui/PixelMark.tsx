@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react'
+
 /**
  * Pixel-mark : une signature visuelle 5×5 symétrique, générée de façon
  * déterministe à partir d'un texte (nom de projet, mode...).
@@ -45,14 +47,17 @@ type Props = {
   seed: string
   className?: string
   title?: string
+  /** Les pixels s'assemblent un à un à l'affichage (changer `seed` rejoue l'animation). */
+  animate?: boolean
 }
 
-export function PixelMark({ seed, className, title }: Props) {
+export function PixelMark({ seed, className = '', title, animate = false }: Props) {
   const cells = buildPixelGrid(seed)
   return (
     <svg
+      key={animate ? seed : undefined}
       viewBox="-0.5 -0.5 6 6"
-      className={className}
+      className={`${animate ? 'pixel-pop' : ''} ${className}`}
       shapeRendering="crispEdges"
       role={title ? 'img' : undefined}
       aria-hidden={title ? undefined : true}
@@ -68,6 +73,7 @@ export function PixelMark({ seed, className, title }: Props) {
           rx="0.12"
           fill="currentColor"
           fillOpacity={c.o}
+          style={animate ? ({ '--d': c.y * 5 + c.x } as CSSProperties) : undefined}
         />
       ))}
     </svg>

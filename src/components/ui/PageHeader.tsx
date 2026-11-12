@@ -14,11 +14,13 @@ export function PageHeader({ title, lead, aside, id = 'page-title' }: Props) {
     <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <div className="max-w-3xl">
         <h1 id={id} className="text-[clamp(2.3rem,6vw,4.2rem)] font-semibold leading-[1.04] tracking-[-0.045em]">
-          {title}
+          <span className="rise-line">
+            <span>{title}</span>
+          </span>
         </h1>
-        {lead && <p className="mt-5 max-w-2xl text-[1.1rem] leading-relaxed text-ink-soft">{lead}</p>}
+        {lead && <p className="k-fade-late mt-5 max-w-2xl text-[1.1rem] leading-relaxed text-ink-soft">{lead}</p>}
       </div>
-      {aside && <div className="shrink-0">{aside}</div>}
+      {aside && <div className="k-fade-later shrink-0">{aside}</div>}
     </header>
   )
 }

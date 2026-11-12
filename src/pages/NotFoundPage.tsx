@@ -9,10 +9,12 @@ export default function NotFoundPage() {
 
   return (
     <section aria-labelledby="nf-title" className="mx-auto max-w-[76rem] px-4 pt-16 sm:px-6 sm:pt-24 lg:px-8">
-      <PixelMark seed="404" className="size-16 text-blue" />
+      <PixelMark seed="404" animate className="size-16 text-blue" />
       <h1
         id="nf-title"
-        className="mt-8 text-[clamp(2.3rem,6vw,4.2rem)] font-semibold leading-[1.04] tracking-[-0.045em]"
+        data-text={t('pages.notFound.title')}
+        aria-label={t('pages.notFound.title')}
+        className="glitch mt-8 text-[clamp(2.3rem,6vw,4.2rem)] font-semibold leading-[1.04] tracking-[-0.045em]"
       >
         {t('pages.notFound.title')}
       </h1>
