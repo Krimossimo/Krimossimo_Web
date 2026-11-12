@@ -30,7 +30,7 @@ export type EditorConfig<F extends Form> = {
   editPath: (id: string) => string
 }
 
-const noImage: ImageDraft = { currentSrc: '', file: null, remove: false }
+const noImage: ImageDraft = { currentSrc: '', file: null, remove: false, link: null }
 
 /**
  * État d'un éditeur de contenu : chargement du document, formulaire, image, enregistrement
@@ -61,7 +61,7 @@ export function useContentEditor<F extends Form>(config: EditorConfig<F>) {
       }
       const next = fromDoc(doc.id, doc.data)
       setForm(next)
-      setImage({ currentSrc: next.image?.src ?? '', file: null, remove: false })
+      setImage({ currentSrc: next.image?.src ?? '', file: null, remove: false, link: null })
       setStatus('ready')
     } catch (error) {
       setLoadError(actionErrorCode(error))
@@ -73,7 +73,9 @@ export function useContentEditor<F extends Form>(config: EditorConfig<F>) {
     void load()
   }, [load])
 
-  const effectiveSrc = image.remove ? '' : image.currentSrc
+  // Adresse saisie à la main (chemin du site ou URL https) : remplace l'image actuelle.
+  const linkSrc = image.link?.trim() ?? ''
+  const effectiveSrc = image.remove ? '' : linkSrc || image.currentSrc
   const withImage = (f: F): F => (f.image ? { ...f, image: { ...f.image, src: effectiveSrc } } : f)
 
   const submit = async () => {
@@ -99,7 +101,7 @@ export function useContentEditor<F extends Form>(config: EditorConfig<F>) {
         folder,
       })
       if (result.ok) {
-        setImage({ currentSrc: result.imageSrc, file: null, remove: false })
+        setImage({ currentSrc: result.imageSrc, file: null, remove: false, link: null })
         setForm((f) => (f.image ? { ...f, image: { ...f.image, src: result.imageSrc } } : f))
         setFeedback({ kind: 'saved', created: isNew, cleanup: result.cleanup })
         if (isNew) navigate(`${editPath(result.id)}?created=1`, { replace: true })

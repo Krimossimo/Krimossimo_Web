@@ -698,7 +698,7 @@
       "remove": "Remove the image",
       "keep": "Keep the image",
       "undo": "Undo the change",
-      "hint": "PNG, JPEG, WebP, AVIF or GIF, 5 MB maximum. Uploaded to Storage when you save.",
+      "hint": "PNG, JPEG, WebP, AVIF or GIF, 5 MB max. Uploaded to Firebase Storage on save (requires the Blaze plan).",
       "pending": "New image selected: {{name}}. It will be uploaded when you save.",
       "willRemove": "The image will be removed when you save.",
       "alt": "Alternative text",
@@ -707,7 +707,12 @@
         "type": "Format not accepted: PNG, JPEG, WebP, AVIF or GIF.",
         "size": "Image too large (5 MB maximum).",
         "empty": "Empty file."
-      }
+      },
+      "linkLabel": "Or enter an image address",
+      "linkPlaceholder": "images/projects/my-project.webp",
+      "linkHint": "Path to an image in the site’s public/ folder (e.g. images/projects/my-project.webp), or a full https:// address. Works without Storage.",
+      "linkInvalid": "Invalid address: enter a path such as images/projects/my-project.webp or an https:// address.",
+      "previewFailed": "No image found at this address. Check the path, or push the image to GitHub first."
     },
     "projects": {
       "title": "Projects",

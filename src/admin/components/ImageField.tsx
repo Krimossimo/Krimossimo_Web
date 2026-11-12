@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { assetUrl } from '../../hooks/useLocale'
+import { safeImageSrc } from '../../content/validation'
 import { checkImageFile, type ImageCheck } from '../upload'
 import { ImageIcon } from './icons'
 import { BilingualField, Button } from './ui'
@@ -12,6 +13,11 @@ export type ImageDraft = {
   file: File | null
   /** L'image actuelle sera retirée à l'enregistrement. */
   remove: boolean
+  /**
+   * Adresse saisie à la main (null = non utilisée) : chemin d'une image du dossier public/
+   * du site, ou URL https. Ne passe pas par Storage (utilisable sans le forfait Blaze).
+   */
+  link: string | null
 }
 
 /**
@@ -54,8 +60,15 @@ export function ImageField({
     return () => URL.revokeObjectURL(url)
   }, [draft.file])
 
-  const shown = preview ?? (!draft.remove && draft.currentSrc ? assetUrl(draft.currentSrc) : null)
-  const hasImage = Boolean(draft.file) || (Boolean(draft.currentSrc) && !draft.remove)
+  const linkValue = draft.link?.trim() ?? ''
+  const linkSrc = linkValue ? safeImageSrc(linkValue) : null
+  const shown =
+    preview ??
+    (linkSrc ? assetUrl(linkSrc) : null) ??
+    (!draft.remove && !linkValue && draft.currentSrc ? assetUrl(draft.currentSrc) : null)
+  const hasImage = Boolean(draft.file) || Boolean(linkValue) || (Boolean(draft.currentSrc) && !draft.remove)
+  const [previewFailed, setPreviewFailed] = useState(false)
+  useEffect(() => setPreviewFailed(false), [shown])
 
   return (
     <fieldset className="space-y-4">
@@ -71,7 +84,19 @@ export function ImageField({
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <div className="flex aspect-[16/10] w-full shrink-0 items-center justify-center overflow-hidden rounded-xl border border-line bg-surface sm:w-60">
           {shown ? (
-            <img src={shown} alt={t('admin.image.preview')} className="size-full object-cover" data-testid="image-preview" />
+            previewFailed ? (
+              <span role="status" className="px-4 text-center text-sm text-danger">
+                {t('admin.image.previewFailed')}
+              </span>
+            ) : (
+              <img
+                src={shown}
+                alt={t('admin.image.preview')}
+                onError={() => setPreviewFailed(true)}
+                className="size-full object-cover"
+                data-testid="image-preview"
+              />
+            )
           ) : (
             <span className="flex flex-col items-center gap-2 text-sm text-muted">
               <ImageIcon className="size-7" />
@@ -100,13 +125,43 @@ export function ImageField({
                   return
                 }
                 setFileError(null)
-                onChange({ ...draft, file, remove: false })
+                onChange({ ...draft, file, remove: false, link: null })
               }}
               className="block w-full text-[0.93rem] text-ink-soft file:mr-3 file:min-h-11 file:cursor-pointer file:rounded-xl file:border file:border-line-strong file:bg-raised file:px-4 file:font-medium file:text-ink"
             />
             <p id={`${id}-hint`} className="mt-2 text-sm text-muted">
               {t('admin.image.hint')}
             </p>
+          </div>
+          <div>
+            <label htmlFor={`${id}-link`} className="mb-2 block text-sm font-medium text-ink-soft">
+              {t('admin.image.linkLabel')}
+            </label>
+            <input
+              id={`${id}-link`}
+              type="text"
+              inputMode="url"
+              autoComplete="off"
+              spellCheck={false}
+              placeholder={t('admin.image.linkPlaceholder')}
+              aria-describedby={`${id}-link-hint`}
+              value={draft.link ?? ''}
+              onChange={(e) => {
+                const value = e.target.value
+                if (draft.file) setInputKey((k) => k + 1)
+                setFileError(null)
+                onChange({ ...draft, link: value === '' ? null : value, file: null, remove: false })
+              }}
+              className="h-12 w-full rounded-xl border border-line-strong bg-bg px-4 text-[1rem] text-ink transition-colors duration-150 placeholder:text-muted focus:border-blue"
+            />
+            <p id={`${id}-link-hint`} className="mt-2 text-sm text-muted">
+              {t('admin.image.linkHint')}
+            </p>
+            {linkValue && !linkSrc && (
+              <p role="alert" className="mt-2 text-sm text-danger">
+                {t('admin.image.linkInvalid')}
+              </p>
+            )}
           </div>
           {draft.file && (
             <p className="text-sm text-ink-soft" role="status">
@@ -119,6 +174,11 @@ export function ImageField({
             </p>
           )}
           <div className="flex flex-wrap gap-2">
+            {draft.link !== null && (
+              <Button variant="secondary" onClick={() => onChange({ ...draft, link: null })}>
+                {t('admin.image.undo')}
+              </Button>
+            )}
             {draft.file && (
               <Button
                 variant="secondary"
@@ -130,7 +190,7 @@ export function ImageField({
                 {t('admin.image.undo')}
               </Button>
             )}
-            {!draft.file && draft.currentSrc && !draft.remove && !required && (
+            {!draft.file && draft.link === null && draft.currentSrc && !draft.remove && !required && (
               <Button variant="secondary" onClick={() => onChange({ ...draft, remove: true })}>
                 {t('admin.image.remove')}
               </Button>
