@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { containsDemo, contentService } from '../content'
 import { isPurchasable } from '../cart/cart'
 import { isOrderApiConfigured } from '../lib/orders'
+import { isOrderRequestConfigured } from '../lib/orderRequests'
 import { OfferCard } from '../components/shop/OfferCard'
 import { ContentError, ContentLoading, DemoNotice } from '../components/ui/ContentStates'
 import { EmptyState } from '../components/ui/EmptyState'
@@ -49,7 +50,7 @@ export default function ShopPage() {
               <InfoIcon className="mt-0.5 size-[18px] shrink-0 text-blue" />
               <span>
                 {state.data.some(isPurchasable)
-                  ? `${t('shop.notePurchasable')} ${isOrderApiConfigured ? '' : t('shop.notePaymentOff')}`.trim()
+                  ? `${t('shop.notePurchasable')} ${isOrderApiConfigured ? '' : isOrderRequestConfigured ? t('shop.noteInvoice') : t('shop.notePaymentOff')}`.trim()
                   : t('shop.note')}
               </span>
             </p>

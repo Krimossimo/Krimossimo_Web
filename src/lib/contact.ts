@@ -18,6 +18,9 @@
 import { contactSubjects, type ContactSubject } from '../types/content'
 import { EMAIL_PATTERN } from './patterns'
 import fr from '../i18n/locales/fr.json'
+import { WEB3FORMS_URL, Web3FormsError, postWeb3Forms, web3formsAccessKey } from './web3forms'
+
+export { WEB3FORMS_URL }
 
 export const contactLimits = {
   name: 80,
@@ -103,9 +106,6 @@ export function validateContact(values: ContactValues): ContactErrors {
 
 const env: Partial<ImportMetaEnv> = import.meta.env ?? {}
 const endpoint = (env.VITE_CONTACT_ENDPOINT ?? '').trim()
-const web3formsAccessKey = (env.VITE_WEB3FORMS_ACCESS_KEY ?? '').trim()
-
-export const WEB3FORMS_URL = 'https://api.web3forms.com/submit'
 /** Délai minimal sur le formulaire avant envoi (anti-robots), comme côté serveur. */
 export const MIN_FILL_MS = 3000
 
@@ -201,10 +201,7 @@ export async function sendContactMessage(
   if (record.ok !== true || record.delivered !== true) throw new ContactSendError('server', response.status)
 }
 
-/**
- * Envoi par Web3Forms. Le succès n'est affiché que si Web3Forms répond { success: true },
- * c'est-à-dire après avoir accepté et transmis l'e-mail.
- */
+/** Envoi par Web3Forms (voir lib/web3forms.ts). */
 async function sendWithWeb3Forms(
   values: ContactValues,
   locale: 'fr' | 'en',
@@ -219,15 +216,9 @@ async function sendWithWeb3Forms(
 
   const name = `${values.firstName.trim()} ${values.lastName.trim()}`
   const subjectLabel = values.subject ? fr.contact.subjects[values.subject] : ''
-  const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), timeoutMs)
-  let response: Response
   try {
-    response = await doFetch(WEB3FORMS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        access_key: accessKey,
+    await postWeb3Forms(
+      {
         subject: `[Krimossimo] ${subjectLabel} : ${name}`,
         from_name: 'Site Krimossimo',
         name,
@@ -236,19 +227,10 @@ async function sendWithWeb3Forms(
         sujet: subjectLabel,
         langue: locale === 'en' ? 'Anglais' : 'Français',
         message: values.message.trim(),
-        botcheck: false,
-      }),
-      credentials: 'omit',
-      signal: controller.signal,
-    })
-  } catch {
-    throw new ContactSendError(controller.signal.aborted ? 'timeout' : 'network')
-  } finally {
-    clearTimeout(timeout)
+      },
+      { accessKey, fetch: doFetch, timeoutMs },
+    )
+  } catch (error) {
+    throw new ContactSendError(error instanceof Web3FormsError ? error.code : 'server', error instanceof Web3FormsError ? error.status : undefined)
   }
-
-  const data: unknown = await response.json().catch(() => null)
-  const record = typeof data === 'object' && data !== null ? (data as Record<string, unknown>) : {}
-  if (response.status === 429) throw new ContactSendError('rate-limited', 429)
-  if (!response.ok || record.success !== true) throw new ContactSendError('server', response.status)
 }

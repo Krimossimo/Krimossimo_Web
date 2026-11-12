@@ -180,7 +180,8 @@
     "notePurchasable": "Les prestations à prix fixe peuvent être ajoutées au panier ; les autres passent par une demande de devis.",
     "notePaymentOff": "Le paiement en ligne n’est pas encore activé : vous pouvez préparer votre panier, mais aucune commande n’est encore enregistrée.",
     "outOfStock": "Rupture de stock",
-    "outOfStockText": "Prestation momentanément complète : elle ne peut pas être commandée pour l’instant."
+    "outOfStockText": "Prestation momentanément complète : elle ne peut pas être commandée pour l’instant.",
+    "noteInvoice": "Le paiement se fait après la commande, par une facture PayPal envoyée par e-mail."
   },
   "cart": {
     "title": "Panier",
@@ -226,7 +227,8 @@
       "quote-only": "Cette offre est sur devis : utilisez « Demander un devis ».",
       "unpublished": "Cette offre n’est pas disponible.",
       "out-of-stock": "Cette prestation est en rupture de stock pour le moment."
-    }
+    },
+    "totalNoteInvoice": "Montant indicatif : le montant définitif figure sur la facture, envoyée par e-mail avant tout paiement."
   },
   "checkout": {
     "title": "Commande",
@@ -301,7 +303,25 @@
       "bad-response": "Réponse inattendue du service de commande. Aucun paiement n’a été effectué."
     },
     "emptyTitle": "Aucune prestation à commander",
-    "emptyText": "Votre panier est vide ou contient des articles qui ne peuvent plus être commandés."
+    "emptyText": "Votre panier est vide ou contient des articles qui ne peuvent plus être commandés.",
+    "leadRequest": "Indiquez vos coordonnées et votre besoin. Aucun paiement n’est demandé maintenant : je vous envoie ensuite par e-mail la facture et le lien de paiement PayPal.",
+    "submitRequest": "Envoyer la commande",
+    "submittingRequest": "Envoi de la commande…",
+    "requestErrorTitle": "La commande n’a pas été envoyée",
+    "requestErrors": {
+      "invalid": "Certaines informations n’ont pas pu être vérifiées. Rechargez la page, puis réessayez.",
+      "too-fast": "Envoi trop rapide : prenez quelques secondes pour relire votre commande, puis validez à nouveau.",
+      "failed": "La commande n’a pas pu être envoyée. Vérifiez votre connexion et réessayez, ou contactez-moi. Votre panier et votre saisie sont conservés.",
+      "not-configured": "La commande en ligne n’est pas encore activée. Contactez-moi pour commander."
+    },
+    "done": {
+      "title": "Commande envoyée",
+      "thanks": "Merci {{name}}, votre commande est bien enregistrée.",
+      "text": "Aucun paiement n’a été effectué pour l’instant.",
+      "referenceLabel": "Numéro de commande",
+      "next": "Je vous recontacte à l’adresse {{email}} avec la facture et le lien de paiement PayPal.",
+      "keep": "Gardez ce numéro : il vous sera utile pour tout échange au sujet de votre commande."
+    }
   },
   "order": {
     "number": "Commande n° {{id}}",
@@ -561,7 +581,22 @@
       "failure": "Motif du refus",
       "alertDuplicate": "Second encaissement PayPal détecté pour cette commande : remboursez-le depuis votre compte PayPal (capture {{id}}).",
       "alertMismatch": "Montant encaissé différent du montant de la commande : vérifiez cette transaction dans PayPal.",
-      "lateCapture": "Paiement confirmé après l’abandon de la commande par le client."
+      "lateCapture": "Paiement confirmé après l’abandon de la commande par le client.",
+      "requestsTitle": "Commandes à facturer",
+      "requestsLead": "Commandes passées sur le site sans paiement en ligne. Vérifiez le montant, envoyez la facture PayPal, puis mettez le suivi à jour.",
+      "requestsEmpty": "Aucune commande à facturer pour le moment.",
+      "paidTitle": "Commandes payées en ligne",
+      "indicative": "Montant indicatif",
+      "requestStatus": "Suivi",
+      "requestStatuses": {
+        "new": "Nouvelle",
+        "invoiced": "Facture envoyée",
+        "paid": "Payée",
+        "done": "Terminée",
+        "cancelled": "Annulée"
+      },
+      "requestNote": "Note interne (facultative)",
+      "emailSubject": "Votre commande {{id}} – Krimossimo"
     },
     "messages": {
       "title": "Messages",

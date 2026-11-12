@@ -180,7 +180,8 @@
     "notePurchasable": "Fixed-price services can be added to your cart; the others go through a quote request.",
     "notePaymentOff": "Online payment isn’t enabled yet: you can prepare your cart, but no order is recorded for now.",
     "outOfStock": "Out of stock",
-    "outOfStockText": "This service is temporarily full: it cannot be ordered for now."
+    "outOfStockText": "This service is temporarily full: it cannot be ordered for now.",
+    "noteInvoice": "Payment happens after you order, through a PayPal invoice sent by email."
   },
   "cart": {
     "title": "Cart",
@@ -226,7 +227,8 @@
       "quote-only": "This service is quote-based: use “Request a quote”.",
       "unpublished": "This service isn’t available.",
       "out-of-stock": "This service is out of stock for now."
-    }
+    },
+    "totalNoteInvoice": "Estimated amount: the final amount appears on the invoice, emailed before any payment."
   },
   "checkout": {
     "title": "Checkout",
@@ -301,7 +303,25 @@
       "bad-response": "Unexpected response from the order service. No payment was made."
     },
     "emptyTitle": "Nothing to order",
-    "emptyText": "Your cart is empty or contains items that can no longer be ordered."
+    "emptyText": "Your cart is empty or contains items that can no longer be ordered.",
+    "leadRequest": "Enter your details and what you need. No payment is taken now: I’ll then email you the invoice and a PayPal payment link.",
+    "submitRequest": "Send order",
+    "submittingRequest": "Sending your order…",
+    "requestErrorTitle": "Your order was not sent",
+    "requestErrors": {
+      "invalid": "Some information could not be verified. Reload the page and try again.",
+      "too-fast": "Sent too quickly: take a few seconds to review your order, then submit again.",
+      "failed": "Your order could not be sent. Check your connection and try again, or contact me. Your cart and details are kept.",
+      "not-configured": "Online ordering isn’t available yet. Contact me to order."
+    },
+    "done": {
+      "title": "Order sent",
+      "thanks": "Thank you {{name}}, your order has been received.",
+      "text": "No payment has been taken yet.",
+      "referenceLabel": "Order number",
+      "next": "I’ll get back to you at {{email}} with the invoice and a PayPal payment link.",
+      "keep": "Keep this number: you’ll need it for anything related to your order."
+    }
   },
   "order": {
     "number": "Order no. {{id}}",
@@ -561,7 +581,22 @@
       "failure": "Decline reason",
       "alertDuplicate": "A second PayPal payment was detected for this order: refund it from your PayPal account (capture {{id}}).",
       "alertMismatch": "The amount charged differs from the order amount: check this transaction in PayPal.",
-      "lateCapture": "Payment confirmed after the customer abandoned the order."
+      "lateCapture": "Payment confirmed after the customer abandoned the order.",
+      "requestsTitle": "Orders to invoice",
+      "requestsLead": "Orders placed on the site without online payment. Check the amount, send the PayPal invoice, then update the tracking.",
+      "requestsEmpty": "No orders to invoice yet.",
+      "paidTitle": "Orders paid online",
+      "indicative": "Estimated amount",
+      "requestStatus": "Tracking",
+      "requestStatuses": {
+        "new": "New",
+        "invoiced": "Invoice sent",
+        "paid": "Paid",
+        "done": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "requestNote": "Internal note (optional)",
+      "emailSubject": "Your order {{id}} – Krimossimo"
     },
     "messages": {
       "title": "Messages",

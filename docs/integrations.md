@@ -158,3 +158,25 @@ Si elle est renseignée, elle est utilisée à la place de `VITE_CONTACT_ENDPOIN
 « message envoyé » que si Web3Forms répond `success: true`. Les messages arrivent par e-mail
 uniquement : ils n'apparaissent pas dans la page Messages de l'administration.
 Pour répondre, utiliser « Répondre » dans Gmail : la réponse part vers l'adresse du visiteur.
+
+## Commandes sans paiement en ligne (gratuit)
+
+Tant que les Cloud Functions ne sont pas déployées (`VITE_FUNCTIONS_BASE_URL` vide), la page
+Commande fonctionne en mode « commande, paiement ensuite » (`src/lib/orderRequests.ts`) :
+
+1. Le client valide son panier (offres à **prix fixe** uniquement) et ses coordonnées.
+2. La commande reçoit un numéro `KRM-AAAAMMJJ-XXXXXX` et est :
+   - enregistrée dans Firestore, collection `orderRequests` (création seule, schéma vérifié par
+     `firestore.rules`) : elle apparaît dans l'administration, page Commandes ;
+   - envoyée par e-mail via Web3Forms (si `VITE_WEB3FORMS_ACCESS_KEY` est renseignée).
+3. Vous vérifiez le montant (indicatif : calculé par le navigateur), envoyez une facture PayPal
+   (PayPal > Facturation), puis mettez le suivi à jour : Nouvelle → Facture envoyée → Payée → Terminée.
+
+Aucun paiement n'est encaissé par le site : le client ne voit « commande enregistrée » que si
+Firestore ou Web3Forms a confirmé la réception.
+
+**À faire une fois** : publier les règles Firestore (gratuit, compatible forfait Spark) :
+
+```bash
+firebase deploy --only firestore:rules --project krimossimo-1111
+```

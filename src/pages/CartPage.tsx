@@ -12,6 +12,7 @@ import { PixelMark } from '../components/ui/PixelMark'
 import { useContent } from '../hooks/useContent'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { formatCents, pick, useLocale } from '../hooks/useLocale'
+import { isOrderApiConfigured } from '../lib/orders'
 
 export default function CartPage() {
   const { t } = useTranslation()
@@ -91,7 +92,7 @@ function CartContent({ catalog }: { catalog: Parameters<typeof summarizeCart>[1]
             {summary.currency ? formatCents(summary.totalCents, summary.currency, locale) : '—'}
           </span>
         </div>
-        <p className="mt-3 text-sm text-muted">{t('cart.totalNote')}</p>
+        <p className="mt-3 text-sm text-muted">{isOrderApiConfigured ? t('cart.totalNote') : t('cart.totalNoteInvoice')}</p>
         <div className="mt-6 flex flex-col gap-3">
           {summary.canCheckout ? (
             <ButtonLink to="/checkout" className="w-full">

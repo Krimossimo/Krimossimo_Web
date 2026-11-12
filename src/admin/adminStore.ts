@@ -24,7 +24,7 @@ export async function listCollection(name: ManagedCollection): Promise<RawDoc[]>
   return snapshot.docs.map((d) => ({ id: d.id, data: d.data() }))
 }
 
-export async function listLatest(name: 'orders' | 'contactMessages', max = 50): Promise<RawDoc[]> {
+export async function listLatest(name: 'orders' | 'contactMessages' | 'orderRequests', max = 50): Promise<RawDoc[]> {
   const [db, { collection, getDocs, limit, orderBy, query }] = await Promise.all([getDb(), firestore()])
   const snapshot = await getDocs(query(collection(db, name), orderBy('createdAt', 'desc'), limit(max)))
   return snapshot.docs.map((d) => ({ id: d.id, data: d.data() }))
@@ -51,6 +51,20 @@ export async function updateContent(name: ManagedCollection, id: string, data: P
 export async function deleteContent(name: ManagedCollection, id: string): Promise<void> {
   const [db, { doc, deleteDoc }] = await Promise.all([getDb(), firestore()])
   await deleteDoc(doc(db, name, id))
+}
+
+/**
+ * Suivi d'une commande sans paiement en ligne (orderRequests) : seuls le statut et la note
+ * changent, avec l'auteur et l'horodatage serveur exigés par firestore.rules.
+ */
+export async function updateOrderRequestTracking(id: string, status: string, note: string, uid: string): Promise<void> {
+  const [db, { doc, updateDoc, serverTimestamp, deleteField }] = await Promise.all([getDb(), firestore()])
+  await updateDoc(doc(db, 'orderRequests', id), {
+    status,
+    note: note ? note : deleteField(),
+    updatedAt: serverTimestamp(),
+    updatedBy: uid,
+  })
 }
 
 /** Code d'erreur Firestore lisible (permission refusée, réseau...). */

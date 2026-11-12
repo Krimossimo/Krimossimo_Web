@@ -21,6 +21,9 @@ type Props = {
   /** Appelé uniquement quand toutes les validations passent. */
   onValidSubmit: (values: CheckoutValues) => void
   submitting: boolean
+  /** Libellés du bouton (par défaut : commande avec paiement en ligne). */
+  submitLabel?: string
+  submittingLabel?: string
 }
 
 type ControlElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -30,7 +33,7 @@ const inputBase =
   'hover:border-ink focus:border-blue focus-visible:outline-2 focus-visible:outline-offset-2'
 
 /** Formulaire de commande : coordonnées + besoin. Validation à la saisie et à l'envoi. */
-export function CheckoutForm({ values, onChange, onValidSubmit, submitting }: Props) {
+export function CheckoutForm({ values, onChange, onValidSubmit, submitting, submitLabel, submittingLabel }: Props) {
   const { t } = useTranslation()
   const formId = useId()
   const [errors, setErrors] = useState<CheckoutErrors>({})
@@ -259,7 +262,7 @@ export function CheckoutForm({ values, onChange, onValidSubmit, submitting }: Pr
         aria-disabled={submitting}
         className={buttonClass('primary', 'mt-8 w-full px-6 aria-disabled:cursor-wait aria-disabled:opacity-70 sm:w-auto')}
       >
-        {submitting ? t('checkout.submitting') : t('checkout.submit')}
+        {submitting ? (submittingLabel ?? t('checkout.submitting')) : (submitLabel ?? t('checkout.submit'))}
       </button>
     </form>
   )

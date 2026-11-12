@@ -6,6 +6,7 @@
 import { isRecord, toIsoDate } from '../content/validation'
 import { currencies, type Currency } from '../types/content'
 import { orderStatuses, type OrderStatus } from '../lib/orders'
+import { orderRequestStatuses, type OrderRequestStatus } from '../lib/orderRequests'
 import { fulfillmentStatuses, messageStatuses, type FulfillmentStatus, type MessageStatus } from './adminApi'
 
 export type AdminOrder = {
@@ -135,4 +136,63 @@ export const hasFulfillment = (order: AdminOrder) => order.status === 'paid'
 export function mailtoHref(email: string, subject?: string): string {
   const address = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+$/.test(email) ? email : encodeURIComponent(email)
   return `mailto:${address}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`
+}
+
+/** Commande sans paiement en ligne (collection orderRequests, créée par le navigateur du client). */
+export type AdminOrderRequest = {
+  id: string
+  status: OrderRequestStatus
+  currency: Currency
+  /** Montant calculé par le navigateur : indicatif, à vérifier avant facturation. */
+  totalCents: number
+  items: { offerId: string; title: string; unitCents: number; quantity: number }[]
+  customer: { firstName: string; lastName: string; email: string; phone?: string; company?: string; country: string }
+  project: { details: string; referenceUrl?: string; deadline?: string }
+  createdAt: string | null
+  note?: string
+}
+
+export function parseAdminOrderRequest(id: string, data: unknown): AdminOrderRequest | null {
+  if (!isRecord(data) || !isRecord(data.customer) || !Array.isArray(data.items)) return null
+  const currency = data.currency
+  const totalCents = cents(data.totalCents)
+  if (!(currencies as readonly unknown[]).includes(currency) || totalCents === undefined) return null
+  const items: AdminOrderRequest['items'] = []
+  for (const item of data.items) {
+    if (!isRecord(item)) return null
+    const offerId = str(item.offerId, 80)
+    const title = str(item.title, 300)
+    const unitCents = cents(item.unitCents)
+    const quantity = cents(item.quantity)
+    if (!offerId || title === undefined || unitCents === undefined || !quantity) return null
+    items.push({ offerId, title, unitCents, quantity })
+  }
+  const c = data.customer
+  const firstName = str(c.firstName, 80)
+  const lastName = str(c.lastName, 80)
+  const email = str(c.email, 254)
+  const country = str(c.country, 60)
+  if (!firstName || !lastName || !email || !country) return null
+  const project = isRecord(data.project) ? data.project : {}
+  const request: AdminOrderRequest = {
+    id,
+    status: (orderRequestStatuses as readonly unknown[]).includes(data.status) ? (data.status as OrderRequestStatus) : 'new',
+    currency: currency as Currency,
+    totalCents,
+    items,
+    customer: { firstName, lastName, email, country },
+    project: { details: str(project.details, 3000) ?? '' },
+    createdAt: toIsoDate(data.createdAt),
+  }
+  const phone = str(c.phone, 25)
+  const company = str(c.company, 120)
+  if (phone) request.customer.phone = phone
+  if (company) request.customer.company = company
+  const referenceUrl = str(project.referenceUrl, 500)
+  const deadline = str(project.deadline, 20)
+  if (referenceUrl) request.project.referenceUrl = referenceUrl
+  if (deadline) request.project.deadline = deadline
+  const note = str(data.note, 1000)
+  if (note) request.note = note
+  return request
 }
