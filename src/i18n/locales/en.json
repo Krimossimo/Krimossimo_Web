@@ -47,43 +47,6 @@
     "secondaryCta": "Get in touch",
     "status": "Available for new projects"
   },
-  "modes": {
-    "title": "Pick a mode",
-    "hint": "Keys 1 to 3",
-    "dev": {
-      "label": "Code",
-      "title": "Websites and apps",
-      "text": "I build your website, app or software with the help of generative AI.",
-      "items": [
-        "Website creation",
-        "Apps and software",
-        "UX/UI design"
-      ],
-      "cta": "See my projects"
-    },
-    "create": {
-      "label": "Creation",
-      "title": "Content and promotion",
-      "text": "I create video content and can promote your product, under my terms.",
-      "items": [
-        "Video content",
-        "Streams",
-        "YouTube or Story ads"
-      ],
-      "cta": "See the services"
-    },
-    "play": {
-      "label": "Gaming",
-      "title": "My video games",
-      "text": "Find my video games, with their download link or official store page.",
-      "items": [
-        "Gallery of my games",
-        "Free or paid games",
-        "Download or official store"
-      ],
-      "cta": "Explore the games"
-    }
-  },
   "projects": {
     "title": "Featured projects",
     "lead": "A selection of work, across web development and creation.",
@@ -889,9 +852,9 @@
         "title": "Level floor",
         "text": "Scroll all the way down a page."
       },
-      "modes": {
-        "title": "Jack of all trades",
-        "text": "Try all three modes on the home page."
+      "spawn": {
+        "title": "Back to spawn",
+        "text": "Return home by clicking the Krimossimo logo."
       },
       "theme": {
         "title": "Day and night",
@@ -909,7 +872,8 @@
         "title": "Secret code",
         "text": "↑ ↑ ↓ ↓ ← → ← → B A, typed on the keyboard."
       }
-    }
+    },
+    "close": "Close achievements"
   },
   "home": {
     "marqueeLabel": "What I do"

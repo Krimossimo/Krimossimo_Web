@@ -9,7 +9,7 @@ export const achievementIds = [
   'start',
   'explorer',
   'bottom',
-  'modes',
+  'spawn',
   'theme',
   'language',
   'loot',
@@ -23,8 +23,6 @@ export const hiddenAchievements: ReadonlySet<AchievementId> = new Set(['secret']
 
 /** Nombre de pages différentes à visiter pour « Explorateur ». */
 export const EXPLORER_PAGES = 4
-/** Modes de l'accueil à essayer pour « Touche-à-tout ». */
-export const MODE_KEYS = ['dev', 'create', 'play'] as const
 
 export type GameState = {
   version: 1
@@ -32,11 +30,9 @@ export type GameState = {
   unlocked: Partial<Record<AchievementId, number>>
   /** Pages visitées (chemins normalisés, sans paramètres). */
   pages: string[]
-  /** Modes essayés sur l'accueil. */
-  modes: string[]
 }
 
-export const emptyState = (): GameState => ({ version: 1, unlocked: {}, pages: [], modes: [] })
+export const emptyState = (): GameState => ({ version: 1, unlocked: {}, pages: [] })
 
 export const STORAGE_KEY = 'krimossimo-achievements'
 
@@ -70,14 +66,6 @@ export function visitPage(state: GameState, pathname: string, now = Date.now()):
   return pages.length >= EXPLORER_PAGES ? unlock(next, 'explorer', now) : { state: next, unlocked: [] }
 }
 
-/** Enregistre un mode essayé ; débloque « Touche-à-tout » quand les trois l'ont été. */
-export function tryMode(state: GameState, mode: string, now = Date.now()): Result {
-  if (!(MODE_KEYS as readonly string[]).includes(mode)) return { state, unlocked: [] }
-  const modes = state.modes.includes(mode) ? state.modes : [...state.modes, mode]
-  const next = modes === state.modes ? state : { ...state, modes }
-  return MODE_KEYS.every((m) => modes.includes(m)) ? unlock(next, 'modes', now) : { state: next, unlocked: [] }
-}
-
 /** Lecture tolérante : toute donnée invalide est ignorée plutôt que de casser le site. */
 export function parseState(raw: string | null): GameState {
   if (!raw) return emptyState()
@@ -90,7 +78,7 @@ export function parseState(raw: string | null): GameState {
       if (typeof at === 'number' && Number.isFinite(at)) unlocked[id] = at
     }
     const strings = (v: unknown) => (Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string').slice(0, 50) : [])
-    return { version: 1, unlocked, pages: strings(data.pages), modes: strings(data.modes) }
+    return { version: 1, unlocked, pages: strings(data.pages) }
   } catch {
     return emptyState()
   }

@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import { navItems, socials } from '../../config/site'
 import { BrandLogo } from '../ui/BrandLogo'
 import { ButtonLink } from '../ui/ButtonLink'
-import { AchievementsPanel } from '../game/AchievementsPanel'
 import { ArrowUpRightIcon, MailIcon, SocialIcon } from '../ui/Icons'
 
 export function Footer() {
@@ -33,8 +32,6 @@ export function Footer() {
             {t('footer.ctaButton')}
           </ButtonLink>
         </div>
-
-        <AchievementsPanel />
 
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>

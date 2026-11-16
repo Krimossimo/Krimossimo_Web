@@ -7,8 +7,6 @@ export type GameApi = {
   count: number
   total: number
   unlock: (id: AchievementId) => void
-  /** Signale qu'un mode de l'accueil a été essayé. */
-  trackMode: (mode: string) => void
   /** Efface la progression (bouton « Recommencer »). */
   reset: () => void
   /** Succès récemment débloqués, affichés en notification. */

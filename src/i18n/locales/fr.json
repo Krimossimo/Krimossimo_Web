@@ -47,43 +47,6 @@
     "secondaryCta": "Me contacter",
     "status": "Disponible pour de nouveaux projets"
   },
-  "modes": {
-    "title": "Choisissez un mode",
-    "hint": "Touches 1 à 3",
-    "dev": {
-      "label": "Code",
-      "title": "Sites web et applications",
-      "text": "Je crée votre site web, votre application ou votre logiciel avec l’aide de l’IA générative.",
-      "items": [
-        "Création de sites web",
-        "Applications et logiciels",
-        "Design UX/UI"
-      ],
-      "cta": "Voir mes projets"
-    },
-    "create": {
-      "label": "Création",
-      "title": "Contenus et mise en avant",
-      "text": "Je crée des contenus vidéo et je peux mettre en avant votre produit, selon mes conditions.",
-      "items": [
-        "Contenus vidéo",
-        "Streams",
-        "Publicité YouTube ou Story"
-      ],
-      "cta": "Voir les offres"
-    },
-    "play": {
-      "label": "Gaming",
-      "title": "Mes jeux vidéo",
-      "text": "Retrouvez mes jeux vidéo, avec leur lien de téléchargement ou de boutique officielle.",
-      "items": [
-        "Galerie de mes jeux",
-        "Jeux gratuits ou payants",
-        "Téléchargement ou boutique officielle"
-      ],
-      "cta": "Explorer les jeux vidéo"
-    }
-  },
   "projects": {
     "title": "Projets à la une",
     "lead": "Une sélection de réalisations, entre développement web et création.",
@@ -889,9 +852,9 @@
         "title": "Fond du niveau",
         "text": "Descendre jusqu’en bas d’une page."
       },
-      "modes": {
-        "title": "Touche-à-tout",
-        "text": "Essayer les trois modes de l’accueil."
+      "spawn": {
+        "title": "Retour au spawn",
+        "text": "Revenir à l’accueil en cliquant sur le logo Krimossimo."
       },
       "theme": {
         "title": "Jour et nuit",
@@ -909,7 +872,8 @@
         "title": "Code secret",
         "text": "↑ ↑ ↓ ↓ ← → ← → B A, tapé au clavier."
       }
-    }
+    },
+    "close": "Fermer les succès"
   },
   "home": {
     "marqueeLabel": "Ce que je fais"

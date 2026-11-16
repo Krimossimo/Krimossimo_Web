@@ -12,7 +12,6 @@ import {
   isUnlocked,
   loadState,
   saveState,
-  tryMode,
   unlock as unlockPure,
   unlockedCount,
   visitPage,
@@ -48,7 +47,6 @@ export function GameProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const unlock = useCallback((id: AchievementId) => apply((s) => unlockPure(s, id)), [apply])
-  const trackMode = useCallback((mode: string) => apply((s) => tryMode(s, mode)), [apply])
   const reset = useCallback(() => {
     const fresh = emptyState()
     stateRef.current = fresh
@@ -135,12 +133,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
       count: unlockedCount(state),
       total: achievementIds.length,
       unlock,
-      trackMode,
       reset,
       toasts,
       dismiss,
     }),
-    [state, unlock, trackMode, reset, toasts, dismiss],
+    [state, unlock, reset, toasts, dismiss],
   )
 
   return <GameContext.Provider value={api}>{children}</GameContext.Provider>

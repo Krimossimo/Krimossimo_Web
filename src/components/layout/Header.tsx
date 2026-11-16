@@ -9,6 +9,8 @@ import { CloseIcon, MenuIcon } from '../ui/Icons'
 import { MobileMenu } from './MobileMenu'
 import { CartLink } from '../cart/CartLink'
 import { AchievementChip } from '../game/AchievementChip'
+import { useGame } from '../../game/game-context'
+import { prefersReducedMotion } from '../../motion/effects'
 
 export function Header() {
   const { t } = useTranslation()
@@ -16,6 +18,17 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
+  const [logoSpin, setLogoSpin] = useState(0)
+  const unlock = useGame()?.unlock
+
+  // Clic sur le logo : petite rotation du logo ; déjà sur l'accueil, remontée douce en haut de page.
+  const onLogoClick = () => {
+    setLogoSpin((n) => n + 1)
+    unlock?.('spawn')
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' })
+    }
+  }
 
   const close = useCallback((restoreFocus = true) => {
     setOpen(false)
@@ -58,8 +71,8 @@ export function Header() {
         }`}
       />
       <div className="mx-auto flex h-[4.5rem] max-w-[76rem] items-center gap-3 px-4 sm:gap-6 sm:px-6 lg:px-8">
-        <Link to="/" aria-label={t('a11y.home')} className="flex shrink-0 rounded-xl">
-          <BrandLogo />
+        <Link to="/" aria-label={t('a11y.home')} onClick={onLogoClick} className="flex shrink-0 rounded-xl">
+          <BrandLogo spin={logoSpin} />
         </Link>
 
         <nav aria-label={t('a11y.mainNav')} className="ml-auto hidden lg:block">
@@ -106,7 +119,7 @@ export function Header() {
           >
             {t('nav.contact')}
           </NavLink>
-          <AchievementChip className="hidden sm:inline-flex" />
+          <AchievementChip />
           <LanguageSwitcher className="hidden sm:inline-flex" />
           <CartLink />
           <ThemeToggle />

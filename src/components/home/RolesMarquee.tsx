@@ -16,20 +16,20 @@ export function RolesMarquee() {
       {roles.map((role, i) => (
         <li key={role} className="flex items-center">
           <span
-            className={`whitespace-nowrap px-6 font-display text-[clamp(1.6rem,3.6vw,2.8rem)] font-semibold tracking-[-0.035em] sm:px-9 ${
-              i % 2 ? 'text-transparent [-webkit-text-stroke:1.5px_var(--k-ink)]' : 'text-ink'
+            className={`whitespace-nowrap px-7 font-sans text-[clamp(1.45rem,3vw,2.35rem)] font-semibold leading-none tracking-[-0.04em] sm:px-10 ${
+              i % 2 ? 'text-muted' : 'text-ink'
             }`}
           >
             {t(`about.roles.${role}.title`)}
           </span>
-          <PixelMark seed={`role-${role}`} className="size-7 shrink-0 text-blue sm:size-8" />
+          <PixelMark seed={`role-${role}`} className="size-5 shrink-0 text-blue sm:size-6" />
         </li>
       ))}
     </ul>
   )
 
   return (
-    <section aria-label={t('home.marqueeLabel')} className="marquee overflow-hidden border-y border-line py-6 sm:py-8">
+    <section aria-label={t('home.marqueeLabel')} className="marquee overflow-hidden border-y border-line py-7 sm:py-9">
       <div className="marquee-track">
         {row(false)}
         {row(true)}

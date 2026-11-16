@@ -498,6 +498,52 @@
   }
 }
 
+/* Clic sur le logo (retour à l'accueil) : la pièce K fait un tour, le nom suit d'un léger glissement. */
+.logo-flip {
+  animation: k-logo-flip 700ms var(--ease-snap) both;
+}
+@keyframes k-logo-flip {
+  0% {
+    transform: perspective(300px) rotateY(0deg) scale(1);
+  }
+  35% {
+    transform: perspective(300px) rotateY(200deg) scale(0.9);
+  }
+  100% {
+    transform: perspective(300px) rotateY(360deg) scale(1);
+  }
+}
+.logo-word {
+  animation: k-logo-word 600ms var(--ease-snap) both;
+}
+@keyframes k-logo-word {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* Ouverture du panneau des succès. */
+.panel-in {
+  animation: k-panel 260ms var(--ease-snap) both;
+  transform-origin: top right;
+}
+@keyframes k-panel {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Notification de succès débloqué. */
 .toast-in {
   animation: k-toast 520ms cubic-bezier(0.2, 1.4, 0.4, 1) both;

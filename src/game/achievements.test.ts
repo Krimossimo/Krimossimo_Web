@@ -6,7 +6,6 @@ import {
   emptyState,
   normalizePath,
   parseState,
-  tryMode,
   unlock,
   unlockedCount,
   visitPage,
@@ -39,24 +38,15 @@ describe('succès', () => {
     expect(visitPage(state, '/games').unlocked).toEqual(['explorer'])
   })
 
-  it('débloque « Touche-à-tout » après les trois modes', () => {
-    let state = emptyState()
-    state = tryMode(state, 'dev').state
-    state = tryMode(state, 'dev').state
-    state = tryMode(state, 'inconnu').state
-    state = tryMode(state, 'create').state
-    expect(state.modes).toEqual(['dev', 'create'])
-    expect(tryMode(state, 'play').unlocked).toEqual(['modes'])
-  })
-
   it('lit un état stocké en ignorant les données invalides', () => {
     expect(parseState(null)).toEqual(emptyState())
     expect(parseState('pas du json')).toEqual(emptyState())
     expect(parseState('{"version":2}')).toEqual(emptyState())
     const state = parseState(
-      JSON.stringify({ version: 1, unlocked: { start: 5, faux: 3, theme: 'x' }, pages: ['/', 4], modes: 'dev' }),
+      JSON.stringify({ version: 1, unlocked: { start: 5, faux: 3, theme: 'x', modes: 2 }, pages: ['/', 4], modes: ['dev'] }),
     )
-    expect(state).toEqual({ version: 1, unlocked: { start: 5 }, pages: ['/'], modes: [] })
+    // Les anciens succès retirés (ex. « modes ») sont ignorés.
+    expect(state).toEqual({ version: 1, unlocked: { start: 5 }, pages: ['/'] })
     expect(STORAGE_KEY).toBe('krimossimo-achievements')
   })
 
