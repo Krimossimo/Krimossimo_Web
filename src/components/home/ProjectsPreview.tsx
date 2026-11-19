@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import { Link } from 'react-router'
 import { buttonClass } from '../ui/buttonStyles'
 import { useTranslation } from 'react-i18next'
-import { contentService, selectFeaturedProjects } from '../../content'
+import { contentService, selectFeaturedProjects, splitProjectsByKind } from '../../content'
 import { useContent } from '../../hooks/useContent'
 import { ContentError, ContentLoading } from '../ui/ContentStates'
 import { ProjectCard } from '../projects/ProjectCard'
@@ -16,9 +16,11 @@ export function ProjectsPreview() {
   const { t } = useTranslation()
   const state = useContent(contentService.projects)
 
-  if (state.status === 'ready' && state.data.length === 0) return null
+  // L'accueil ne montre que les projets perso ; les projets pour des tiers restent sur la page Projets.
+  const personal = state.status === 'ready' ? splitProjectsByKind(state.data).personal : []
+  if (state.status === 'ready' && personal.length === 0) return null
 
-  const selection = state.status === 'ready' ? selectFeaturedProjects(state.data, 3) : []
+  const selection = selectFeaturedProjects(personal, 3)
   const [first, ...others] = selection
 
   return (

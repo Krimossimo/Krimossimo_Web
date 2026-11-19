@@ -38,6 +38,17 @@ export function countProjectsByCategory(projects: readonly Project[]): Record<Pr
   return counts
 }
 
+/** Projet perso (par défaut) ou réalisé pour un tiers. */
+export const isClientProject = (project: Pick<Project, 'kind'>) => project.kind === 'client'
+
+/** Sépare les projets perso (mis en avant) des projets réalisés pour des tiers. */
+export function splitProjectsByKind<T extends Pick<Project, 'kind'>>(projects: readonly T[]): { personal: T[]; client: T[] } {
+  return {
+    personal: projects.filter((p) => !isClientProject(p)),
+    client: projects.filter((p) => isClientProject(p)),
+  }
+}
+
 /** Projets de l'accueil : les « featured » d'abord, puis l'ordre habituel. */
 export function selectFeaturedProjects(projects: readonly Project[], max = 3): Project[] {
   const sorted = sortByOrderThenDate(projects)

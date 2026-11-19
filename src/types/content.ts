@@ -52,6 +52,15 @@ type ContentBase = {
 export const projectCategories = ['website', 'software', 'cybersecurity', 'uiux'] as const
 export type ProjectCategory = (typeof projectCategories)[number]
 
+/**
+ * Type de projet :
+ * - personal : projet perso, mis en avant (grandes cartes, accueil) ;
+ * - client   : réalisé pour un tiers (client, partenaire…), présenté plus sobrement.
+ * Champ absent = projet perso.
+ */
+export const projectKinds = ['personal', 'client'] as const
+export type ProjectKind = (typeof projectKinds)[number]
+
 export const projectProgresses = ['in-progress', 'completed'] as const
 export type ProjectProgress = (typeof projectProgresses)[number]
 
@@ -72,6 +81,10 @@ export type Project = ContentBase & {
   stack?: string[]
   /** Mis en avant sur l'accueil. */
   featured?: boolean
+  /** Projet perso (par défaut) ou réalisé pour un tiers. */
+  kind?: ProjectKind
+  /** Pour qui le projet a été réalisé (projets pour un tiers, facultatif). */
+  clientName?: string
 }
 
 /* --------------------------------------------------------------- Offres */

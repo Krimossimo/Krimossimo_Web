@@ -109,7 +109,11 @@
     "emptyAllText": "Les projets apparaîtront ici dès leur publication.",
     "emptyFilteredTitle": "Aucun projet dans cette catégorie",
     "emptyFilteredText": "Choisissez une autre catégorie ou affichez tous les projets.",
-    "showAll": "Afficher tous les projets"
+    "showAll": "Afficher tous les projets",
+    "personalTitle": "Mes projets perso",
+    "personalLead": "Mes propres projets : de l’idée à la réalisation.",
+    "clientTitle": "Réalisations pour des tiers",
+    "clientLead": "Projets réalisés pour d’autres, en bref."
   },
   "categories": {
     "website": "Site web",
@@ -129,7 +133,9 @@
     "stack": "Technologies",
     "visit": "Ouvrir le lien du projet",
     "notFoundTitle": "Projet introuvable",
-    "notFoundText": "Ce projet n’existe pas ou n’est plus publié."
+    "notFoundText": "Ce projet n’existe pas ou n’est plus publié.",
+    "client": "Réalisé pour",
+    "clientUnnamed": "Un tiers"
   },
   "shop": {
     "title": "Boutique",
@@ -738,7 +744,22 @@
         "stack": "Technologies (facultatif)",
         "stackHint": "Séparées par des virgules, ex. React, Firebase.",
         "featured": "Mis en avant",
-        "featuredHint": "Affiché en priorité sur la page d’accueil."
+        "featuredHint": "Affiché en priorité sur la page d’accueil.",
+        "kind": "Type de projet",
+        "clientName": "Pour qui (facultatif)",
+        "clientNameHint": "Nom du client, de l’entreprise ou de l’organisation. Laissez vide pour ne pas le citer."
+      },
+      "kinds": {
+        "personal": {
+          "label": "Projet perso",
+          "hint": "Mis en avant : grande carte sur la page Projets et sur l’accueil.",
+          "badge": "Perso"
+        },
+        "client": {
+          "label": "Projet pour un tiers",
+          "hint": "Présenté plus sobrement, dans une liste compacte sous les projets perso.",
+          "badge": "Tiers"
+        }
       }
     },
     "shop": {

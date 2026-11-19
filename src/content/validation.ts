@@ -15,6 +15,7 @@ import {
   currencies,
   offerAvailabilities,
   projectCategories,
+  projectKinds,
   projectProgresses,
   publicationStatuses,
   type Game,
@@ -33,7 +34,7 @@ const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const IMAGE_PATH_PATTERN = /^(?!\/\/)[\w\-./]+\.(?:webp|avif|png|jpe?g|gif|svg)$/i
 const YOUTUBE_ID_PATTERN = /^[A-Za-z0-9_-]{11}$/
 
-const limits = { title: 140, summary: 400, description: 6000, alt: 250, conditions: 600, storeName: 60, tech: 40 }
+const limits = { title: 140, summary: 400, description: 6000, alt: 250, conditions: 600, storeName: 60, tech: 40, clientName: 120 }
 
 export function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
@@ -272,6 +273,8 @@ export function parseProject(input: unknown): ParseResult<Project> {
       progress: r.oneOf('progress', projectProgresses, true),
       stack: r.stringList('stack', limits.tech),
       featured: r.boolean('featured'),
+      kind: r.oneOf('kind', projectKinds, true),
+      clientName: r.string('clientName', limits.clientName, true),
     },
   )
   stripUndefined(value)

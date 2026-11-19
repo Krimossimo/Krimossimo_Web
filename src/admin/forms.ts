@@ -18,6 +18,7 @@ import {
   type Currency,
   type OfferAvailability,
   type ProjectCategory,
+  type ProjectKind,
   type ProjectProgress,
   type PublicationStatus,
   type Translatable,
@@ -45,7 +46,7 @@ export function fromTranslatable(value: unknown): Bilingual {
   return { ...emptyBilingual }
 }
 
-export const limits = { title: 140, description: 6000, alt: 250, conditions: 600, url: 2048, storeName: 60, stack: 20, tech: 40 }
+export const limits = { title: 140, description: 6000, alt: 250, conditions: 600, url: 2048, storeName: 60, stack: 20, tech: 40, clientName: 120 }
 
 export type FieldError =
   | { code: 'required' }
@@ -160,6 +161,8 @@ export type ProjectForm = {
   progress: ProjectProgress | ''
   stack: string
   featured: boolean
+  kind: ProjectKind
+  clientName: string
   createdAt: string
   publication: PublicationStatus
   preserved: Record<string, unknown>
@@ -176,6 +179,8 @@ export function emptyProjectForm(): ProjectForm {
     progress: '',
     stack: '',
     featured: false,
+    kind: 'personal',
+    clientName: '',
     createdAt: today(),
     publication: 'draft',
     preserved: {},
@@ -193,6 +198,8 @@ export function projectFormFromDoc(id: string, data: Record<string, unknown>): P
     progress: (projectProgresses as readonly unknown[]).includes(data.progress) ? (data.progress as ProjectProgress) : '',
     stack: Array.isArray(data.stack) ? data.stack.filter((s) => typeof s === 'string').join(', ') : '',
     featured: data.featured === true,
+    kind: data.kind === 'client' ? 'client' : 'personal',
+    clientName: typeof data.clientName === 'string' ? data.clientName : '',
     createdAt: dateField(data.createdAt),
     publication: data.publication === 'published' ? 'published' : 'draft',
     preserved: preserve(data, ['summary', 'order']),
@@ -213,6 +220,9 @@ export function validateProjectForm(form: ProjectForm, { hasNewFile = false } = 
   checkBilingual(errors, 'description', form.description, limits.description)
   checkImage(errors, form.image, hasNewFile, false)
   checkUrl(errors, 'externalUrl', form.externalUrl, false)
+  if (form.kind === 'client' && form.clientName.trim().length > limits.clientName) {
+    errors.clientName = { code: 'tooLong', max: limits.clientName }
+  }
   const stack = splitStack(form.stack)
   if (stack.length > limits.stack || stack.some((s) => s.length > limits.tech)) errors.stack = { code: 'stack' }
   checkDate(errors, 'createdAt', form.createdAt)
@@ -236,6 +246,10 @@ export function projectInput(form: ProjectForm, imageSrc: string): Record<string
   const stack = splitStack(form.stack)
   if (stack.length) doc.stack = stack
   if (form.featured) doc.featured = true
+  if (form.kind === 'client') {
+    doc.kind = 'client'
+    if (form.clientName.trim()) doc.clientName = form.clientName.trim()
+  }
   return doc
 }
 

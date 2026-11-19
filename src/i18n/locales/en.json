@@ -109,7 +109,11 @@
     "emptyAllText": "Projects will appear here as soon as they are published.",
     "emptyFilteredTitle": "No projects in this category",
     "emptyFilteredText": "Pick another category or show all projects.",
-    "showAll": "Show all projects"
+    "showAll": "Show all projects",
+    "personalTitle": "Personal projects",
+    "personalLead": "My own projects, from idea to launch.",
+    "clientTitle": "Work for others",
+    "clientLead": "Projects made for others, at a glance."
   },
   "categories": {
     "website": "Website",
@@ -129,7 +133,9 @@
     "stack": "Technologies",
     "visit": "Open the project link",
     "notFoundTitle": "Project not found",
-    "notFoundText": "This project doesn’t exist or is no longer published."
+    "notFoundText": "This project doesn’t exist or is no longer published.",
+    "client": "Made for",
+    "clientUnnamed": "A client"
   },
   "shop": {
     "title": "Shop",
@@ -738,7 +744,22 @@
         "stack": "Technologies (optional)",
         "stackHint": "Comma-separated, e.g. React, Firebase.",
         "featured": "Featured",
-        "featuredHint": "Shown first on the home page."
+        "featuredHint": "Shown first on the home page.",
+        "kind": "Project type",
+        "clientName": "Made for (optional)",
+        "clientNameHint": "Name of the client, company or organisation. Leave empty to keep it private."
+      },
+      "kinds": {
+        "personal": {
+          "label": "Personal project",
+          "hint": "Highlighted: large card on the Projects page and the home page.",
+          "badge": "Personal"
+        },
+        "client": {
+          "label": "Project for someone else",
+          "hint": "Shown more discreetly, in a compact list below personal projects.",
+          "badge": "Client"
+        }
       }
     },
     "shop": {

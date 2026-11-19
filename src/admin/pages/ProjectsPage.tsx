@@ -19,7 +19,16 @@ function Projects() {
       describe={(doc) => ({
         imageSrc: isRecord(doc.data.cover) && typeof doc.data.cover.src === 'string' ? doc.data.cover.src : undefined,
         meta: typeof doc.data.category === 'string' ? t(`categories.${doc.data.category}`, { defaultValue: doc.data.category }) : null,
-        badges: doc.data.featured === true ? <Badge tone="blue">{t('admin.projects.fields.featured')}</Badge> : null,
+        badges: (
+          <>
+            {doc.data.kind === 'client' ? (
+              <Badge>{t('admin.projects.kinds.client.badge')}</Badge>
+            ) : (
+              <Badge tone="solid">{t('admin.projects.kinds.personal.badge')}</Badge>
+            )}
+            {doc.data.featured === true && <Badge tone="blue">{t('admin.projects.fields.featured')}</Badge>}
+          </>
+        ),
       })}
     />
   )

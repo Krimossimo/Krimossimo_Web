@@ -41,6 +41,8 @@ export const demoProjects: Project[] = [
   {
     id: 'demo-audit-securite',
     isDemo: true,
+    kind: 'client',
+    clientName: 'Client fictif',
     title: { fr: 'Exemple : audit de sécurité', en: 'Example: security audit' },
     category: 'cybersecurity',
     createdAt: '2026-05-11',
@@ -55,6 +57,8 @@ export const demoProjects: Project[] = [
   {
     id: 'demo-maquettes-mobile',
     isDemo: true,
+    kind: 'client',
+    clientName: 'Client fictif',
     title: { fr: 'Exemple : maquettes d’application mobile', en: 'Example: mobile app mockups' },
     category: 'uiux',
     createdAt: '2026-03-27',

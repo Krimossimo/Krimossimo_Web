@@ -98,6 +98,9 @@ function ProjectDetail({ project }: { project: Project }) {
   const locale = useLocale()
   const paragraphs = pick(project.description, locale).split(/\n\s*\n/)
   const facts = [
+    ...(project.kind === 'client'
+      ? [{ label: t('projectDetail.client'), value: project.clientName || t('projectDetail.clientUnnamed') }]
+      : []),
     { label: t('projectDetail.category'), value: t(`categories.${project.category}`) },
     { label: t('projectDetail.year'), value: yearOf(project.createdAt) },
   ]
@@ -126,7 +129,7 @@ function ProjectDetail({ project }: { project: Project }) {
 
         <dl
           className={`grid gap-4 self-end rounded-[1.25rem] border border-line p-5 lg:grid-cols-1 lg:gap-3 ${
-            facts.length === 3 ? 'grid-cols-3' : 'grid-cols-2'
+            facts.length >= 3 ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-2'
           }`}
         >
           {facts.map((fact) => (

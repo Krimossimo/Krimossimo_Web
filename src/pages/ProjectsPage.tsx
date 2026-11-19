@@ -7,10 +7,12 @@ import {
   countProjectsByCategory,
   filterProjects,
   isProjectFilter,
+  splitProjectsByKind,
   type ProjectFilter,
 } from '../content'
 import { projectCategories, type Project } from '../types/content'
 import { ProjectCard } from '../components/projects/ProjectCard'
+import { ProjectRow } from '../components/projects/ProjectRow'
 import { ContentError, ContentLoading, DemoNotice } from '../components/ui/ContentStates'
 import { EmptyState } from '../components/ui/EmptyState'
 import { buttonClass } from '../components/ui/buttonStyles'
@@ -56,6 +58,7 @@ function ProjectGallery({ projects }: { projects: Project[] }) {
   }
 
   const visible = filterProjects(projects, active)
+  const { personal, client } = splitProjectsByKind(visible)
   const counts = countProjectsByCategory(projects)
   const filters: ProjectFilter[] = ['all', ...projectCategories]
 
@@ -118,14 +121,64 @@ function ProjectGallery({ projects }: { projects: Project[] }) {
           />
         </div>
       ) : (
-        <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((project, i) => (
+        <>
+          {personal.length > 0 && <PersonalProjects projects={personal} />}
+          {client.length > 0 && <ClientProjects projects={client} separated={personal.length > 0} />}
+        </>
+      )}
+    </>
+  )
+}
+
+/** Projets perso : mis en avant (grande carte pour le premier, puis grandes cartes sur deux colonnes). */
+function PersonalProjects({ projects }: { projects: Project[] }) {
+  const { t } = useTranslation()
+  const [first, ...others] = projects
+  return (
+    <section aria-labelledby="personal-projects-title" className="mt-12">
+      <div data-reveal>
+        <h2 id="personal-projects-title" className="text-[clamp(1.6rem,3vw,2.2rem)] font-semibold tracking-[-0.035em]">
+          {t('projectsPage.personalTitle')}
+        </h2>
+        <p className="mt-2 max-w-2xl text-muted">{t('projectsPage.personalLead')}</p>
+      </div>
+      <div data-reveal className="mt-8">
+        <ProjectCard project={first} variant="wide" showCta headingLevel="h3" />
+      </div>
+      {others.length > 0 && (
+        <ul className="mt-6 grid gap-6 md:grid-cols-2">
+          {others.map((project, i) => (
             <li key={project.id} data-reveal style={{ '--i': i } as CSSProperties}>
-              <ProjectCard project={project} showCta headingLevel="h2" />
+              <ProjectCard project={project} showCta headingLevel="h3" />
             </li>
           ))}
         </ul>
       )}
-    </>
+    </section>
+  )
+}
+
+/** Projets réalisés pour des tiers : liste compacte, plus discrète. */
+function ClientProjects({ projects, separated }: { projects: Project[]; separated: boolean }) {
+  const { t } = useTranslation()
+  return (
+    <section aria-labelledby="client-projects-title" className={separated ? 'mt-20 border-t border-line pt-12' : 'mt-12'}>
+      <div data-reveal className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 id="client-projects-title" className="font-sans text-[1.3rem] font-semibold tracking-[-0.02em]">
+            {t('projectsPage.clientTitle')}
+          </h2>
+          <p className="mt-1.5 max-w-2xl text-[0.98rem] text-muted">{t('projectsPage.clientLead')}</p>
+        </div>
+        <p className="text-sm text-muted">{t('projectsPage.count', { count: projects.length })}</p>
+      </div>
+      <ul className="mt-6 grid grid-cols-1 gap-3 lg:grid-cols-2">
+        {projects.map((project, i) => (
+          <li key={project.id} data-reveal="fade" style={{ '--i': i } as CSSProperties} className="min-w-0">
+            <ProjectRow project={project} />
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }

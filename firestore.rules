@@ -103,7 +103,7 @@ service cloud.firestore {
     function validProject(d) {
       return d.keys().hasAll(['title', 'description', 'category', 'createdAt', 'publication', 'updatedAt', 'updatedBy'])
         && d.keys().hasOnly(['title', 'description', 'summary', 'category', 'cover', 'externalUrl', 'progress', 'stack',
-                             'featured', 'createdAt', 'publication', 'order', 'updatedAt', 'updatedBy'])
+                             'featured', 'kind', 'clientName', 'createdAt', 'publication', 'order', 'updatedAt', 'updatedBy'])
         && validBase(d)
         && isTranslatable(d.title, 140)
         && isTranslatable(d.description, 6000)
@@ -113,7 +113,10 @@ service cloud.firestore {
         && (!('externalUrl' in d) || isHttpUrl(d.externalUrl))
         && (!('progress' in d) || d.progress in ['in-progress', 'completed'])
         && (!('stack' in d) || (d.stack is list && d.stack.size() <= 20))
-        && (!('featured' in d) || d.featured is bool);
+        && (!('featured' in d) || d.featured is bool)
+        // Projet perso (champ absent ou « personal ») ou réalisé pour un tiers (« client »).
+        && (!('kind' in d) || d.kind in ['personal', 'client'])
+        && (!('clientName' in d) || isText(d.clientName, 120));
     }
 
     match /projects/{projectId} {

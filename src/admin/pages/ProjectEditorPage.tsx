@@ -2,7 +2,7 @@ import { useId, useState } from 'react'
 import { useParams } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle'
-import { projectCategories, projectProgresses } from '../../types/content'
+import { projectCategories, projectKinds, projectProgresses } from '../../types/content'
 import { EditorActions, EditorFeedbackNotice, EditorStatus, FormSection, PublicationAndDate, SlugField } from '../components/EditorParts'
 import { ImageField } from '../components/ImageField'
 import { AdminHeading, BilingualField, ConfirmDialog, Field, inputClass } from '../components/ui'
@@ -64,6 +64,53 @@ function ProjectEditor({ id }: { id: string | null }) {
         <EditorFeedbackNotice feedback={editor.feedback} />
 
         <FormSection title={t('admin.projects.sections.main')}>
+          <fieldset>
+            <legend className="mb-2 block text-[0.95rem] font-semibold text-ink">{t('admin.projects.fields.kind')}</legend>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {projectKinds.map((kind) => {
+                const selected = form.kind === kind
+                return (
+                  <label
+                    key={kind}
+                    className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-colors ${
+                      selected ? 'border-blue bg-blue-tint' : 'border-line-strong hover:border-ink'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="kind"
+                      value={kind}
+                      checked={selected}
+                      onChange={() => setForm((f) => ({ ...f, kind }))}
+                      className="mt-0.5 size-5 shrink-0 accent-[var(--k-blue)]"
+                    />
+                    <span>
+                      <span className="font-medium text-ink">{t(`admin.projects.kinds.${kind}.label`)}</span>
+                      <span className="block text-sm text-muted">{t(`admin.projects.kinds.${kind}.hint`)}</span>
+                    </span>
+                  </label>
+                )
+              })}
+            </div>
+          </fieldset>
+          {form.kind === 'client' && (
+            <Field
+              id={`${uid}-client`}
+              label={t('admin.projects.fields.clientName')}
+              hint={t('admin.projects.fields.clientNameHint')}
+              error={fieldError('clientName')}
+            >
+              <input
+                id={`${uid}-client`}
+                name="clientName"
+                value={form.clientName}
+                maxLength={limits.clientName}
+                onChange={(e) => setForm((f) => ({ ...f, clientName: e.target.value }))}
+                aria-invalid={fieldError('clientName') ? true : undefined}
+                className={inputClass}
+              />
+            </Field>
+          )}
           <BilingualField
             id={`${uid}-title`}
             label={t('admin.projects.fields.title')}
